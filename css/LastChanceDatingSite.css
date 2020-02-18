@@ -33,15 +33,14 @@ html, body, div, section, article, aside, nav {
     margin: 0 auto;
 }
 .centraal {
-    width: 100%
-    max-width: 60em;
+    text-align: center;
 }
 
-
+/*
 .rechterkant {
     width: 80%;
     float: right;
-}
+}*/
 
 .inschrijfform {
     display: inline-block;
@@ -58,18 +57,20 @@ html, body, div, section, article, aside, nav {
 }
 /*** TOPMENU ****/
 #topmenu {
-    background: #ededed;
-    padding-left: 10%;
+    width: 10em;
+    margin: 1em;
 }
 #topmenu ul {
     list-style-type: none;
     margin: 50 20;
-    padding: 0;
-    float: left;
+    padding: 0;/*
+    float: left;*/
 }
+
 #topmenu ul li {
-    float: left;
+    text-align: center;
 }
+
 #topmenu ul li a {
     display: block;
     background-color:rgb(255, 219, 224);/* color == very light pink*/
@@ -80,14 +81,19 @@ html, body, div, section, article, aside, nav {
     letter-spacing: 0.1em;
     color: #005689;
 }
+
 #topmenu ul li a:hover,
 #topmenu ul li a:active,
 #topmenu ul li a.actief {
     text-decoration: none;
-    background: #D61D00;
+    background: rgb(255, 114, 92);
     color: white;
 }
+
 /***RECLAME***/
-.reclame {
-    float: left;
+#reclame {
+    float: right;
+}
+#reclame img {
+    width: 15em;
 }
