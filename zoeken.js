@@ -1,6 +1,6 @@
 "use strict";
 
-profielenAfhalen();
+/*profielenAfhalen();
 async function profielenAfhalen() {
     const response = await fetch("https://scrumserver.tenobe.org/scrum/api/profiel/read.php");
     if (response.ok) {
@@ -11,7 +11,7 @@ async function profielenAfhalen() {
     }
 };
 
-/*
+
 profielenZoeken();
 async function profielenZoeken() {
     const response = await fetch("https://scrumserver.tenobe.org/scrum/api/profiel/search/.php");
@@ -50,8 +50,42 @@ leesGegevens1();
 
 
 */
-      async function()
+
+document.getElementById("zoeken").onclick = async function()
+{
+    const rootUrl = 'https://scrumserver.tenobe.org/scrum/api/profiel/search.php?';
+    const input = document.querySelectorAll("input");
+    
+    let urlArray = [];
+    for (var area of input)
+    
+    {
+        if (area.value !== "")
+        {
+            if (urlArray[0] !== "")
+            {
+                console.log(area.id);
+                urlArray.push("&" + area.id + "=" + area.value) ;
+            }
+            else
+                urlArray.push(area.id + "=" + area.value) ;
+        }
+        
+    }
+    const arrayToString = urlArray.join("");
+    const Url = rootUrl + arrayToString ;
+    console.log(Url);
+    fetch(Url)
+            .then(function (resp)   { return resp.json(); })
+            .then(function (data)   { console.log(data);  })
+            .catch(function (error) { console.log(error); })
+}
+
+//page='+page+'&pageSize='+pageSize
+
+    /*  document.getElementById("zoeken").onclick = async function()
       {
+        
         let geslacht  =  document.getElementById('sexe').value;
         const rooturl = 'https://scrumserver.tenobe.org/scrum/api';
         let url =rooturl+'/profiel/search.php?sexe='+geslacht;
@@ -61,4 +95,4 @@ leesGegevens1();
             .then(function (data)   { console.log(data);  })
             .catch(function (error) { console.log(error); })
       };
-      zoekOpGeslacht();
+    //  zoekOpGeslacht();*/
