@@ -36,6 +36,11 @@ html, body, div, section, article, aside, nav {
     width: 80%;
     float: right;
 }
+.inschrijfform {
+    display: inline-block;
+    width: 7em;
+    padding: 6px;
+}
 /*
 .menu{
     background: burlywood;

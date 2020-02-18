@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <script src="registreren.js" defer></script>
     <title>inschrijving</title>
-    <link rel="stylesheet" href="default.css">
+    <link rel="stylesheet" href="css/LastChanceDatingSite.css">
+    
 </head>
 <body>
     <div class="inschrijving">
@@ -20,50 +22,44 @@
         <label for="vrouw">vrouw</label><br>
         <input type="radio"  id="X" name="ikZoekGeslacht" value="X">
         <label for="X">X</label><br> -->
-        <label for="idnummer">ID-nummer</label>
+        <label class="inschrijfform" for="idnummer">ID-nummer</label>
         <input type="text" id="idnummer"><br>
-        <label for="achternaam">Achternaam</label>
-        <input type="text" id="achternaam"><br>
-        <label for="voornaam">Voornaam</label>
-        <input type="text" id="voornaam"><br>
-        <label for="geboortedatum">geboortedatum</label>
-        <input type="date" id="geboortedatum" name="geboortedatum"><br>
-        <label for="email">Emailadres</label>
-        <input type="text" id="emailadres"><br>
-        <label for="nickname">Nickname</label>
-        <input type="text" id="nickname"><br>  
-        <label for="beroep">Beroep</label>
-        <input type="text" id="beroep"><br>
-        <label for="sexe">Sexe</label>
-        <input type="text" id="sexe"><br>  
-        <label for="mijnfoto">Hier komt de foto</label>
+        <label class="inschrijfform"for="achternaam">Achternaam</label>
+        <input type="text" id="achternaam" required type="text"><br>
+        <label class="inschrijfform"for="voornaam">Voornaam</label>
+        <input type="text" id="voornaam" required type="text"><br>
+        <label class="inschrijfform" for="geboortedatum">geboortedatum</label>
+        <input type="date" id="geboortedatum" required type="date" name="geboortedatum"><br>
+        <label class="inschrijfform" for="email">Emailadres </label>
+        <input type="text" id="emailadres" type="email" required><br>
+        <label class="inschrijfform"for="nickname">Nickname</label>
+        <input type="text" id="nickname" required type="text"><br>  
+        <label class="inschrijfform"for="beroep">Beroep</label>
+        <input type="text" id="beroep" type="text"><br>
+        <label class="inschrijfform"for="sexe">Sexe</label>
+        <input type="text" id="sexe" required><br>  
+        <label class="inschrijfform" for="mijnfoto">Hier komt de foto</label>
         <input type="file" id="mijnfoto" name="mijnfoto"><br>     
-        <label for="haarkleur">Haarkleur</label>
-        <input type="text" id="haarkleur"><br>
-        <label for="oogkleur">Oogkleur</label>
-        <input type="text" id="oogkleur"><br> 
-        <label for="grootte">Grootte</label>
-        <input type="text" id="grootte"><br>   
-        <label for="gewicht">Gewicht</label>
-        <input type="text" id="gewicht"><br> 
-        <label for="wachtwoord">Wachtwoord</label>
-        <input type="text" id="wachtwoord"><br>
-        <label for="metadata">Metadata</label>
+        <label class="inschrijfform" for="haarkleur">Haarkleur</label>
+        <input type="text" id="haarkleur" required type="text"><br>
+        <label class="inschrijfform" for="oogkleur">Oogkleur</label>
+        <input type="text" id="oogkleur" required type="text"><br> 
+        <label class="inschrijfform" for="grootte" required>Grootte</label>
+        <input type="text" id="grootte" required type="number" min="130"><br>   
+        <label class="inschrijfform"for="gewicht">Gewicht</label>
+        <input type="text" id="gewicht" required type="number" min="45"><br> 
+        <label class="inschrijfform" for="wachtwoord">Wachtwoord</label>
+        <input type="text" id="wachtwoord" required type="text"><br>
+        <label class="inschrijfform" for="metadata">Metadata</label>
         <input type="text" id="metadata"><br>
-        <label for="levecoins">Lovecoins</label>
-        <input type="text" id="lovecoins"><br>
-
-
-
-
-
-
-
-        
-        
-        
-        
-    
-
+        <label class="inschrijfform" for="levecoins">Lovecoins</label>
+        <input type="text" id="lovecoins" type="number"><br>
+        <p>
+        <button id="buttonInschrijven">Inschrijven</button>
+        </p>
+        <span id="inschrijvingFout" class="Fout">Eén van de gegevens zijn niet correct ingevuld</span>
+    </div>     
+          
+   
 </body>
 </html>
