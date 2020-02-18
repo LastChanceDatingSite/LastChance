@@ -18,32 +18,38 @@
 html, body, div, section, article, aside, nav {
     margin: 0;
     padding: 0;
-    background-color: lightgoldenrodyellow;
+    background-color: lightgoldenrodyellow;/*
+    background-color: seagreen;*/
  }
  img {
     border: none;
-    background: purple;
-    width:80%;
+    width:100%;
+    max-width: 60em;
     height:80%;
-    padding:16px 0px;
     margin:0;
  }
 .wikkel {
     width: 100%;
     margin: 0 auto;
 }
+.centraal {
+    width: 100%
+    max-width: 60em;
+}
+
+
 .rechterkant {
     width: 80%;
     float: right;
 }
-/*
+
 .menu{
     background: burlywood;
     padding:0;
     width: 20%;
     float:left;
     overflow: auto;
-}*/
+}
 /*** TOPMENU ****/
 #topmenu {
     background: #ededed;
@@ -60,8 +66,10 @@ html, body, div, section, article, aside, nav {
 }
 #topmenu ul li a {
     display: block;
+    background-color:rgb(255, 219, 224);/* color == very light pink*/
     padding: 0.375em 0.5em; /*6px 8px*/
-    border-right: 1px solid #b1b1b1;
+    border: 1px solid #b1b1b1;
+    margin-left: 10px;
     text-decoration: none;
     letter-spacing: 0.1em;
     color: #005689;
@@ -72,4 +80,8 @@ html, body, div, section, article, aside, nav {
     text-decoration: none;
     background: #D61D00;
     color: white;
+}
+/***RECLAME***/
+.reclame {
+    float: left;
 }

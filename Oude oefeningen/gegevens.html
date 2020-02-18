@@ -1,0 +1,159 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<link href="css/gazet.css" rel="stylesheet">
+<title>De Gazet</title>
+</head>
+<body class="abonneren">
+<div id="topbanner">
+  <div class="wikkel">
+    <nav id="topmenu">
+      <ul>
+        <li><a href="index.html">Nieuws</a></li>
+        <li><a href="dating.html">Dating</a></li>
+        <li><a href="culinair.html">Culinair</a></li>
+        <li><a href="webshop.html">Webshop</a></li>
+      </ul>
+    </nav>
+  </div>
+</div>
+<div class="wikkel cf">
+  <div class="inhoud">
+    <header>
+      <nav id="extramenu">
+        <ul>
+          <li>&nbsp;</li>
+        </ul>
+      </nav>
+      <h1 id="logo"><a href="index.html"  title="De Gazet met het allerlaatste nieuws">De Gazet</a></h1>
+      <nav id="abonneermenu" class="cf">
+        <ul class="breadcrumbs">
+          <li class="actief"><a href="abonneren.html">Soort abonnement</a></li>
+          <li class="actief"><a href="#">Uw gegevens</a></li>
+          <li ><a href="#">Bevestigen</a></li>
+          <li ><a href="#">Betalen</a></li>
+        </ul>
+      </nav>
+    </header>
+    
+    <!--span3 section-->
+    
+    <section class="span5">
+      <article>
+        <div id="abonnementkeuzes" class="bt3_b cf">
+          <h2>Uw koos voor</h2>
+          <p>een Weekend abonnement vanaf € 15/maand <a href="abonneren.html">wijzig</a></p>
+        </div>
+        <div id="uwgegevens" class="bt3_b cf">
+          <h2>Uw gegevens</h2>
+          <!--form hier -->
+          <form action="bevestigen.html" method="get" id="frmgegevens" name="frmgegevens">
+            <p>Velden met een <abbr class="verplicht">&#9829;</abbr> zijn essentieel om uw abonnement te kunnen registreren.</p>
+            <div>
+              <label for ="vnaam" class="verplicht" title="verplicht">Voornaam:</label>
+              <input type="text" id="vnaam" name="vnaam" autofocus placeholder="uw voornaam" title="vul hier uw voornaam in " required>
+              <span class="fieldval" id="val_naam"></span>
+            </div>
+            <div>
+              <label for="fnaam" class="verplicht" >Familienaam:</label>
+              <input type="text" id="fnaam" name="fnaam" placeholder="uw familienaam" title="vul hier uw familienaam" required >
+              <span class="fieldval" id="val_fnaam"></span>
+            </div>
+            <div>
+              <label for="straat" class="verplicht" >Straat:</label>
+              <input type="text" id="straat" name="straat" title="uw straat met huisnummer" required >
+              <span class="fieldval" id="val_straat"></span>
+            </div>
+            <div>
+              <label for="postnr" class="verplicht" >Postnummer:</label>
+              <input type="number" id="postnr" name="postnr" class="kort" title="het postnummer van uw gemeente" required>
+              <span class="fieldval" id="val_postnr">hier moet u een postnummer invullen</span>
+            </div>
+            <div>
+              <label for="gemeente" class="verplicht" >Gemeente:</label>
+              <input type="text" id="gemeente" name="gemeente" title="de gemeente waar u woont" required >
+              <span class="fieldval" id="val_gemeente"></span>
+            </div>
+            <div>
+              <label for="land" class="verplicht" >Land:</label>
+              <select id='land' name='land' title='in welk land woont u?' required >
+                   <option value=1>België</option>
+                   <option value=2>Nederland</option>
+                   <option value=3>Swaziland</option>
+              </select>
+              <span class="fieldval" id="val_land"></span>
+            </div>
+            <div>
+              <label for="tel">Telefoon:</label>
+              <input type="tel" id="tel" name="tel" placeholder="uw telefoonnummer" title="uw vaste of mobiele telefoon" >
+              <span class="fieldval" id="val_tel"></span>
+            </div>
+            <div>
+              <label for="email" class="verplicht" >Email:</label>
+              <input type="email" id="email" name="email" placeholder="uw emailadres" title="mijnemailadres" required >
+              <span class="fieldval" id="val_email"></span>
+            </div>
+            <div>
+              <label for="geboren">Geboortedatum:</label>
+              <input type="date" id="geboren" name="geboren" title="uw geboortedatum in het formaat 1956?12?31" required >
+              <span class="fieldval" id="val_geboren"></span>
+            </div>
+            <div>
+              <!--de keuze tussen 2 geslachten (m/v) is outdated.
+                  in de toekomst zal er meer en meer de keuze non-binair (X) bijkomen dus deze zit hier nu al bijgevoegd-->
+              <label>Geslacht:</label>
+              <input type="radio" id="man" value="m" name="sexe" />
+              <label class="labelRadio" for="man" > Man </label>
+              <input type="radio" id="vrouw" value="v" name="sexe" title="uw geslacht" />
+              <label class="labelRadio" for="vrouw" >Vrouw </label>
+              <input type="radio" id="non-binair" value="x" name="sexe" title="u geslacht" />
+              <label class="labelRadio" for="non-binair" >Non-binair</label>
+              <span class="fieldval" id="val_sexe"></span>
+            </div>
+            <div>
+                <label for="vragen" >Hebt u nog vragen?</label>
+                <textarea id="vragen" name="vragen" placeholder="vragen?" title="Heeft u nog vragen?"></textarea>
+                <span class="fieldval" id="val_vragen"></span>
+            </div>
+            <div>
+                <label class="labelCheckbox">
+                <input type="checkbox" id="actiesmail" value name="kortingen" />
+                     Ik wens per email op de hoogte gehouden te worden van kortingen en acties van De Gazet
+                </label>
+            </div>
+            <div>
+                <label class="labelCheckbox">
+                <input type="checkbox" id="actiespost" value name="actiespost" />
+                     Ik wens per post op de hoogte gehouden te worden van kortingen en acties van De Gazet
+                </label>
+            </div>
+            <div>
+                Lees alstublieft onze <a href="">Privacy Richtlijnen</a> om te weten te komen hoe wij uw gegevens gebruiken. <br>
+                U moet ook onze <a href="#">Algemene VerkoopsVoorwaarden</a> lezen en ermee akkoord gaan. 
+                U moet deze checkbox <input type="checkbox" id="akkoord" value name="akkoord" />
+                aanvinken om toe te stemmen met de algemene verkoopsvoorwaarden.
+            </div>
+            <div>
+                <input class="blauw" type="submit" value="Bevestig"/>
+                <input class="blauw" type="reset" value="Herbegin" />
+            </div>
+          </form>
+        </div>
+      </article>
+    </section>
+    <!--span5 section-->
+    
+    <section class="span5 bt3" >
+      <p>Voor verdere assistentie en hulp betreffende de abonnementen kunt u het gratis nummer 0800 445566 bellen. <br>
+        U vind ook help bij de <a href="#">Veel Gestelde Vragen en Voorwaarden</a> en <a href="#">condities</a></p>
+    </section>
+  </div>
+  <!--einde content--> 
+</div>
+<!--einde wikkel-->
+<footer>
+  <div class="wikkel">De Gazet is een oefening voor HTML &amp; CSS</div>
+</footer>
+</body>
+</html>
