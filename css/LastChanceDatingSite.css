@@ -1,10 +1,24 @@
 @charset "utf-8";
-
 /*CSS document voor Last Chance Datingsite*/
+/* basis 1em = 16 px
+   4px  = 0.25em
+   6px  = 0.375em
+   8px  = 0.5em
+   10px = 0.625em
+   12px = 0.75em
+   14px = 0.875em
+   18px = 1.125em
+   20px = 1.25em
+   22px = 1.375em
+   24px = 1.5em
+   32px = 2em
+*/
+
 /* NORMALIZE */
 html, body, div, section, article, aside, nav {
     margin: 0;
     padding: 0;
+    background-color: lightgoldenrodyellow;
  }
  img {
     border: none;
@@ -15,17 +29,47 @@ html, body, div, section, article, aside, nav {
     margin:0;
  }
 .wikkel {
-    width: 1024px;
+    width: 100%;
     margin: 0 auto;
 }
 .rechterkant {
     width: 80%;
     float: right;
 }
+/*
 .menu{
     background: burlywood;
     padding:0;
     width: 20%;
     float:left;
     overflow: auto;
+}*/
+/*** TOPMENU ****/
+#topmenu {
+    background: #ededed;
+    padding-left: 10%;
+}
+#topmenu ul {
+    list-style-type: none;
+    margin: 50 20;
+    padding: 0;
+    float: left;
+}
+#topmenu ul li {
+    float: left;
+}
+#topmenu ul li a {
+    display: block;
+    padding: 0.375em 0.5em; /*6px 8px*/
+    border-right: 1px solid #b1b1b1;
+    text-decoration: none;
+    letter-spacing: 0.1em;
+    color: #005689;
+}
+#topmenu ul li a:hover,
+#topmenu ul li a:active,
+#topmenu ul li a.actief {
+    text-decoration: none;
+    background: #D61D00;
+    color: white;
 }
