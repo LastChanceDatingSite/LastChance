@@ -1,7 +1,7 @@
 "use strict";
 
 persoonToevoegen();
-/* document.getElementById("buttonInschrijven").onclick = new function() {
+document.getElementById("buttonInschrijven").onclick = new function() {
     const verkeerdeElementen =
         document.querySelectorAll("input:invalid,select:invalid");
     for (const element of verkeerdeElementen) {
@@ -30,7 +30,7 @@ function invoerCorrect() {
         document.getElementById(`${element.id}Fout`).style.display = "";
     }
     return verkeerdeElementen.length === 0;
-} */
+}
 
 async function persoonToevoegen() {
     let url = 'https://scrumserver.tenobe.org/scrum/api/profiel/create.php';
