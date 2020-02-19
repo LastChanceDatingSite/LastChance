@@ -1,19 +1,8 @@
 "use strict";
-
 persoonToevoegen();
 document.getElementById("buttonInschrijven").onclick = new function() {
-    const verkeerdeElementen =
-        document.querySelectorAll("input:invalid,select:invalid");
-    for (const element of verkeerdeElementen) {
-        document.getElementById(`${element.id}Fout`).style.display = "inline";
-    }
-    const correcteElementen =
-        document.querySelectorAll("input:valid,select:valid");
-    for (const element of correcteElementen) {
-        document.getElementById(`${element.id}Fout`).style.display = "";
-    }
-
-    if (invoerCorrect) {
+    if (invoerCorrect) 
+    {
         persoonToevoegen();
     }
 }
@@ -49,21 +38,67 @@ async function persoonToevoegen() {
     let max = quotes.length - 1;
     let rndIndex = Math.floor(Math.random() * (max - min + 1) + min);
 
+    let familien;
+    let voorn;
+    let geboortedate;
+    let emails;
+    let bijnaam;
+    let picture;
+    let werk;
+    let geslacht;
+    let hairkleur;
+    let eyekleur;
+    let size;
+    let weight;
+    let password;
+
+    if(document.getElementById("achternaam").nodeValue != "")
+    {
+        familien = document.getElementById("achternaam").nodeValue;
+    }
+
+    if(document.getElementById("voornaam").nodeValue !== null)
+    {
+        voorn = document.getElementById("voornaam").nodeValue;
+    }
+
+    if(document.getElementById("geboortedatum").nodeValue !== null)
+    {
+        console.log(document.getElementById("geboortedatum").nodeValue);
+    }
+    /* let data = {
+        familienaam: familien,
+        voornaam: voorn,
+        geboortedatum: geboortedate,
+        email: emails,
+        nickname: bijnaam,
+        foto: picture,
+        beroep: werk,
+        sexe: geslacht,
+        haarkleur: hairkleur,
+        oogkleur: eyekleur,
+        grootte: size,
+        gewicht: weight,
+        wachtwoord: password,
+        metadata: quotes,
+        lovecoins: "1000000"
+    }; */
+
     let data = {
-        familienaam: "Norris",
-        voornaam: "Chuck",
-        geboortedatum: "0001-01-01",
-        email: "me@Chuck.Norris",
-        nickname: "The Chuck" + Date.now(),
-        foto: "no_picture.jpg",
-        beroep: "Moviestar",
-        sexe: "x",
-        haarkleur: "brown",
-        oogkleur: "blue",
-        grootte: "1095",
-        gewicht: "",
-        wachtwoord: "iamgod",
-        metadata: quotes[rndIndex],
+        familienaam: "hey",
+        voornaam: "yo",
+        geboortedatum: geboortedate,
+        email: "mailtje",
+        nickname: "yooo",
+        foto: "img.jpg",
+        beroep: "lasser",
+        sexe: "m",
+        haarkleur: "groen",
+        oogkleur: "blauw",
+        grootte: 120,
+        gewicht: 200,
+        wachtwoord: "jordy",
+        metadata: quotes,
         lovecoins: "1000000"
     };
 
