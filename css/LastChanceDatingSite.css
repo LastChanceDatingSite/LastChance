@@ -21,59 +21,74 @@ html, body, div, section, article, aside, nav {
     background-color: lightgoldenrodyellow;/*
     background-color: seagreen;*/
  }
-img {
+ img {
     border: none;
     width:100%;
     max-width: 60em;
     height:80%;
-    margin:0;
+    margin:/*01*/0em 0em 0em 0em;
  }
-.wikkel {
-    width: 100%;
-    margin: 0 auto;
-    display: inline-block;
-}
 .centraal {
     text-align: center;
 }
 
-
-/*** TOPMENU ****/
-#topmenu {
-    width: 100%;
-    max-width: 60em;
-    margin: 1em;
-    justify-content: center;
-    display: inline-block;
-}
-#topmenu ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-#topmenu ul li {
-    float:left;
-}
-
-#topmenu ul li a , button{
+button{
     display: inline-block;
     background-color:rgb(158, 75, 147);/* color == very light purple*/
-    padding: 0.375em 0.5em; /*6px 8px*/
+    padding: 0.5em; /*6px 8px*/
     border: 1px solid #b1b1b1;
-    margin-left: 10px;
+    margin: 10px;
     color: #000000;
     text-decoration: none;
     letter-spacing: 0.1em;
-    
 }
 
-#topmenu ul li a:hover,
-#topmenu ul li a:active,
-#topmenu ul li a.actief {
+/* ** TOPMENU ***/
+.topfoto img{
+    margin: 5em 0em 0em 0em;
+} 
+.topmenu {
+    background-color: lightgoldenrodyellow;
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+    margin: 0em;
+}
+.topmenu ul {
+    list-style-type: none;
+    width: 100%;
+    max-width: 60em;
+    margin-left: 10%;
+   
+}
+
+.topmenu ul li {
+    float: left;
+    color: #000000;
+    text-decoration: none;
+    letter-spacing: 0.1em;
+}
+
+.topmenu ul li a {
+    padding: 0.5em; /*6px 8px*/
+    margin: 10px;
+    color: #000000;
+    text-decoration: none;
+    letter-spacing: 0.1em; 
+}
+
+.topmenu ul li a:hover{
     text-decoration: none;
     background: rgb(255, 114, 92);
     color: white;
 }
+    
+.topmenu ul li a.actief {
+        text-decoration: none;
+        background: rgb(158, 75, 147);
+        color: white;
+}
+
 /***Formulieren***/
 .formulier {
     width: 90%;
