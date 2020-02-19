@@ -7,34 +7,34 @@
 </head>
 <body>
     
-    <div class="zoeken">
-
-        <label for="achternaam">Achternaam</label>
-        <input type="text" id="achternaam"><br>
-        <label for="voornaam">Voornaam</label>
-        <input type="text" id="voornaam"><br>
-        <label for="geboortedatum">geboortedatum</label>
-        <input type="date" id="geboortedatum" name="geboortedatum"><br>
-        <label for="email">Emailadres</label>
-        <input type="text" id="emailadres"><br>
-        <label for="nickname">Nickname</label>
-        <input type="text" id="nickname"><br>  
-        <label for="beroep">Beroep</label>
-        <input type="text" id="beroep"><br>
-        <label for="sexe">Sexe</label>
-        <input type="text" id="sexe"><br>  
-           
-        <label for="haarkleur">Haarkleur</label>
-        <input type="text" id="haarkleur"><br>
-        <label for="oogkleur">Oogkleur</label>
-        <input type="text" id="oogkleur"><br> 
-        <label for="grootte">Grootte</label>
-        <input type="text" id="grootte"><br>   
-        <label for="gewicht">Gewicht</label>
-        <input type="text" id="gewicht"><br> 
+    <div class="zoeken">                      
+        <div>
+            <label for="sexe">Ik zoek een :</label>
+            <input type="radio" id="sexe" value="m">man
+            <input type="radio" id="sexe" value="v">vrouw
+            <input type= "radio" id="sexe" value="x">Non-binair<br> </div>
+        <div>
+            <label for="nickname">Nickname</label>
+            <input type="text" id="nickname"  type="text"><br></div>
+        <div>
+            <label for="beroep">Beroep</label>
+            <input type="text" id="beroep" type="text"><br></div>
+        <div>
+            <label for="sexe">Sexe</label>
+            <input type="text" id="sexe" required><br></div>
+        <div>
+            <label for="haarkleur">Haarkleur</label>
+            <input type="text" id="haarkleur" type="text"><br></div>
+        <div>
+            <label for="oogkleur">Oogkleur</label>
+            <input type="text" id="oogkleur" type="text"><br></div>
+        <div>
+            <label for="grootte" >Grootte</label>
+            <input type="text" id="grootte" required type="number" min="130"></div>
+        <div>
+            <label for="gewicht">Gewicht</label>
+            <input type="text" id="gewicht" required type="number" min="45"><br></div>
         
-        <label for="lovecoins">Lovecoins</label>
-        <input type="text" id="lovecoins"><br>
     </div>
     <button id="zoeken">Zoeken</button>
 
