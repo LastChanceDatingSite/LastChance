@@ -1,6 +1,6 @@
 "use strict";
-persoonToevoegen();
-document.getElementById("buttonInschrijven").onclick = new function() {
+
+document.getElementById("buttonInschrijven").onclick = function() {
     if (invoerCorrect) 
     {
         persoonToevoegen();
@@ -18,6 +18,7 @@ function invoerCorrect() {
     for (const element of correcteElementen) {
         document.getElementById(`${element.id}Fout`).style.display = "";
     }
+    console.log(verkeerdeElementen.length)
     return verkeerdeElementen.length === 0;
 }
 
@@ -38,7 +39,7 @@ async function persoonToevoegen() {
     let max = quotes.length - 1;
     let rndIndex = Math.floor(Math.random() * (max - min + 1) + min);
 
-    let familien;
+    /* let familien;
     let voorn;
     let geboortedate;
     let emails;
@@ -66,6 +67,17 @@ async function persoonToevoegen() {
     {
         console.log(document.getElementById("geboortedatum").nodeValue);
     }
+
+    if(document.getElementById("emailadres").nodeValue !== null)
+    {
+        console.log(document.getElementById("emailadres").nodeValue);
+    }
+
+    if(document.getElementById("geboortedatum").nodeValue !== null)
+    {
+        console.log(document.getElementById("geboortedatum").nodeValue);
+    } */
+
     /* let data = {
         familienaam: familien,
         voornaam: voorn,
@@ -84,21 +96,23 @@ async function persoonToevoegen() {
         lovecoins: "3"
     }; */
 
+
+    console.log(document.getElementById("nickname").value);
     let data = {
-        familienaam: "hey",
-        voornaam: "yo",
-        geboortedatum: geboortedate,
-        email: "mailtje",
-        nickname: "yooo",
-        foto: "img.jpg",
-        beroep: "lasser",
-        sexe: "m",
-        haarkleur: "groen",
-        oogkleur: "blauw",
-        grootte: 120,
-        gewicht: 200,
-        wachtwoord: "jordy",
-        metadata: quotes,
+        familienaam: document.getElementById("achternaam").value,
+        voornaam: document.getElementById("voornaam").value,
+        geboortedatum: document.getElementById("geboortedatum").value,
+        email: document.getElementById("emailadres").value,
+        nickname: document.getElementById("nickname").value,
+        foto: document.getElementById("mijnfoto").value,
+        beroep: document.getElementById("beroep").value,
+        sexe: document.getElementById("sexe").value,
+        haarkleur: document.getElementById("haarkleur").value,
+        oogkleur: document.getElementById("oogkleur").value,
+        grootte: document.getElementById("grootte").value,
+        gewicht: document.getElementById("gewicht").value,
+        wachtwoord: document.getElementById("wachtwoord").value,
+        metadata: document.getElementById("metadata").value,
         lovecoins: "3"
     };
 
