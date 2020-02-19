@@ -75,11 +75,53 @@ document.getElementById("zoeken").onclick = async function()
     const arrayToString = urlArray.join("");
     const Url = rootUrl + arrayToString ;
     console.log(Url);
-    fetch(Url)
-            .then(function (resp)   { return resp.json(); })
+    const response =  await fetch(Url)
+    if (response.ok) {
+        const gebruikers = await response.json();
+        lijstGebruikers(gebruikers);
+        
+    } else {
+        document.getElementById("nietGevonden").style.display = "block";
+    }
+
+          /*  .then(function (resp)   { return resp.json(); })
             .then(function (data)   { console.log(data);  })
-            .catch(function (error) { console.log(error); })
+            .then(function (data)   { lijstGebruikers(data);  })
+            .then(function(data)    { console.log(gebruikersArray[0]); })
+            .catch(function (error) { console.log(error); })*/
+            
+            
 }
+
+function lijstGebruikers(gebruikers)
+{   
+    for (const gebruiker of gebruikers)
+    console.log(gebruiker.voornaam);
+    document.getElementById("gebruikerNickname").innerText = gebruiker.nickname;
+    const hyperlink = document.createElement("a");
+    hyperlink.innerText = gebruiker.voornaam;
+    hyperlink.href = "#";
+    hyperlink.dataset.index = index++;
+    hyperlink.onclick = function () 
+    {
+    const gebruiker = users.data[this.dataset.index];
+    document.getElementById("gebruikerWeergave").style.display = "block";
+    document.getElementById("gebruikerNickname").innerText = gebruiker.nickname;
+    document.getElementById("gebruikerBeroep").innerText = gebruiker.beroep;
+    document.getElementById("gebruikerSexe").innerText = gebruiker.sexe;
+    document.getElementById("gebruikerOogkleur").innerText = gebruiker.oogkleur;
+    document.getElementById("gebruikerHaarkleur").innerText = gebruiker.haarkleur;
+    document.getElementById("gebruikerGewicht").innerText = gebruiker.gewicht;
+    document.getElementById("gebruikerGrootte").innerText = gebruiker.grootte;
+};
+const li = document.createElement("li");
+li.appendChild(hyperlink);
+gebruikersLijst.appendChild(li);
+}
+
+
+
+
 
 //page='+page+'&pageSize='+pageSize
 
