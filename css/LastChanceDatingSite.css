@@ -42,7 +42,7 @@ html, body, div, section, article, aside, nav {
     float: right;
 }*/
 
-.inschrijfform {
+.inschrijving label, .zoeken label {
     display: inline-block;
     width: 7em;
     padding: 6px;
