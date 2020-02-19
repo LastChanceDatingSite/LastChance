@@ -34,39 +34,39 @@
     <div>
         <label for="beroep">Beroep</label>
         <input type="text" id="beroep" >
-        <span id="achternaamFout" class="Fout">Het veld 'beroep' is verplicht in te vullen!</span><br></div>
+        <span id="beroepFout" class="Fout">Het veld 'beroep' is verplicht in te vullen!</span><br></div>
     <div>
         <label for="sexe">Sexe</label>
         <input type="text" id="sexe" required>
-        <span id="achternaamFout" class="Fout">Het veld 'sexe' is verplicht in te vullen!</span><br></div>
+        <span id="sexeFout" class="Fout">Het veld 'sexe' is verplicht in te vullen!</span><br></div>
     <div>
         <label for="mijnfoto">Foto</label>
-        <input type="file" id="mijnfoto" name="mijnfoto">
-        <span id="achternaamFout" class="Fout">Het veld 'foto' is verplicht in te vullen!</span><br></div>
+        <input type="file" id="mijnfoto" name="mijnfoto" required>
+        <span id="mijnfotoFout" class="Fout">Het veld 'foto' is verplicht in te vullen!</span><br></div>
     <div>
         <label for="haarkleur">Haarkleur</label>
-        <input type="text" id="haarkleur" required >
-        <span id="achternaamFout" class="Fout">Het veld 'haarkleur' is verplicht in te vullen!</span><br></div>
+        <input type="text" id="haarkleur"  >
+        <span id="haarkleurFout" class="Fout"></span><br></div>
     <div>
         <label for="oogkleur">Oogkleur</label>
-        <input type="text" id="oogkleur" required >
-        <span id="achternaamFout" class="Fout">Het veld 'oogkleur' is verplicht in te vullen!</span><br></div>
+        <input type="text" id="oogkleur" >
+        <span id="oogkleurFout" class="Fout"></span><br></div>
     <div>
         <label for="grootte" required>Grootte</label>
-        <input type="number" id="grootte" required min="130">
-        <span id="grootteFout" class="Fout">Het veld 'grootte' is verplicht in te vullen!</span></div>
+        <input type="number" id="grootte" min="130">
+        <span id="grootteFout" class="Fout">Het veld 'grootte' is niet juist ingevuld</span></div>
     <div>
         <label for="gewicht">Gewicht</label>
-        <input type="number" id="gewicht" required min="45">
-        <span id="gewichtFout" class="Fout">Het veld 'gewicht' is verplicht in te vullen!</span><br></div>
+        <input type="number" id="gewicht" min="40">
+        <span id="gewichtFout" class="Fout">Het veld 'gewicht' is niet juist ingevuld!</span><br></div>
     <div>
         <label for="wachtwoord">Wachtwoord</label>
-        <input type="text" id="wachtwoord" required >
+        <input type="password" id="wachtwoord" required >
         <span id="wachtwoordFout" class="Fout">Het veld 'wachtwoord' is verplicht in te vullen!</span><br></div>
     <div>
         <label for="metadata">Metadata</label>
         <input type="text" id="metadata">
-        <span id="metadata" class="Fout">Het veld 'metadata' is verplicht in te vullen!</span><br></div>
+        <span id="metadataFout" class="Fout"></span><br></div>
         
     <p><button id="buttonInschrijven">Inschrijven</button></p>
         

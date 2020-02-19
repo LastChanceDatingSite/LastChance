@@ -1,7 +1,7 @@
 "use strict";
 
 document.getElementById("buttonInschrijven").onclick = function() {
-    if (invoerCorrect) 
+    if (invoerCorrect()) 
     {
         persoonToevoegen();
     }
@@ -18,7 +18,7 @@ function invoerCorrect() {
     for (const element of correcteElementen) {
         document.getElementById(`${element.id}Fout`).style.display = "";
     }
-    console.log(verkeerdeElementen.length)
+    console.log("hedfdffdf");
     return verkeerdeElementen.length === 0;
 }
 
