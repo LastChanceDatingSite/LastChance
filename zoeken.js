@@ -95,9 +95,10 @@ document.getElementById("zoeken").onclick = async function()
 
 function lijstGebruikers(gebruikers)
 {   
-    for (const gebruiker of gebruikers)
+    let index = 0;
+    for (var gebruiker of gebruikers)
+    //gebruiker = gebruiker.data;
     console.log(gebruiker.voornaam);
-    document.getElementById("gebruikerNickname").innerText = gebruiker.nickname;
     const hyperlink = document.createElement("a");
     hyperlink.innerText = gebruiker.voornaam;
     hyperlink.href = "#";
@@ -115,6 +116,7 @@ function lijstGebruikers(gebruikers)
     document.getElementById("gebruikerGrootte").innerText = gebruiker.grootte;
 };
 const li = document.createElement("li");
+const gebruikersLijst = document.getElementById("gebruikersLijst");
 li.appendChild(hyperlink);
 gebruikersLijst.appendChild(li);
 }
