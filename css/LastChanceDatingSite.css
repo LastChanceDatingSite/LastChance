@@ -37,11 +37,7 @@ img {
     text-align: center;
 }
 
-.inschrijving label, .zoeken label {
-    display: inline-block;
-    width: 7em;
-    padding: 6px;
-}
+
 /*** TOPMENU ****/
 #topmenu {
     width: 100%;
@@ -59,15 +55,16 @@ img {
     float:left;
 }
 
-#topmenu ul li a {
+#topmenu ul li a , button{
     display: inline-block;
-    background-color:rgb(158, 75, 147);/* color == very light pink*/
+    background-color:rgb(158, 75, 147);/* color == very light purple*/
     padding: 0.375em 0.5em; /*6px 8px*/
     border: 1px solid #b1b1b1;
     margin-left: 10px;
+    color: #000000;
     text-decoration: none;
     letter-spacing: 0.1em;
-    color: #000000;
+    
 }
 
 #topmenu ul li a:hover,
@@ -77,19 +74,30 @@ img {
     background: rgb(255, 114, 92);
     color: white;
 }
-/***Inschrijving***/
+/***Formulieren***/
+.inschrijving label, .zoeken label {
+    display: inline-block;
+    width: 7em;
+    padding: 6px;
+}
 .formulier {
     display: list-item;
 
 }
-.formulier label{
-
+.formulier div{
+    margin: 0.5em;
 }
-.formulier input{
-    border: 2px;
-    background-color: lime;
+label{
+    display: inline-block;
+width: 7em;
+padding: 0.25em;
+}
+input{
+    border: 1px solid  #b1b1b1;
+    background-color: #dddddd;
     width: 20em;
 }
+
 
 /***RECLAME***/
 #reclame {
