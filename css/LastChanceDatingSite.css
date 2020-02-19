@@ -20,6 +20,7 @@ html, body, div, section, article, aside, nav {
     padding: 0;
     background-color: lightgoldenrodyellow;/*
     background-color: seagreen;*/
+    display: inline-block;
  }
  img {
     border: none;
@@ -36,51 +37,36 @@ html, body, div, section, article, aside, nav {
     text-align: center;
 }
 
-/*
-.rechterkant {
-    width: 80%;
-    float: right;
-}*/
-
 .inschrijving label, .zoeken label {
     display: inline-block;
     width: 7em;
     padding: 6px;
 }
-/*
-.menu{
-    background: burlywood;
-    padding:0;
-    width: 20%;
-    float:left;
-    overflow: auto;
-}
 /*** TOPMENU ****/
 #topmenu {
-    width: 10em;
+    width: 100%;
+    max-width: 60em;
     margin: 1em;
-
+    justify-content: center;
 }
 #topmenu ul {
     list-style-type: none;
-    margin: 50 20;
-    padding: 0;/*
-    float: left;*/
+    padding: 0;
 }
-/*
+
 #topmenu ul li {
-    text-align: center;
-}*/
+    float:left;
+}
 
 #topmenu ul li a {
-    display: block;
-    background-color:rgb(255, 219, 224);/* color == very light pink*/
+    display: inline-block;
+    background-color:rgb(158, 75, 147);/* color == very light pink*/
     padding: 0.375em 0.5em; /*6px 8px*/
     border: 1px solid #b1b1b1;
     margin-left: 10px;
     text-decoration: none;
     letter-spacing: 0.1em;
-    color: #005689;
+    color: #000000;
 }
 
 #topmenu ul li a:hover,
@@ -93,8 +79,42 @@ html, body, div, section, article, aside, nav {
 
 /***RECLAME***/
 #reclame {
-    float: right;
+    width: 100%;
+    max-width: 60em;
+    text-align: center;
+}
+#reclame h1{
+    max-width: 51em;
+    margin: 1em;
 }
 #reclame img {
     width: 15em;
+    margin: 1em;
+    
+}
+/***Foutmelding***/
+.feedback, .fout {
+    color: white;
+    padding-left: 0.2em;
+    padding-right: 0.2em;
+}
+
+.feedback {
+    background-color: navy;
+}
+
+.fout {
+    background-color: red;
+    display:none;
+    margin-top:0.5em;
+}
+
+.feedback:empty, .fout:empty {
+    display: none;
+}
+
+/***Publiek en verborgen***/
+
+.verborgen {
+    display: none;
 }
