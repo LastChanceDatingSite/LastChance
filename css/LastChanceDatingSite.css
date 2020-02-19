@@ -59,6 +59,7 @@ html, body, div, section, article, aside, nav {
 #topmenu {
     width: 10em;
     margin: 1em;
+
 }
 #topmenu ul {
     list-style-type: none;
@@ -66,10 +67,10 @@ html, body, div, section, article, aside, nav {
     padding: 0;/*
     float: left;*/
 }
-
+/*
 #topmenu ul li {
     text-align: center;
-}
+}*/
 
 #topmenu ul li a {
     display: block;
