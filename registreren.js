@@ -52,9 +52,9 @@ async function persoonToevoegen() {
     let weight;
     let password;
 
-    if(document.getElementById("familienaam").nodeValue !== "")
+    if(document.getElementById("achternaam").nodeValue != "")
     {
-        familien = document.getElementById("familienaam").nodeValue;
+        familien = document.getElementById("achternaam").nodeValue;
     }
 
     if(document.getElementById("voornaam").nodeValue !== null)
