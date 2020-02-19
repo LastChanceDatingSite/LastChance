@@ -81,7 +81,7 @@ async function persoonToevoegen() {
         gewicht: weight,
         wachtwoord: password,
         metadata: quotes,
-        lovecoins: "1000000"
+        lovecoins: "3"
     }; */
 
     let data = {
@@ -99,7 +99,7 @@ async function persoonToevoegen() {
         gewicht: 200,
         wachtwoord: "jordy",
         metadata: quotes,
-        lovecoins: "1000000"
+        lovecoins: "3"
     };
 
     var request = new Request(url, {
