@@ -22,6 +22,7 @@
                     {
                         console.log("juist");
                         window.location.replace("gebruikers.html");
+                        localStorage.setItem('gebruiker', profiel.nickname);
                     }
                     else
                     {
