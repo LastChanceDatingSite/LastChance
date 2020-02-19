@@ -78,10 +78,17 @@ img {
     color: white;
 }
 /***Inschrijving***/
-.inschrijving {
+.formulier {
     display: list-item;
 
+}
+.formulier label{
 
+}
+.formulier input{
+    border: 2px;
+    background-color: lime;
+    width: 20em;
 }
 
 /***RECLAME***/
