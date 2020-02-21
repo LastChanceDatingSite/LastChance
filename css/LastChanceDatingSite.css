@@ -13,7 +13,11 @@
    24px = 1.5em
    32px = 2em
 */
-
+/*NogTeDoen*/
+.NogTeDoen {
+    background-color: red;
+    color: white;
+}
 /* NORMALIZE */
 html, body, div, section, article, aside, nav {
     margin: 0;
@@ -54,7 +58,7 @@ button{
     width: 100%;
     margin: 0em;
 }
-.topmenu ul {
+.topmenu ol {
     list-style-type: none;
     width: 100%;
     max-width: 60em;
@@ -62,14 +66,14 @@ button{
    
 }
 
-.topmenu ul li {
+.topmenu ol li {
     float: left;
     color: #000000;
     text-decoration: none;
     letter-spacing: 0.1em;
 }
 
-.topmenu ul li a {
+.topmenu ol li a {
     padding: 0.5em; /*6px 8px*/
     margin: 10px;
     color: #000000;
@@ -77,13 +81,13 @@ button{
     letter-spacing: 0.1em; 
 }
 
-.topmenu ul li a:hover{
+.topmenu ol li a:hover{
     text-decoration: none;
     background: rgb(255, 114, 92);
     color: white;
 }
     
-.topmenu ul li a.actief {
+.topmenu ol li a.actief {
         text-decoration: none;
         background: rgb(158, 75, 147);
         color: white;
