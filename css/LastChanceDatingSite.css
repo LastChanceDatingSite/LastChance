@@ -120,6 +120,7 @@ input, select{
 
 /***Zoeken lijst weergeven***/
 #gebruikersLijst {
+    padding: 0;
     list-style-type: none;
     width: 100%;
     max-width: 54em;
@@ -127,10 +128,11 @@ input, select{
 
 #gebruikersLijst li {
     background-color: lime;
-    float: left;
+    display:inline-block;
+    /*float: left;*/
     width: 16em;
     height: 8em;
-    margin: 0em 1em;
+    margin: 0.5em ;
     color: #000000;
     text-decoration: none;
     letter-spacing: 0.1em;
