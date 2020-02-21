@@ -12,7 +12,9 @@ async function eenProfielAfhalen() {
         console.log(eenProfiel);
         document.getElementById("begroeting").innerText = "Welkom " + eenProfiel.nickname;
         lijstGebruikers(eenProfiel);
+        
         document.getElementById("sterrenbeeld").src = sterrenbeeldAfhalen(eenProfiel);
+        return eenProfiel;
     }
     else {
         document.getElementById("nietGevonden").style.display = "block";
@@ -23,6 +25,7 @@ async function eenProfielAfhalen() {
 
 function lijstGebruikers(gebruiker) {
 
+    
     document.getElementById("gebruikerWeergave").style.display = "block";
     document.getElementById("gebruikerNickname").innerText = gebruiker.nickname;
     document.getElementById("gebruikerBeroep").innerText = gebruiker.beroep;
@@ -34,47 +37,64 @@ function lijstGebruikers(gebruiker) {
     console.log(gebruiker.foto);
     document.getElementById("avatar").src = "https://scrumserver.tenobe.org/scrum/img/" + gebruiker.foto;
 
-}
-
-function sterrenbeeldAfhalen(gebruiker)
-{
-        //let sterrenbeeldAfbeelding = document.getElementById("sterrenbeeld").src;
-        console.log(gebruiker.geboortedatum);
-        const geboortedatum = new Date(gebruiker.geboortedatum);
-        const month = geboortedatum.getMonth() + 1;
-        console.log(month);
-        const day = geboortedatum.getDay();
-        console.log(day);
-      
-        if((month == 1 && day <= 20) || (month == 12 && day >=22)) {
-            return "img/sterrenbeeld/steenbok.png";
-        } else if ((month == 1 && day >= 21) || (month == 2 && day <= 18)) {
-          return "img/sterrenbeeld/waterman.png";
-        } else if((month == 2 && day >= 19) || (month == 3 && day <= 20)) {
-          return "img/sterrenbeeld/vissen.png";
-        } else if((month == 3 && day >= 21) || (month == 4 && day <= 20)) {
-          return "img/sterrenbeeld/ram.png";
-        } else if((month == 4 && day >= 21) || (month == 5 && day <= 20)) {
-          return "img/sterrenbeeld/stier.png";
-        } else if((month == 5 && day >= 21) || (month == 6 && day <= 20)) {
-          return "img/sterrenbeeld/tweelingen.png";
-        } else if((month == 6 && day >= 22) || (month == 7 && day <= 22)) {
-          return "img/sterrenbeeld/kreeft.png";
-        } else if((month == 7 && day >= 23) || (month == 8 && day <= 23)) {
-          return "img/sterrenbeeld/leeuw.png";
-        } else if((month == 8 && day >= 24) || (month == 9 && day <= 23)) {
-          return "img/sterrenbeeld/maagd.png";
-        } else if((month == 9 && day >= 24) || (month == 10 && day <= 23)) {
-          return "img/sterrenbeeld/weegschaal.png";
-        } else if((month == 10 && day >= 24) || (month == 11 && day <= 22)) {
-          return "img/sterrenbeeld/schorpioen.png";
-        } else if((month == 11 && day >= 23) || (month == 12 && day <= 21)) {
-          return "img/sterrenbeeld/boogschutter.png";
-        }
-}
-
-document.getElementById("bewerken") = function()
-{
+    document.getElementById("achternaam").innerText = gebruiker.achternaam;
+    document.getElementById("voornaam").innerText = gebruiker.voornaam;
+    document.getElementById("geboortedatum").innerText = gebruiker.geboortedatum;
+    document.getElementById("emailadres").innerText = gebruiker.email;
+    document.getElementById("nickname").innerText = gebruiker.nickname;
+    document.getElementById("beroep").innerText = gebruiker.beroep;
+    document.getElementById("sexe").innerText = gebruiker.sexe;
+    document.getElementById("mijnfoto").src = gebruiker.foto;
+    document.getElementById("haarkleur").innerText = gebruiker.haarkleur;
+    document.getElementById("oogkleur").innerText = gebruiker.oogkleur;
+    document.getElementById("grootte").innerText = gebruiker.grootte;
+    document.getElementById("gewicht").innerText = gebruiker.gewicht;
+    document.getElementById("wachtwoord").innerText = gebruiker.wachtwoord;
     
+
 }
+
+function sterrenbeeldAfhalen(gebruiker) {
+    //let sterrenbeeldAfbeelding = document.getElementById("sterrenbeeld").src;
+    console.log(gebruiker.geboortedatum);
+    const geboortedatum = new Date(gebruiker.geboortedatum);
+    const month = geboortedatum.getMonth() + 1;
+    console.log(month);
+    const day = geboortedatum.getDay();
+    console.log(day);
+
+    if ((month == 1 && day <= 20) || (month == 12 && day >= 22)) {
+        return "img/sterrenbeeld/steenbok.png";
+    } else if ((month == 1 && day >= 21) || (month == 2 && day <= 18)) {
+        return "img/sterrenbeeld/waterman.png";
+    } else if ((month == 2 && day >= 19) || (month == 3 && day <= 20)) {
+        return "img/sterrenbeeld/vissen.png";
+    } else if ((month == 3 && day >= 21) || (month == 4 && day <= 20)) {
+        return "img/sterrenbeeld/ram.png";
+    } else if ((month == 4 && day >= 21) || (month == 5 && day <= 20)) {
+        return "img/sterrenbeeld/stier.png";
+    } else if ((month == 5 && day >= 21) || (month == 6 && day <= 20)) {
+        return "img/sterrenbeeld/tweelingen.png";
+    } else if ((month == 6 && day >= 22) || (month == 7 && day <= 22)) {
+        return "img/sterrenbeeld/kreeft.png";
+    } else if ((month == 7 && day >= 23) || (month == 8 && day <= 23)) {
+        return "img/sterrenbeeld/leeuw.png";
+    } else if ((month == 8 && day >= 24) || (month == 9 && day <= 23)) {
+        return "img/sterrenbeeld/maagd.png";
+    } else if ((month == 9 && day >= 24) || (month == 10 && day <= 23)) {
+        return "img/sterrenbeeld/weegschaal.png";
+    } else if ((month == 10 && day >= 24) || (month == 11 && day <= 22)) {
+        return "img/sterrenbeeld/schorpioen.png";
+    } else if ((month == 11 && day >= 23) || (month == 12 && day <= 21)) {
+        return "img/sterrenbeeld/boogschutter.png";
+    }
+}
+
+document.getElementById("bewerken").onclick = function()
+     {
+        //const eenProfiel = eenProfielAfhalen();
+        document.getElementById("gebruikerWeergave").style.display = "none";
+        document.getElementById("formulierBewerken").style.display = "block";
+    }
+
 
