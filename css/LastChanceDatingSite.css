@@ -28,10 +28,9 @@ html, body, div, section, article, aside, nav {
  }
  img {
     border: none;
-    width:100%;
-    max-width: 60em;
-    height:80%;
-    margin:/*01*/0em 0em 0em 0em;
+    width: 5em;
+    height: 5em;
+    margin: 0em 0em 0em 0em;
  }
 .centraal {
     text-align: center;
@@ -50,6 +49,9 @@ button{
 
 /*** TOPMENU ***/
 .topfoto img{
+    width: 100%;
+    max-width: 60em;
+    height: 80%;
     margin: 5em 0em 0em 0em;
 } 
 .topmenu {
@@ -120,22 +122,19 @@ input{
 /***Zoeken lijst weergeven***/
 #gebruikersLijst {
     background-color: lime;
-}
-#gebruikersLijst ul{
     list-style-type: none;
     width: 100%;
-    max-width: 60em;
-    margin-left: 10%;
+    max-width: 55em;
 }
 
-#gebruikersLijst ul li {
-    float: left;
+#gebruikersLijst li {
+    /*float: left;*/
     color: #000000;
     text-decoration: none;
     letter-spacing: 0.1em;
 }
 
-#gebruikersLijst ul li a {
+#gebruikersLijst li a {
     padding: 0.5em; /*6px 8px*/
     margin: 10px;
     color: #000000;
@@ -143,7 +142,7 @@ input{
     letter-spacing: 0.1em; 
 }
 
-#gebruikersLijst ul li a:hover{
+#gebruikersLijst  li a:hover{
     text-decoration: none;
     background: rgb(255, 114, 92);
     color: white;
@@ -162,8 +161,15 @@ input{
 }
 .reclame img {
     width: 15em;
+    height: 15em;
     margin: 1em;
 }
+/***Gebruikerweergave***/
+#gebruikerWeergave{
+    width: 50em;
+}
+
+
 /***Foutmelding***/
 .feedback, .Fout {
     color: white;
