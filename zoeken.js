@@ -81,7 +81,8 @@ function lijstGebruikers(gebruikers)
         li.appendChild(hyperlink);
         gebruikersLijst.appendChild(li);
         console.log(gebruiker);
-
+        document.getElementById("gebruikerWeergave").style.display = "block";
+        document.getElementById("avatar").src = "https://scrumserver.tenobe.org/scrum/img/" + gebruiker.foto;
        
 
     }
