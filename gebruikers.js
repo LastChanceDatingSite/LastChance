@@ -71,9 +71,10 @@ function sterrenbeeldAfhalen(gebruiker)
         } else if((month == 11 && day >= 23) || (month == 12 && day <= 21)) {
           return "img/sterrenbeeld/boogschutter.png";
         }
+}
 
-
-        
-        
+document.getElementById("bewerken") = function()
+{
+    
 }
 
