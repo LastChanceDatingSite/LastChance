@@ -15,7 +15,8 @@ document.getElementById("zoeken").onclick = async function()
     document.querySelector("ul").innerHTML = "";
    
     const rootUrl = 'https://scrumserver.tenobe.org/scrum/api/profiel/search.php?';
-    const input = document.querySelectorAll("input");
+    const input = document.querySelectorAll(".search");
+
     const geenResultaten = document.getElementById("geenResultaten");
     
     
@@ -69,16 +70,15 @@ function lijstGebruikers(gebruikers)
         hyperlink.innerText = gebruiker.nickname;
         hyperlink.href = "#";
         hyperlink.dataset.index = index++;
+        hyperlink.dataset.id = gebruiker.id;
         hyperlink.onclick = function () 
         {
- 
-            //window.location.replace("gezochtProfiel.html");
-            const gebruikerId = gebruiker.id;
-            console.log(gebruiker.id);
+            window.location.replace("gezochtProfiel.html");
+            const gebruikerId = this.dataset.id;
+            console.log(this);
+            console.log(this.dataset.id);
             console.log(gebruikerId);
             localStorage.setItem("gebruiker", gebruikerId);
-           
-        
         }
        
         const li = document.createElement("li");
