@@ -26,6 +26,14 @@
         <div>
             <label for="grootte" >Grootte</label>
             <input type="text" id="grootte" required type="number" min="130"></div>
+       <!-- <div>
+            <label for="grootteOperator" >Grootte operator</label>
+            <input type="select" id="grootteOperator"></div>
+            
+        <div>
+            <label for="rangeMinGrootte" >Minumum lengte</label>
+            <input type="text" id="rangeMinGrootte" required type="number" min="130"></div> -->
+            
         <div>
             <label for="gewicht">Gewicht</label>
             <input type="text" id="gewicht" required type="number" min="45"><br></div>
@@ -33,11 +41,11 @@
     </div>
     <button id="zoeken">Zoeken</button>
 
-    <ul id="gebuikersLijst">
+     <ul id="gebuikersLijst">
         
     </ul>
 
-    <dl id="gebruikerWeergave" class="verborgen">
+    <!--<dl id="gebruikerWeergave" class="verborgen">
         <dt>Nickname:</dt>
         <dd id="gebruikerNickname"></dd>
         <dt>Beroep:</dt>
@@ -54,8 +62,8 @@
         <dd id="gebruikerGrootte"></dd>
         <dt>Foto:</dt>
         <dd><img id="avatar" src="leeg.png"></dd>
-    </dl>
-        <div id="nietGevonden" class="verborgen">Niet gevonden.</div>
+    </dl> -->
+        <div id="standaard"><span id="geenResultaten"></span></div>
 </div>
 </body>
 </html>
