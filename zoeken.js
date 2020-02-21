@@ -66,17 +66,21 @@ function lijstGebruikers(gebruikers)
     for (var gebruiker of gebruikers)
     {
         const hyperlink = document.createElement("a");
-        hyperlink.innerText = gebruiker.voornaam;
+        hyperlink.innerText = gebruiker.nickname;
         hyperlink.href = "#";
         hyperlink.dataset.index = index++;
-
         hyperlink.onclick = function () 
         {
-            window.location.replace("gezochtProfiel.html");
+ 
+            //window.location.replace("gezochtProfiel.html");
             const gebruikerId = gebruiker.id;
+            console.log(gebruiker.id);
+            console.log(gebruikerId);
             localStorage.setItem("gebruiker", gebruikerId);
            
-        };
+        
+        }
+       
         const li = document.createElement("li");
         li.appendChild(hyperlink);
         gebruikersLijst.appendChild(li);
@@ -90,5 +94,6 @@ function lijstGebruikers(gebruikers)
        
 
     }
+    
 }
 
