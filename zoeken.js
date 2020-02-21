@@ -1,15 +1,6 @@
 "use strict";
 
-/*optiesToevoegenAanSelect();
-function optiesToevoegenAanSelect()
-{
-    const select = document.getElementById("mySelect");
-    var optie = document.createElement("option");
-    optie.text = "range";
-    select.add(option);
-}
-*/
-// functie maakt url via zoekvelden
+
 document.getElementById("zoeken").onclick = async function()
 {
     document.querySelector("ul").innerHTML = "";
@@ -83,13 +74,13 @@ function lijstGebruikers(gebruikers)
        
         const li = document.createElement("li");
         li.appendChild(hyperlink);
-        gebruikersLijst.appendChild(li);
+       // gebruikersLijst.appendChild(li);
         console.log(gebruiker);
         const img = document.createElement("img");
         img.src = "https://scrumserver.tenobe.org/scrum/img/" + gebruiker.foto;
-        const imgLi = document.createElement("li");
-        imgLi.appendChild(img);
-        gebruikersLijst.appendChild(imgLi);
+       // const imgLi = document.createElement("li");
+        li.appendChild(img);
+        gebruikersLijst.appendChild(li);
         
        
 

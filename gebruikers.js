@@ -12,6 +12,7 @@ async function eenProfielAfhalen() {
         console.log(eenProfiel);
         document.getElementById("begroeting").innerText = "Welkom " + eenProfiel.nickname;
         lijstGebruikers(eenProfiel);
+        sterrenbeeldAfhalen(eenProfiel);
     }
     else {
         document.getElementById("nietGevonden").style.display = "block";
@@ -33,5 +34,10 @@ function lijstGebruikers(gebruiker) {
     console.log(gebruiker.foto);
     document.getElementById("avatar").src = "https://scrumserver.tenobe.org/scrum/img/" + gebruiker.foto;
 
+}
+
+function sterrenbeeldAfhalen(gebruiker)
+{
+    
 }
 
