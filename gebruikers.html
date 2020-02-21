@@ -22,54 +22,63 @@
     </div>
     <div class="centraal">
         <div><button id="bewerken">Bewerk mijn profiel</button></div>
-        <div class="profiel">
+        <div>
             <h1><span id="begroeting"></span></h1>
         </div>
-        <dl id="gebruikerWeergave">
-            <dt>Nickname:</dt>
-            <dd id="gebruikerNickname"></dd>
-            <dt>Beroep:</dt>
-            <dd id="gebruikerBeroep"></dd>
-            <dt>Geslacht:</dt>
-            <dd id="gebruikerSexe"></dd>
-            <dt>Oogkleur:</dt>
-            <dd id="gebruikerOogkleur"></dd>
-            <dt>Haarkleur:</dt>
-            <dd id="gebruikerHaarkleur"></dd>
-            <dt>Gewicht:</dt>
-            <dd id="gebruikerGewicht"></dd>
-            <dt>Grootte:</dt>
-            <dd id="gebruikerGrootte"></dd>
-            <dt>Foto:</dt>
-            <dd><img id="avatar" src="img/leeg2.png"></dd>
-            <dt>Sterrenbeeld:</dt>
-            <dd><img id="sterrenbeeld" src="img/leeg2.png"></dd>
-        </dl> 
-
-        <div id="formulierBewerken" class="formulier verborgen">
+        <div>
+            <dl id="gebruikerWeergave">
+                <img id="avatar" src="img/leeg2.png">
+                <br>
+                <dt>Nickname</dt>
+                <dd id="gebruikerNickname"></dd>
+                <br>
+                <dt>Beroep</dt>
+                <dd id="gebruikerBeroep"></dd>
+                <br>
+                <dt>Geslacht</dt>
+                <dd id="gebruikerSexe"></dd>
+                <br>
+                <dt>Oogkleur</dt>
+                <dd id="gebruikerOogkleur"></dd>
+                <br>
+                <dt>Haarkleur</dt>
+                <dd id="gebruikerHaarkleur"></dd>
+                <br>
+                <dt>Gewicht</dt>
+                <dd id="gebruikerGewicht"></dd>
+                <br>
+                <dt>Grootte</dt>
+                <dd id="gebruikerGrootte"></dd>
+                <br>
+                <!--<dt>Sterrenbeeld:</dt>-->
+                <img id="sterrenbeeld" src="img/leeg2.png">
+            </dl>
+        </div>
+        <div class="formulier verborgen">
             <div>
                 <label for="achternaam">Achternaam *</label>
                 <input type="text" id="achternaam" required>
                 <span id="achternaamFout" class="Fout">Het veld 'achternaam' is verplicht in te vullen!</span><br></div>
             <div>
                 <label for="voornaam">Voornaam *</label>
-                <input type="text" id="voornaam" required >
+                <input type="text" id="voornaam" required>
                 <span id="voornaamFout" class="Fout">Het veld 'voornaam' is verplicht in te vullen!</span><br></div>
             <div>
                 <label for="geboortedatum">Geboortedatum *</label>
                 <input type="date" id="geboortedatum" required name="geboortedatum">
-                <span id="geboortedatumFout" class="Fout">Het veld 'geboortedatum' is verplicht in te vullen!</span><br></div>
+                <span id="geboortedatumFout" class="Fout">Het veld 'geboortedatum' is verplicht in te vullen!</span><br>
+            </div>
             <div>
                 <label for="email">Emailadres *</label>
                 <input type="email" id="emailadres" required>
                 <span id="emailadresFout" class="Fout">Het veld 'emailadres' is verplicht in te vullen!</span><br></div>
             <div>
                 <label for="nickname">Nickname *</label>
-                <input type="text" id="nickname" required >
+                <input type="text" id="nickname" required>
                 <span id="nicknameFout" class="Fout">Het veld 'nickname' is verplicht in te vullen!</span><br></div>
             <div>
                 <label for="beroep">Beroep</label>
-                <input type="text" id="beroep" >
+                <input type="text" id="beroep">
                 <span id="beroepFout" class="Fout">Het veld 'beroep' is verplicht in te vullen!</span><br></div>
             <div>
                 <!--
@@ -98,11 +107,11 @@
                 <span id="mijnfotoFout" class="Fout">Het veld 'foto' is verplicht in te vullen!</span><br></div>
             <div>
                 <label for="haarkleur">Haarkleur</label>
-                <input type="text" id="haarkleur"  >
+                <input type="text" id="haarkleur">
                 <span id="haarkleurFout" class="Fout"></span><br></div>
             <div>
                 <label for="oogkleur">Oogkleur</label>
-                <input type="text" id="oogkleur" > 
+                <input type="text" id="oogkleur">
                 <span id="oogkleurFout" class="Fout"></span><br></div>
             <div>
                 <label for="grootte">Grootte *(in cm)</label>
@@ -114,7 +123,7 @@
                 <span id="gewichtFout" class="Fout">Het veld 'gewicht' is verplicht in te vullen!</span><br></div>
             <div>
                 <label for="wachtwoord">Wachtwoord *</label>
-                <input type="password" id="wachtwoord" required >
+                <input type="password" id="wachtwoord" required>
                 <span id="wachtwoordFout" class="Fout">Het veld 'wachtwoord' is verplicht in te vullen!</span><br></div>
             <div>
                 <label for="metadata">Metadata</label>
@@ -122,7 +131,7 @@
                 <span id="metadataFout" class="Fout"></span><br></div>
 
 
-    </div>
+        </div>
 </body>
 
 </html>
