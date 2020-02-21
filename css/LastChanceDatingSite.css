@@ -118,10 +118,36 @@ input{
 }
 
 /***Zoeken lijst weergeven***/
-#zoeken ul{
-    font-style: italic;
+#gebruikersLijst {
+    background-color: lime;
+}
+#gebruikersLijst ul{
+    list-style-type: none;
+    width: 100%;
+    max-width: 60em;
+    margin-left: 10%;
 }
 
+#gebruikersLijst ul li {
+    float: left;
+    color: #000000;
+    text-decoration: none;
+    letter-spacing: 0.1em;
+}
+
+#gebruikersLijst ul li a {
+    padding: 0.5em; /*6px 8px*/
+    margin: 10px;
+    color: #000000;
+    text-decoration: none;
+    letter-spacing: 0.1em; 
+}
+
+#gebruikersLijst ul li a:hover{
+    text-decoration: none;
+    background: rgb(255, 114, 92);
+    color: white;
+}
 
 /***RECLAME***/
 .reclame {
