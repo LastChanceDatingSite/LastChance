@@ -20,6 +20,7 @@
 }
 /* NORMALIZE */
 html, body, div, section, article, aside, nav {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
     background-color: lightgoldenrodyellow;/*
@@ -47,7 +48,7 @@ button{
     letter-spacing: 0.1em;
 }
 
-/* ** TOPMENU ***/
+/*** TOPMENU ***/
 .topfoto img{
     margin: 5em 0em 0em 0em;
 } 
@@ -97,7 +98,7 @@ button{
 .formulier {
     width: 90%;
     max-width: 60em;
-    margin-left: 5%;
+    margin-left: 15%;
 }
 .formulier div{
     margin: 0.5em;
@@ -106,6 +107,7 @@ label{
     display: inline-block;
 width: 7em;
 padding: 0.25em;
+
 }
 input{
     display: inline-block;
@@ -115,22 +117,26 @@ input{
     max-width: 30em;
 }
 
+/***Zoeken lijst weergeven***/
+#zoeken ul{
+    font-style: italic;
+}
+
 
 /***RECLAME***/
-#reclame {
+.reclame {
     width: 100%;
     max-width: 60em;
     text-align: center;
     display: inline-block;
 }
-#reclame h1{
+.reclame h1{
     max-width: 51em;
     margin: 1em;
 }
-#reclame img {
+.reclame img {
     width: 15em;
     margin: 1em;
-    
 }
 /***Foutmelding***/
 .feedback, .Fout {
