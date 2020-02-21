@@ -24,9 +24,9 @@ async function eenProfielAfhalen()
 
 "use script";
 
-function lijstGebruikers(gebruikers)
+function lijstGebruikers(gebruiker)
 {   
-    const gebruikersLijst = document.querySelector("ul");
+   /* const gebruikersLijst = document.querySelector("ul");
     let index = 0;
     for (var gebruiker of gebruikers)
     {
@@ -35,7 +35,7 @@ function lijstGebruikers(gebruikers)
         hyperlink.href = "#";
         hyperlink.dataset.index = index++;
         hyperlink.onclick = function () 
-        {
+        {*/
             document.getElementById("gebruikerWeergave").style.display = "block";
             document.getElementById("gebruikerNickname").innerText = gebruiker.nickname;
             document.getElementById("gebruikerBeroep").innerText = gebruiker.beroep;
@@ -46,9 +46,9 @@ function lijstGebruikers(gebruikers)
             document.getElementById("gebruikerGrootte").innerText = gebruiker.grootte;
             console.log(gebruiker.foto);
             document.getElementById("avatar").src = "https://scrumserver.tenobe.org/scrum/img/" +gebruiker.foto;
-        };
+      /*  };
         const li = document.createElement("li");
         li.appendChild(hyperlink);
-        gebruikersLijst.appendChild(li);
-    }
+        gebruikersLijst.appendChild(li);*/
+    
 }

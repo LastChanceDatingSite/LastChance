@@ -79,12 +79,11 @@ function lijstGebruikers(gebruikers)
         };
         const li = document.createElement("li");
         li.appendChild(hyperlink);
-        gebruikersLijst.appendChild(li);
         console.log(gebruiker);
         const img = document.createElement("img");
         img.src = "https://scrumserver.tenobe.org/scrum/img/" + gebruiker.foto;
-        const imgLi = document.createElement("li");
-        imgLi.appendChild(img);
+        li.appendChild(img);
+        gebruikersLijst.appendChild(li);
         gebruikersLijst.appendChild(imgLi);
         
        
