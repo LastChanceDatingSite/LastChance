@@ -58,7 +58,7 @@ function lijstGebruikers(gebruikers)
     for (var gebruiker of gebruikers)
     {
         const hyperlink = document.createElement("a");
-        hyperlink.innerText = gebruiker.nickname;
+        //hyperlink.innerText = gebruiker.nickname;
         hyperlink.href = "#";
         hyperlink.dataset.index = index++;
         hyperlink.dataset.id = gebruiker.id;
@@ -73,13 +73,17 @@ function lijstGebruikers(gebruikers)
         }
        
         const li = document.createElement("li");
-        li.appendChild(hyperlink);
+        
        // gebruikersLijst.appendChild(li);
         console.log(gebruiker);
-        const img = document.createElement("img");
-        img.src = "https://scrumserver.tenobe.org/scrum/img/" + gebruiker.foto;
-       // const imgLi = document.createElement("li");
-        li.appendChild(img);
+        //const img = document.createElement("img");
+        //img.src = "https://scrumserver.tenobe.org/scrum/img/" + gebruiker.foto;
+        const img="<img src=\" https://scrumserver.tenobe.org/scrum/img/" + gebruiker.foto + "\" >";
+        // const imgLi = document.createElement("li");
+        console.log(img);
+        //li.appendChild(img);
+        hyperlink.innerHTML = img + " <br> " + gebruiker.nickname;
+        li.appendChild(hyperlink);
         gebruikersLijst.appendChild(li);
         
        
