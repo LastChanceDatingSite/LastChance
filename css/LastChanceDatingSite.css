@@ -115,22 +115,27 @@ input, select{
     border: 1px solid  #b1b1b1;
     background-color: #dddddd;
     width: 75%;
-    max-width: 30em;
+    max-width: 25em;
 }
 
 /***Zoeken lijst weergeven***/
 #gebruikersLijst {
-    background-color: lime;
-    list-style-type: display;
+    list-style-type: none;
     width: 100%;
-    max-width: 55em;
+    max-width: 54em;
 }
 
 #gebruikersLijst li {
-    /*float: left;*/
+    background-color: lime;
+    float: left;
+    width: 16em;
+    height: 8em;
+    margin: 0em 1em;
     color: #000000;
     text-decoration: none;
     letter-spacing: 0.1em;
+    text-align: center;
+    overflow:hidden;
 }
 
 #gebruikersLijst li a {
