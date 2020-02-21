@@ -10,6 +10,16 @@
 </head>
 
 <body>
+    <div class="topmenu">
+        <ol>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="aanmelden.html">Aanmelden</a></li>
+          <li><a class="actief" href="inschrijving.html">Inschrijven</a></li>
+        </ol>
+      </div>
+      <div class="topfoto centraal">
+          <img  src="img/holdingHands.png">
+        </div>
     <div class="formulier">
     <div>
         <label for="achternaam">Achternaam</label>
@@ -36,6 +46,17 @@
         <input type="text" id="beroep" >
         <span id="beroepFout" class="Fout">Het veld 'beroep' is verplicht in te vullen!</span><br></div>
     <div>
+        <!--
+            <label>Geslacht:
+        <span id="geslachtFout" class="fout">Verplicht te kiezen.</span>
+        <select id="geslacht" required>
+            <option value="">(Maak een keuze)</option>
+            <option value="M">Man</option>
+            <option value="V">Vrouw</option>
+            <option value="X">X</option>
+        </select>
+    </label>
+        -->
         <label for="sexe">Sexe</label>
         <input type="text" id="sexe" required>
         <span id="sexeFout" class="Fout">Het veld 'sexe' is verplicht in te vullen!</span><br></div>
@@ -68,7 +89,10 @@
         <input type="text" id="metadata">
         <span id="metadataFout" class="Fout"></span><br></div>
         
-    <p><button id="buttonInschrijven">Inschrijven</button></p>
+    <p>
+        <button id="buttonInschrijven">Inschrijven</button>
+        <a href="index.html"><button>Annuleren</button></a>
+    </p>
         
     </div>
 

@@ -9,7 +9,17 @@
 </head>
 
 <body>
-    <div class="formulier">
+    <div class="topmenu">
+        <ol>
+            <li><a href="index.html">Home</a></li>
+            <li><a class="actief" href="aanmelden.html">Aanmelden</a></li>
+            <li><a href="inschrijving.html">Inschrijven</a></li>
+        </ol>
+    </div>
+    <div class="topfoto centraal">
+        <img src="img/holdingHands.png">
+    </div>
+    <div class="formulier centraal">
         <div>
             <label for="user">User</label>
             <input type="text" id="user">
@@ -18,10 +28,16 @@
             <label for="paswoord">Paswoord</label>
             <input type="password" id="wachtwoord"></td>
         </div>
-    
 
-    <p><button id="aanmelden">Aanmelden</button></p>
-    <span id="aanmeldingFout" class="verborgen">Eén van de gegevens zijn niet correct ingevuld</span>
+
+        <p>
+            <button id="aanmelden">Aanmelden</button>
+            <a href="index.html">
+                <button>Annuleren</button>
+            </a>
+        </p>
+        <span id="aanmeldingFout" class="verborgen">Eén van de gegevens zijn niet correct ingevuld</span>
+    </div>
 </body>
 
 </html>
