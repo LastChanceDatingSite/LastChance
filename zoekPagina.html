@@ -18,36 +18,42 @@
           <img  src="img/holdingHands.png">
         </div>
     <div class="formulier">
-    <div class="zoeken">                      
+    <div class="zoeken">
         <div>
-            <label for="sexe">Ik zoek een :</label>
-            <input type="text" id="sexe"  type="text"><br></div>
+            <label for="sexe">Ik zoek</label>
+            <select id="sexe">
+                <option value="">(Maak een keuze)</option>
+                <option value="M">Man</option>
+                <option value="V">Vrouw</option>
+                <option value="X">Andere</option>
+            </select>
+            <!--<input id="sexe"  type="text"><br>--></div>
         <div>
             <label for="nickname">Nickname</label>
-            <input type="text" id="nickname"  type="text"><br></div>
+            <input id="nickname"  type="text"><br></div>
         <div>
             <label for="beroep">Beroep</label>
-            <input type="text" id="beroep" type="text"><br></div>
+            <input id="beroep" type="text"><br></div>
         <div>
             <label for="haarkleur">Haarkleur</label>
-            <input type="text" id="haarkleur" type="text"><br></div>
+            <input id="haarkleur" type="text"><br></div>
         <div>
             <label for="oogkleur">Oogkleur</label>
-            <input type="text" id="oogkleur" type="text"><br></div>
+            <input id="oogkleur" type="text"><br></div>
         <div>
-            <label for="grootte" >Grootte</label>
-            <input type="text" id="grootte" required type="number" min="130"></div>
+            <label for="grootte">Grootte (in cm)</label>
+            <input id="grootte" type="number" ></div>
        <!-- <div>
             <label for="grootteOperator" >Grootte operator</label>
             <input type="select" id="grootteOperator"></div>
             
         <div>
             <label for="rangeMinGrootte" >Minumum lengte</label>
-            <input type="text" id="rangeMinGrootte" required type="number" min="130"></div> -->
+            <input id="rangeMinGrootte" type="number"></div> -->
             
         <div>
             <label for="gewicht">Gewicht</label>
-            <input type="text" id="gewicht" required type="number" min="45"><br></div>
+            <input id="gewicht"  type="number"><br></div>
         
     </div>
     <button id="zoeken">Zoeken</button>
@@ -57,8 +63,6 @@
         <li>two</li>
         <li>three</li>
     </ul>
-
-   
         <div id="standaard"><span id="geenResultaten"></span></div>
 </div>
 </body>

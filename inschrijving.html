@@ -22,23 +22,23 @@
         </div>
     <div class="formulier">
     <div>
-        <label for="achternaam">Achternaam</label>
+        <label for="achternaam">Achternaam *</label>
         <input type="text" id="achternaam" required>
         <span id="achternaamFout" class="Fout">Het veld 'achternaam' is verplicht in te vullen!</span><br></div>
     <div>
-        <label for="voornaam">Voornaam</label>
+        <label for="voornaam">Voornaam *</label>
         <input type="text" id="voornaam" required >
         <span id="voornaamFout" class="Fout">Het veld 'voornaam' is verplicht in te vullen!</span><br></div>
     <div>
-        <label for="geboortedatum">Geboortedatum</label>
+        <label for="geboortedatum">Geboortedatum *</label>
         <input type="date" id="geboortedatum" required name="geboortedatum">
         <span id="geboortedatumFout" class="Fout">Het veld 'geboortedatum' is verplicht in te vullen!</span><br></div>
     <div>
-        <label for="email">Emailadres </label>
+        <label for="email">Emailadres *</label>
         <input type="email" id="emailadres" required>
         <span id="emailadresFout" class="Fout">Het veld 'emailadres' is verplicht in te vullen!</span><br></div>
     <div>
-        <label for="nickname">Nickname</label>
+        <label for="nickname">Nickname *</label>
         <input type="text" id="nickname" required >
         <span id="nicknameFout" class="Fout">Het veld 'nickname' is verplicht in te vullen!</span><br></div>
     <div>
@@ -57,11 +57,17 @@
         </select>
     </label>
         -->
-        <label for="sexe">Sexe</label>
-        <input type="text" id="sexe" required>
+        <label for="sexe">Sexe *</label>
+        <select id="sexe" required>
+            <option value="">(Maak een keuze)</option>
+            <option value="M">Man</option>
+            <option value="V">Vrouw</option>
+            <option value="X">Andere</option>
+        </select>
+        <!-- <input type="text" id="sexe" required> -->
         <span id="sexeFout" class="Fout">Het veld 'sexe' is verplicht in te vullen!</span><br></div>
     <div>
-        <label for="mijnfoto">Foto</label>
+        <label for="mijnfoto">Foto *</label>
         <input type="file" id="mijnfoto" name="mijnfoto" required>
         <span id="mijnfotoFout" class="Fout">Het veld 'foto' is verplicht in te vullen!</span><br></div>
     <div>
@@ -73,18 +79,18 @@
         <input type="text" id="oogkleur" > 
         <span id="oogkleurFout" class="Fout"></span><br></div>
     <div>
-        <label for="grootte" required>Grootte</label>
+        <label for="grootte">Grootte</label>
         <input type="number" id="grootte" min="130">
         <span id="grootteFout" class="Fout">Het veld 'grootte' is niet juist ingevuld</span></div>
     <div>
-        <label for="gewicht">Gewicht</label>
+        <label for="gewicht">Gewicht (in cm)</label>
         <input type="number" id="gewicht" min="40">
         <span id="gewichtFout" class="Fout">Het veld 'gewicht' is niet juist ingevuld!</span><br></div>
     <div>
-        <label for="wachtwoord">Wachtwoord</label>
+        <label for="wachtwoord">Wachtwoord *</label>
         <input type="password" id="wachtwoord" required >
         <span id="wachtwoordFout" class="Fout">Het veld 'wachtwoord' is verplicht in te vullen!</span><br></div>
-    <div>
+    <div class="verborgen">
         <label for="metadata">Metadata</label>
         <input type="text" id="metadata">
         <span id="metadataFout" class="Fout"></span><br></div>
