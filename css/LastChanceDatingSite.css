@@ -102,14 +102,17 @@ button{
     max-width: 60em;
     margin-left: 15%;
 }
+
 .formulier div{
     margin: 0.5em;
 }
+
 label{
     display: inline-block;
 width: 9em;
 padding: 0.25em;
 }
+
 input, select{
     display: inline-block;
     border: 1px solid  #b1b1b1;
@@ -129,7 +132,6 @@ input, select{
 #gebruikersLijst li {
     background-color: lime;
     display:inline-block;
-    /*float: left;*/
     width: 16em;
     height: 8em;
     margin: 0.5em ;
@@ -161,20 +163,57 @@ input, select{
     text-align: center;
     display: inline-block;
 }
+
 .reclame h1{
     max-width: 51em;
     margin: 1em;
 }
+
 .reclame img {
     width: 15em;
     height: 15em;
     margin: 1em;
 }
-/***Gebruikerweergave***/
-#gebruikerWeergave{
-    width: 50em;
+
+/***Profielweergave***/
+.profiel {
+    width:80%;
+    max-width: 60em;
+    padding:0;
+    margin:0;
 }
 
+#gebruikerWeergave{
+    width:  100%;
+    display:inline-block;
+    padding:0;
+    margin:0;
+}
+
+#gebruikerWeergave dt{
+    text-align: right;
+    width:7em;
+    background-color: rosybrown;
+    display:inline-block;
+    padding:0.125em;
+    margin:0.125em;
+}
+
+#gebruikerWeergave dd{
+    text-align: left;
+    width:50%;
+    background-color: silver;
+    display:inline-block;
+    padding:0.125em;
+    margin:0.125em;
+}
+
+#gebruikerWeergave img{
+margin: 0 0 0 5%;
+padding: 1em;
+width: 15em;
+height: 15em;
+}
 
 /***Foutmelding***/
 .feedback, .Fout {
