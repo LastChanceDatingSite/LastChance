@@ -28,9 +28,7 @@
         <div>
             <dl id="gebruikerWeergave">
                 <img id="avatar" src="img/leeg2.png">
-                <br>
-                <dt>Nickname</dt>
-                <dd id="gebruikerNickname"></dd>
+                
                 <br>
                 <dt>Beroep</dt>
                 <dd id="gebruikerBeroep"></dd>
@@ -54,7 +52,7 @@
                 <img id="sterrenbeeld" src="img/leeg2.png">
             </dl>
         </div>
-        <div class="formulier verborgen">
+        <div id="formulierBewerken" class="formulier verborgen">
             <div>
                 <label for="achternaam">Achternaam *</label>
                 <input type="text" id="achternaam" required>
@@ -132,6 +130,11 @@
 
 
         </div>
+        <div><button id="update">Profiel updaten</button></div>
+        <div>
+
+        <div id="updateContainer"><span id="updateFout"></span></div>
+
 </body>
 
 </html>

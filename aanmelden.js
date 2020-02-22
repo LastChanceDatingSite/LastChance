@@ -3,7 +3,7 @@
     
     
 
-    profielenAfhalen();
+ /*   profielenAfhalen();
     async function profielenAfhalen() 
     {
         const response = await fetch("https://scrumserver.tenobe.org/scrum/api/profiel/read.php");
@@ -17,35 +17,7 @@
                 const gebruikerWachtwoord = document.getElementById("wachtwoord").value;
                 const gebruikerNickname = document.getElementById("user").value;
                 console.log(gebruikerNickname);
-               /* let url = "https://scrumserver.tenobe.org/scrum/api/profiel/authenticate.php";
-                let data =
-                {
-                    nickname: gebruikerNickname,
-                    wachtwoord: gebruikerWachtwoord
-                }
-                var request = new Request(url,{
-                    method: 'POST',
-                    body: JSON.stringify(data),
-                    headers: new Headers({
-                        'Content-Type': 'application/json'
-                    })
-                });
-                fetch(request)
-                    
-                    .then(function (resp) { console.log(resp.json())});
-                console.log(resp.id);
-                if (request.ok)
-                {
-                   const profiel = await request.json();
-                   console.log(profiel.id);
-                  // window.location.replace("gebruikers.html")
-
-                }
-                else
-                {
-                    console.log("probleem");
-                }
-                */
+               
             
 
                 for (const profiel of profielen)
@@ -72,5 +44,32 @@
         };
     };
 
+    */
 
+    document.getElementById("aanmelden").addEventListener('click', function (e) {  
+        let nickname =  document.getElementById("user").value; 
+        let wachtwoord =  document.getElementById("wachtwoord").value;
+        const rooturl = "https://scrumserver.tenobe.org/scrum/api";
+        let url=rooturl+'/profiel/authenticate.php';
+        
+        let data = {
+            nickname: nickname,
+            wachtwoord: wachtwoord
+        }
+
+        var request = new Request(url, {
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: new Headers({
+                'Content-Type': 'application/json'
+            })
+        });
+        
+        fetch(request)
+            .then( function (resp)  { return resp.json(); })
+            .then( function (data)  { console.log(data.id); 
+                window.location.replace("gebruikers.html");
+                localStorage.setItem('gebruiker', data.id); })
+            .catch(function (error) { console.log(error); });
+    });
 

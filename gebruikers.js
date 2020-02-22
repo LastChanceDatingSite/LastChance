@@ -22,12 +22,12 @@ async function eenProfielAfhalen() {
 };
 
 
-
+// gepaste values worden in geladen
 function lijstGebruikers(gebruiker) {
 
-    
+    console.log(gebruiker.achternaam);
+    console.log(gebruiker.beroep);
     document.getElementById("gebruikerWeergave").style.display = "block";
-    document.getElementById("gebruikerNickname").innerText = gebruiker.nickname;
     document.getElementById("gebruikerBeroep").innerText = gebruiker.beroep;
     document.getElementById("gebruikerSexe").innerText = gebruiker.sexe;
     document.getElementById("gebruikerOogkleur").innerText = gebruiker.oogkleur;
@@ -37,19 +37,20 @@ function lijstGebruikers(gebruiker) {
     console.log(gebruiker.foto);
     document.getElementById("avatar").src = "https://scrumserver.tenobe.org/scrum/img/" + gebruiker.foto;
 
-    document.getElementById("achternaam").innerText = gebruiker.achternaam;
-    document.getElementById("voornaam").innerText = gebruiker.voornaam;
-    document.getElementById("geboortedatum").innerText = gebruiker.geboortedatum;
-    document.getElementById("emailadres").innerText = gebruiker.email;
-    document.getElementById("nickname").innerText = gebruiker.nickname;
-    document.getElementById("beroep").innerText = gebruiker.beroep;
-    document.getElementById("sexe").innerText = gebruiker.sexe;
+    console.log(gebruiker.achternaam);
+    document.getElementById("achternaam").value = gebruiker.familienaam;
+    document.getElementById("voornaam").value = gebruiker.voornaam;
+    document.getElementById("geboortedatum").value = gebruiker.geboortedatum;
+    document.getElementById("emailadres").value = gebruiker.email;
+    document.getElementById("nickname").value = gebruiker.nickname;
+    document.getElementById("beroep").value = gebruiker.beroep;
+    document.getElementById("sexe").value = gebruiker.sexe;
     document.getElementById("mijnfoto").src = gebruiker.foto;
-    document.getElementById("haarkleur").innerText = gebruiker.haarkleur;
-    document.getElementById("oogkleur").innerText = gebruiker.oogkleur;
-    document.getElementById("grootte").innerText = gebruiker.grootte;
-    document.getElementById("gewicht").innerText = gebruiker.gewicht;
-    document.getElementById("wachtwoord").innerText = gebruiker.wachtwoord;
+    document.getElementById("haarkleur").value = gebruiker.haarkleur;
+    document.getElementById("oogkleur").value = gebruiker.oogkleur;
+    document.getElementById("grootte").value = gebruiker.grootte;
+    document.getElementById("gewicht").value = gebruiker.gewicht;
+    document.getElementById("wachtwoord").value = gebruiker.wachtwoord;
     
 
 }
@@ -90,6 +91,7 @@ function sterrenbeeldAfhalen(gebruiker) {
     }
 }
 
+// korte lijst wordt veborgen profiel bewerken getoond
 document.getElementById("bewerken").onclick = function()
      {
         //const eenProfiel = eenProfielAfhalen();
@@ -97,4 +99,46 @@ document.getElementById("bewerken").onclick = function()
         document.getElementById("formulierBewerken").style.display = "block";
     }
 
+// profiel updaten
+    document.getElementById("update").addEventListener('click', function (e) {  
+        
+        let profielId =  localStorage.getItem("gebruiker");
+        let nieuweVoornaam =  document.getElementById("voornaam").value;
+        let nieuweNickname = document.getElementById("nickname").value;
+        const rooturl = "https://scrumserver.tenobe.org/scrum/api";  
+        let url=rooturl+'/profiel/read_one.php?id='+profielId;
+                      
+        fetch(url)
+            .then(function (resp) { return resp.json(); }) //haal de JSON op en stuur die als resultaat van je promise                         
+            .then(function (data) {
+                //nadat de vorige promise opgelost werd kwamen we in deze procedure tercht
+                //hier kunnen we nu , met het resultat (data) van de vorige promise, aan de slag
+                //we passen de voornaam aan en sturen ook dit terug zodat deze promise afgesloten kan worden                        
+                let urlUpdate=rooturl+'/profiel/update.php';
 
+                data['voornaam', "nickname"]= nieuweVoornaam, nieuweNickname; 
+                console.log(data);
+
+                var request = new Request(urlUpdate, {
+                    method: 'PUT',
+                    body: JSON.stringify(data),
+                    headers: new Headers({
+                        'Content-Type': 'application/json'
+                    })
+                });
+                fetch(request)
+                    .then(function (resp)   { return resp.json(); })
+                    .then(function (data)   { console.log(data);
+                        if (data.message === "Het profiel kon niet ge&uuml;pdatet worden. De nickname bestaat reeds.")
+                        {
+                            document.getElementById("updateFout").innerText = "Deze nickname bestaat al.";
+                        } })
+                    .catch(function (error) { console.log(error); });
+
+
+
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    });
