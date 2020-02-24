@@ -1,6 +1,15 @@
 "use strict";
 
 
+//Is the user authenticated?
+if (localStorage.getItem('gebruiker') === null) {
+    window.open("AccessDenied.html","_self");
+}
+else {
+//The user is authenticated and the authentication has not expired.
+}
+
+
 eenProfielAfhalen();
 async function eenProfielAfhalen() {
 
