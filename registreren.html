@@ -20,7 +20,7 @@
       <div class="topfoto centraal">
           <img  src="img/holdingHands.png">
         </div>
-    <div class="formulier">
+    <div class="inschrijf formulier">
     <div>
         <label for="achternaam">Achternaam *</label>
         <input type="text" id="achternaam" required>
@@ -31,7 +31,7 @@
         <span id="voornaamFout" class="Fout">Het veld 'voornaam' is verplicht in te vullen!</span><br></div>
     <div>
         <label for="geboortedatum">Geboortedatum *</label>
-        <input type="date" id="geboortedatum" max="2000-13-13" required name="geboortedatum">
+        <input type="date" id="geboortedatum" min="1920-01-01" max="2000-13-13" required name="geboortedatum">
         <span id="geboortedatumFout" class="Fout">Het veld 'geboortedatum' is verplicht in te vullen!</span><br></div>
     <div>
         <label for="email">Emailadres *</label>
@@ -68,7 +68,7 @@
         <span id="sexeFout" class="Fout">Het veld 'sexe' is verplicht in te vullen!</span><br></div>
     <div>
         <label for="mijnfoto">Foto *</label>
-        <input type="file" id="mijnfoto" name="mijnfoto" required>
+        <input type="file" id="mijnfoto" name="mijnfoto" required accept="image/png, image/jpeg">
         <span id="mijnfotoFout" class="Fout">Het veld 'foto' is verplicht in te vullen!</span><br></div>
     <div>
         <label for="haarkleur">Haarkleur</label>

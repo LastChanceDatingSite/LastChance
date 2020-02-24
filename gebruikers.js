@@ -16,7 +16,7 @@ async function eenProfielAfhalen() {
         return eenProfiel;
     }
     else {
-        document.getElementById("nietGevonden").style.display = "block";
+        document.getElementById("updateFout").innertext = "Er was een probleem.";
     }
 };
 
