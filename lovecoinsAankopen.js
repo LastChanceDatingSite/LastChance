@@ -1,16 +1,36 @@
 "use strict";
-document.getElementById("aankoopKnop").onclick = function()
+
+eenProfielAfhalen();
+async function eenProfielAfhalen() {
+
+    const gebruikerId = localStorage.getItem("gebruiker");
+    const response = await fetch("https://scrumserver.tenobe.org/scrum/api/profiel/read_one.php?id=" + gebruikerId);
+    if (response.ok) {
+        const eenProfiel = await response.json();
+        console.log(eenProfiel);
+        document.getElementById("begroeting").innerText = eenProfiel.nickname;
+        document.getElementById("aantalLoveCoins").innerText = eenProfiel.lovecoins;
+        return eenProfiel;
+    }
+    else {
+        console.log("Er liet iets fout.")
+    }
+};
+
+document.getElementById("aankoopKnop").addEventListener('click', function (e)
 {   let aantal = document.getElementById("aankoopLovecoins").value;
     let teBetalen=0;
     if(aantal !==null){
         
-        if(aantal <5){
+        if(aantal < 5){
             teBetalen = aantal*2;
-            console.log(teBetalen);            
+            console.log(teBetalen);        
+            console.log("kleiner dan");    
         }
         else {
-            teBetalen = Math.floor((aantal*0.8)*10)/10;
+            teBetalen = Math.floor((aantal*1.8)*10)/10;
             console.log(teBetalen);
+            console.log("groter dan");
         }
         document.getElementById("aantalCredits").innerText=aantal;
         document.getElementById("aantalEuro").innerText=teBetalen;
@@ -28,8 +48,48 @@ document.getElementById("aankoopKnop").onclick = function()
         document.querySelector(".zichtbaar").style.display="inline";
 
     }
+})
+    document.getElementById("betalen").addEventListener('click', function (e) {  
+        let profielId =  localStorage.getItem("gebruiker");
+        console.log(profielId);
+        let bedrag =  document.getElementById("aankoopLovecoins").value;
+        console.log(bedrag);
+        const rooturl = "https://scrumserver.tenobe.org/scrum/api";
+        let url=rooturl+'/profiel/read_one.php?id='+profielId;
+                       
+        fetch(url)
+            .then(function (resp) { return resp.json(); }) //haal de JSON op en stuur die als resultaat van je promise                         
+            .then(function (data) {
+                //nadat de vorige promise opgelost werd kwamen we in deze procedure tercht
+                //hier kunnen we nu , met het resultat (data) van de vorige promise, aan de slag
+                //we passen de voornaam aan en sturen ook dit terug zodat deze promise afgesloten kan worden                        
+                let urlUpdate=rooturl+'/profiel/lovecoinTransfer.php';
+
+                data = {"profielID": profielId,
+                            "bedrag": bedrag}; 
+
+                var request = new Request(urlUpdate, {
+                    method: 'PUT',
+                    body: JSON.stringify(data),
+                    headers: new Headers({
+                        'Content-Type': 'application/json'
+                    })
+                });
+                fetch(request)
+                    .then(function (resp)   { return resp.json(); })
+                    .then(function (data)   { console.log(data);
+                                              window.location.replace("lovecoinsAangekocht.html"); })
+                    .catch(function (error) { console.log(error); });
+
+
+
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    });
 
 
 
 
-}
+

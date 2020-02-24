@@ -22,8 +22,7 @@ document.getElementById("buttonInschrijven").onclick = function() {
 }
 
 function invoerCorrect() {
-    const verkeerdeElementen =
-        document.querySelectorAll("input:invalid,select:invalid");
+        const verkeerdeElementen = document.querySelectorAll("input:invalid,select:invalid");
     for (const element of verkeerdeElementen) {
         document.getElementById(`${element.id}Fout`).style.display = "inline";
     }
@@ -37,6 +36,7 @@ function invoerCorrect() {
 
 async function persoonToevoegen() {
     let url = 'https://scrumserver.tenobe.org/scrum/api/profiel/create.php';
+    let exi = 'https://scrumserver.tenobe.org/scrum/api/profiel/exists.php';
 
     let data = {
         familienaam: document.getElementById("achternaam").value,
@@ -56,40 +56,10 @@ async function persoonToevoegen() {
         lovecoins: "3"
     };
 
-    /* let quotes=["Chuck Norris can divide by zero.",
-    "Chuck Norris can kill two stones with one bird.",
-    "Outer space exists because it's afraid to be on the same planet with Chuck Norris.",
-    "Chuck Norris counted to infinity ... three times.",
-    "Chuck Norris can slam a revolving door.",
-    "There is no theory of evolution. Just a list of creatures Chuck Norris has allowed to live.",
-    "Chuck Norris is so fast, he can run around the world and punch himself in the back of the head.",
-    "If you have five dollars and Chuck Norris has five dollars, Chuck Norris has more money than you."];
-
-    let min = 0;
-    let max = quotes.length-1;
-    let rndIndex = Math.floor(Math.random() * (max - min + 1) + min);
-
-    let data = {
-        familienaam: "Norris",
-        voornaam: "Chuck" ,
-        geboortedatum: "0001-01-01",
-        email: "me@Chuck.Norris",
-        nickname: "The Chuck" + Date.now(),
-        foto: "no_picture.jpg",
-        beroep: "Moviestar",
-        sexe: "x",
-        haarkleur: "brown",
-        oogkleur: "blue",
-        grootte: "1095",
-        gewicht: "",
-        wachtwoord: "iamgod",
-        metadata: "",
-        lovecoins: "1000000"
-    } */
-
-    var request = new Request(url, {
+    let nickdata = document.getElementById("nickname").value;
+    var request = new Request(exi, {
         method: 'POST',
-        body: JSON.stringify(data),
+        body: JSON.stringify(nickdata),
         headers: new Headers({
             'Content-Type': 'application/json'
         })
@@ -99,14 +69,38 @@ async function persoonToevoegen() {
         .then(function(resp) {
             return resp.json();
         })
-        .then(function(data) {
+        .then(function(nickdata) {
+            var request = new Request(url, {
+                method: 'POST',
+                body: JSON.stringify(data),
+                headers: new Headers({
+                    'Content-Type': 'application/json'
+                })
+            });
+
+            fetch(request)
+        .then(function(resp) {
+            return resp.json();
+        })
+             .then(function(data) {
+            console.log("heydaarqsdfsdf");
             localStorage.setItem("gebruiker", data.id);
             window.location.replace("gebruikers.html");
-            console.log(data.id);
+        })
+                .catch(function(error) {
+                console.log(error);
+        });
+
+
         })
         .catch(function(error) {
             console.log(error);
         });
+
+
+    
+
+    
     
     
 

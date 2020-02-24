@@ -21,14 +21,16 @@
         <img src="img/holdingHands.png">
     </div>
     <div class="centraal">
-        <div><button id="bewerken">Bewerk mijn profiel</button></div>
+        <div><button id="bewerken">Bewerk mijn profiel</button>
+             <button id="favorieten">Favorieten bekijken</button>
+        </div>
         <div>
             <h1><span id="begroeting"></span></h1>
         </div>
         <div>
             <dl id="gebruikerWeergave">
                 <img id="avatar" src="img/leeg2.png">
-                
+
                 <br>
                 <dt>Beroep</dt>
                 <dd id="gebruikerBeroep"></dd>
@@ -48,7 +50,6 @@
                 <dt>Grootte</dt>
                 <dd id="gebruikerGrootte"></dd>
                 <br>
-                <!--<dt>Sterrenbeeld:</dt>-->
                 <img id="sterrenbeeld" src="img/leeg2.png">
             </dl>
         </div>
@@ -79,17 +80,7 @@
                 <input type="text" id="beroep">
                 <span id="beroepFout" class="Fout">Het veld 'beroep' is verplicht in te vullen!</span><br></div>
             <div>
-                <!--
-                    <label>Geslacht:
-                <span id="geslachtFout" class="fout">Verplicht te kiezen.</span>
-                <select id="geslacht" required>
-                    <option value="">(Maak een keuze)</option>
-                    <option value="M">Man</option>
-                    <option value="V">Vrouw</option>
-                    <option value="X">X</option>
-                </select>
-            </label>
-                -->
+
                 <label for="sexe">Sexe *</label>
                 <select id="sexe" required>
                     <option value="">(Maak een keuze)</option>
@@ -97,7 +88,6 @@
                     <option value="v">Vrouw</option>
                     <option value="x">Andere</option>
                 </select>
-                <!-- <input type="text" id="sexe" required> -->
                 <span id="sexeFout" class="Fout">Het veld 'sexe' is verplicht in te vullen!</span><br></div>
             <div>
                 <label for="mijnfoto">Foto *</label>
@@ -124,17 +114,17 @@
                 <input type="password" id="wachtwoord" required>
                 <span id="wachtwoordFout" class="Fout">Het veld 'wachtwoord' is verplicht in te vullen!</span><br></div>
             <div>
-                <label for="metadata">Metadata</label>
-                <input type="text" id="metadata">
-                <span id="metadataFout" class="Fout"></span><br></div>
+              
 
-
-        </div>
-        <div><button id="update">Profiel updaten</button></div>
+            
         <div>
+            <button id="update">Profiel updaten</button></div>
+        
+        </div>
 
-        <div id="updateContainer"><span id="updateFout"></span></div>
 
+            <div id="updateContainer"><span id="updateFout"></span></div>
+</div>
 </body>
 
 </html>

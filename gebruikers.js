@@ -20,7 +20,7 @@ async function eenProfielAfhalen() {
         console.log(eenProfiel);
         document.getElementById("begroeting").innerText = "Welkom " + eenProfiel.nickname;
         lijstGebruikers(eenProfiel);
-        
+        document.getElementById("update").style.display = "none";
         document.getElementById("sterrenbeeld").src = sterrenbeeldAfhalen(eenProfiel);
         return eenProfiel;
     }
@@ -102,6 +102,7 @@ function sterrenbeeldAfhalen(gebruiker) {
 // korte lijst wordt veborgen profiel bewerken getoond
 document.getElementById("bewerken").onclick = function()
      {
+        document.getElementById("update").style.display = "block";
         document.getElementById("bewerken").style.display = "none";
         document.getElementById("gebruikerWeergave").style.display = "none";
         document.getElementById("formulierBewerken").style.display = "block";
@@ -112,6 +113,14 @@ document.getElementById("bewerken").onclick = function()
         
         let profielId =  localStorage.getItem("gebruiker");
         let nieuweVoornaam =  document.getElementById("voornaam").value;
+        let nieuweNickname = document.getElementById("nickname").value;
+        let nieuweAchternaam = document.getElementById("nickname").value;
+        let nieuweEmail = document.getElementById("nickname").value;
+        let nieuwe = document.getElementById("nickname").value;
+        let nieuweNickname = document.getElementById("nickname").value;
+        let nieuweNickname = document.getElementById("nickname").value;
+        let nieuweNickname = document.getElementById("nickname").value;
+        let nieuweNickname = document.getElementById("nickname").value;
         let nieuweNickname = document.getElementById("nickname").value;
         const rooturl = "https://scrumserver.tenobe.org/scrum/api";  
         let url=rooturl+'/profiel/read_one.php?id='+profielId;
@@ -124,9 +133,18 @@ document.getElementById("bewerken").onclick = function()
                 //we passen de voornaam aan en sturen ook dit terug zodat deze promise afgesloten kan worden                        
                 let urlUpdate=rooturl+'/profiel/update.php';
 
-               /* data['voornaam', 'nickname']= {nieuweVoornaam, 
-                                                nieuweNickname}; */
-                data['voornaam'] = {nieuweVoornaam};
+                data = { "id" : profielId,
+                         "voornaam" : nieuweVoornaam,
+                         "voornaam" : nieuweVoornaam,
+                         "voornaam" : nieuweVoornaam,
+                         "voornaam" : nieuweVoornaam,
+                         "voornaam" : nieuweVoornaam,
+                         "voornaam" : nieuweVoornaam,
+                         "voornaam" : nieuweVoornaam,
+                         "voornaam" : nieuweVoornaam,
+                         "voornaam" : nieuweVoornaam,
+                         "voornaam" : nieuweVoornaam,
+                         "nickname" : nieuweNickname};
                 
                 console.log(data);
 
@@ -154,3 +172,15 @@ document.getElementById("bewerken").onclick = function()
                 console.log(error);
             });
     });
+
+// favorieten weergeven
+document.getElementById("favorieten").addEventListener('click', function (e) {  
+    let profielId =  localStorage.getItem("gebruiker"); 
+    const rooturl = "https://scrumserver.tenobe.org/scrum/api";
+    let url=rooturl+'/favoriet/read.php?profielId='+profielId;
+    
+    fetch(url)
+        .then(function (resp)   { return resp.json(); })
+        .then(function (data)   { console.log(data);  })
+        .catch(function (error) { console.log(error); });
+});
