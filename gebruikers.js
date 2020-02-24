@@ -1,15 +1,6 @@
 "use strict";
 
 
-//Is the user authenticated?
-if (localStorage.getItem('gebruiker') === null| localStorage.getItem('gebruiker') === "undefined") {
-    window.open("AccessDenied.html","_self");
-}
-else {
-//The user is authenticated and the authentication has not expired.
-}
-
-
 eenProfielAfhalen();
 async function eenProfielAfhalen() {
 
@@ -117,6 +108,7 @@ document.getElementById("bewerken").onclick = function()
         let nieuweNickname = document.getElementById("nickname").value;
         let nieuweGeboortedatum = document.getElementById("geboortedatum").value;
         let nieuweBeroep = document.getElementById("beroep").value;
+        let nieuweEmail = document.getElementById("emailadres").value;
         let nieuweSexe = document.getElementById("sexe").value;
         let nieuweHaarkleur = document.getElementById("haarkleur").value;
         let nieuweOogkleur = document.getElementById("oogkleur").value;
@@ -136,16 +128,18 @@ document.getElementById("bewerken").onclick = function()
 
                 data = { "id" : profielId,
                          "familienaam" : nieuweAchternaam,
-                         "achternaam" : nieuweAchternaam,
-                         "sexe" : nieuweSexe,
                          "voornaam" : nieuweVoornaam,
-                         "voornaam" : nieuweVoornaam,
-                         "voornaam" : nieuweVoornaam,
-                         "voornaam" : nieuweVoornaam,
-                         "voornaam" : nieuweVoornaam,
-                         "voornaam" : nieuweVoornaam,
-                         "voornaam" : nieuweVoornaam,
-                         "nickname" : nieuweNickname};
+                         "geboorteDatum" : nieuweGeboortedatum,
+                         "email" : nieuweEmail,
+                         "nickname" : nieuweNickname,
+                         "beroep" : nieuweBeroep,
+                         "sexe" : nieuweSexe,        
+                         "haarkleur" : nieuweHaarkleur,
+                         "oogkleur" : nieuweOogkleur,
+                         "gewicht" : nieuweGewicht,
+                         "grootte" : nieuweGrootte,
+                         "wachtwoord" : nieuweWachtwoord
+                         };
                 
                 console.log(data);
 
