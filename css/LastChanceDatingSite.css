@@ -42,7 +42,7 @@ button{
     padding: 1em; /*6px 8px*/
     border: 1px solid #b1b1b1;
     margin: 10px;
-    color: #000000;
+    color: white;
     text-decoration: none;
     letter-spacing: 0.1em;
     border:none;
@@ -70,7 +70,7 @@ a{
     font-size: 1em;
     padding: 0.5em; /*6px 8px*/
     border: 1px solid #b1b1b1;
-    color: #000000;
+    color:white;
     text-decoration: none;
     letter-spacing: 0.1em;
     align-items: center;
