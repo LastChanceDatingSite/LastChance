@@ -7,8 +7,8 @@ if (localStorage.getItem('gebruiker') === null || localStorage.getItem('gebruike
 }
 else {
 //The user is authenticated and the authentication has not expired.
-}
 
+}
 
 eenProfielAfhalen();
 async function eenProfielAfhalen() {
@@ -28,6 +28,22 @@ async function eenProfielAfhalen() {
         document.getElementById("updateFout").innertext = "Er was een probleem.";
     }
 };
+
+
+// function alles in display:none zetten
+function startDisplay() {
+    //profiel
+    document.getElementById("home").style.display = "inline-block"; //bovenste knop
+    document.getElementById("gebruikerWeergave").style.display = "none"; 
+    //update
+    document.getElementById("bewerken").style.display = "inline-block"; //bovenste knop
+    document.getElementById("formulierBewerken").style.display = "none"; 
+    document.getElementById("update").style.display = "none";
+    //favorieten
+    document.getElementById("favorieten").style.display = "inline-block"; //bovenste knop
+    document.getElementById("toonFavorieten").style.display = "none"; 
+
+}
 
 
 // gepaste values worden in geladen
@@ -99,17 +115,32 @@ function sterrenbeeldAfhalen(gebruiker) {
     }
 }
 
-// korte lijst wordt veborgen profiel bewerken getoond
+
+//profiel wordt getoond
+document.getElementById("home").onclick=function(){
+    startDisplay();
+    //update
+    document.getElementById("home").style.display = "none"; //bovenste knop
+    document.getElementById("gebruikerWeergave").style.display = "inline"; 
+}
+
+
+// korte lijst wordt verborgen profiel bewerken getoond
 document.getElementById("bewerken").onclick = function () {
-    document.getElementById("update").style.display = "block";
-    document.getElementById("bewerken").style.display = "none";
-    document.getElementById("gebruikerWeergave").style.display = "none";
-    document.getElementById("formulierBewerken").style.display = "block";
+    startDisplay();
+    //update
+    document.getElementById("bewerken").style.display = "none"; //bovenste knop
+    document.getElementById("formulierBewerken").style.display = "inline"; 
+
+    document.getElementById("update").style.display = "inline-block";
+    // document.getElementById("bewerken").style.display = "none";
+    // document.getElementById("gebruikerWeergave").style.display = "none";
+    // document.getElementById("formulierBewerken").style.display = "block";
 }
 
 // profiel updaten
     document.getElementById("update").addEventListener('click', function (e) {  
-         
+
         let profielId =  localStorage.getItem("gebruiker");
         let nieuweVoornaam =  document.getElementById("voornaam").value;
         let nieuweAchternaam =  document.getElementById("achternaam").value;
@@ -158,9 +189,10 @@ document.getElementById("bewerken").onclick = function () {
                         'Content-Type': 'application/json'
                     })
                 });
-
-
-
+/////////////////
+///////////////// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! HIER NOG NAAR EEN MELDING OF TERUG NAAR GEBRUIKERS.HTML LATEN GAAN
+///////////////// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! EN PROFIEL OPNIEUW LATEN INLADEN, VERANDERINGEN KOMEN NIET DOOR
+/////////////////
         })
         .catch(function (error) {
             console.log(error);
@@ -169,12 +201,13 @@ document.getElementById("bewerken").onclick = function () {
 
 // favorieten weergeven
 document.getElementById("favorieten").addEventListener('click', function (e) {
-
-    document.getElementById("gebruikerWeergave").style.display = "none";
+    startDisplay();
+    document.getElementById("favorieten").style.display = "none";
+    document.getElementById("toonFavorieten").style.display = "inline";
 
     const favorietenLijst = document.querySelector("ul");
     let index = 0;
-    favorietenLijst.style.display = "block";
+    favorietenlijst.style.display = "inline-block";
     let profielId = localStorage.getItem("gebruiker");
     const rooturl = "https://scrumserver.tenobe.org/scrum/api";
     let url = rooturl + '/favoriet/read.php?profielId=' + profielId;

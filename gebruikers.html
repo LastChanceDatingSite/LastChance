@@ -21,8 +21,10 @@
         <img src="img/holdingHands.png">
     </div>
     <div class="centraal">
-        <div><button id="bewerken">Bewerk mijn profiel</button>
-             <button id="favorieten">Favorieten bekijken</button>
+        <div>
+            <button id="home" class="verborgen">Bekijk mijn pagina</button>
+            <button id="bewerken">Bewerk mijn profiel</button>
+            <button id="favorieten">Favorieten bekijken</button>
         </div>
         <div>
             <h1><span id="begroeting"></span></h1>
@@ -116,25 +118,30 @@
                 <label for="wachtwoord">Wachtwoord *</label>
                 <input type="password" id="wachtwoord" required>
                 <span id="wachtwoordFout" class="Fout">Het veld 'wachtwoord' is verplicht in te vullen!</span><br></div>
-            </div>    
-                <div>
-           
-            
-                <ul id="favorietenlijst">
-                    <li><a href= "#"><div class="mediumIcons">one</div></a></li>
-                    <li><a href="#"><div class="mediumIcons">two</div></a></li>
-                    <li><a href="#"><div class="mediumIcons">three</div></a></li>
-                </ul>
-            
-            </div>
-          
-        <div>
-            <button id="update">Profiel updaten</button></div>
-        
+
+            <button id="update">Profiel updaten</button>
+        </div>
+
+        <div id="toonFavorieten" class="favorieten verborgen">
+
+
+            <ul id="favorietenlijst">
+                <li><a href="#">
+                        <div class="mediumIcons">one</div>
+                    </a></li>
+                <li><a href="#">
+                        <div class="mediumIcons">two</div>
+                    </a></li>
+                <li><a href="#">
+                        <div class="mediumIcons">three</div>
+                    </a></li>
+            </ul>
+
         </div>
 
 
-            <div id="updateContainer"><span id="updateFout"></span></div>
+
+        <div id="updateContainer"><span id="updateFout"></span></div>
 
 </body>
 

@@ -18,6 +18,9 @@
     background-color: red;
     color: white;
 }
+table, th, td{
+    border: 1px solid rebeccapurple;
+}
 /* NORMALIZE */
 html, body, div, section, article, aside, nav {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -87,7 +90,7 @@ label{
 
 input, select{
     display: inline-block;
-    padding: 0px;
+    padding: 2px;
     margin:0px;
     border: 1px solid  #b1b1b1;
     background-color: #dddddd;
@@ -148,7 +151,7 @@ input, select{
 }
 
 /***Formulieren***/
-.formulier {
+.formulier, .favorieten {
     width: 90%;
     max-width: 50em;
     text-align: center;
@@ -157,21 +160,21 @@ input, select{
 .marge {
     margin-left: 15%;
 }
-.formulier div{
+.formulier div, .favorieten div{
     margin: 0.5em;
 }
 
-
 /***Zoeken lijst weergeven***/
-#gebruikersLijst, #favorietenLijst {
+#gebruikersLijst, #favorietenlijst {
     padding: 0;
     list-style-type: none;
     width: 100%;
     max-width: 54em;
+    display: inline-block;
 }
 
-#gebruikersLijst li, #favorietenLijst li{
-    background-color: slateblue;
+#gebruikersLijst li, #favorietenlijst li{
+    background-color: rgb(158, 75, 147);
     display: inline-block;
     width: 16em;
     height: 8em;
@@ -184,13 +187,13 @@ input, select{
     border-radius: 4px;
 }
 
-#gebruikersLijst li a, #favorietenLijst li a {
+#gebruikersLijst li a, #favorietenlijst li a {
     color: #000000;
     text-decoration: none;
     letter-spacing: 0.1em; 
 }
 .mediumIcons {
-    background-color: yellow;
+    background-color: peachpuff;
     height:7em;
     width: 15em;
     align-items: center;
@@ -198,7 +201,7 @@ input, select{
 }
 
 .mediumIcons:hover{
-    background: rgb(255, 114, 92);
+    background: darksalmon;
     color: white;
 }
 .mediumIcons:active{
@@ -260,7 +263,7 @@ input, select{
 }
 
 #gebruikerWeergave img{
-    margin: 0 0 0 5%;
+    margin: 0;
     padding: 1em;
     width: 15em;
     height: 15em;
