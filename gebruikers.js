@@ -105,6 +105,14 @@ document.getElementById("bewerken").onclick = function()
         let profielId =  localStorage.getItem("gebruiker");
         let nieuweVoornaam =  document.getElementById("voornaam").value;
         let nieuweNickname = document.getElementById("nickname").value;
+        let nieuweAchternaam = document.getElementById("nickname").value;
+        let nieuweEmail = document.getElementById("nickname").value;
+        let nieuwe = document.getElementById("nickname").value;
+        let nieuweNickname = document.getElementById("nickname").value;
+        let nieuweNickname = document.getElementById("nickname").value;
+        let nieuweNickname = document.getElementById("nickname").value;
+        let nieuweNickname = document.getElementById("nickname").value;
+        let nieuweNickname = document.getElementById("nickname").value;
         const rooturl = "https://scrumserver.tenobe.org/scrum/api";  
         let url=rooturl+'/profiel/read_one.php?id='+profielId;
                       
@@ -117,6 +125,15 @@ document.getElementById("bewerken").onclick = function()
                 let urlUpdate=rooturl+'/profiel/update.php';
 
                 data = { "id" : profielId,
+                         "voornaam" : nieuweVoornaam,
+                         "voornaam" : nieuweVoornaam,
+                         "voornaam" : nieuweVoornaam,
+                         "voornaam" : nieuweVoornaam,
+                         "voornaam" : nieuweVoornaam,
+                         "voornaam" : nieuweVoornaam,
+                         "voornaam" : nieuweVoornaam,
+                         "voornaam" : nieuweVoornaam,
+                         "voornaam" : nieuweVoornaam,
                          "voornaam" : nieuweVoornaam,
                          "nickname" : nieuweNickname};
                 
