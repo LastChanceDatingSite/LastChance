@@ -158,8 +158,10 @@ input, select{
 
 /***Zoeken lijst weergeven***/
 #gebruikersLijst {
-    padding: 0;
-    margin-left: 20em;
+    padding: 0;/*
+    margin-left: 20em;*/
+    margin:0;
+    display: inline-block;
     list-style-type: none;
     width: 100%;
     max-width: 54em;
