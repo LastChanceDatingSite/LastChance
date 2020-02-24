@@ -1,4 +1,11 @@
 "use strict";
+//Is the user NOT authenticated?
+if (localStorage.getItem('gebruiker') !== null && localStorage.getItem('gebruiker') !== "undefined") {
+    window.open("gebruikers.html","_self");
+}
+else {
+//The user is NOT authenticated.
+}
 
 var today = new Date();
 var dd = today.getDate();
@@ -34,8 +41,35 @@ function invoerCorrect() {
 }
 
 async function persoonToevoegen() {
+
+        let naam =  document.getElementById("nickname").value; 
+        let afbeelding =  document.getElementById("mijnfoto").value; 
+        var encodedData = btoa(afbeelding);
+        console.log(encodedData);
+        var eindCode = afbeelding + ";base64," + encodedData;
+
+        let link = 'https://scrumserver.tenobe.org/scrum/api/image/upload.php';
+        
+        let fotoGegevens = {
+            "naam": naam,
+            "afbeelding": eindCode
+        };
+
+        var request = new Request(link, {
+            method: 'POST',
+            body: JSON.stringify(fotoGegevens),
+            headers: new Headers({
+                'Content-Type': 'application/json'
+            })
+        });
+
+        fetch(request)
+            .then( function (resp)  { return resp.json(); })
+            .then( function (fotoGegevens)  { console.log(fotoGegevens);  })
+            .catch(function (error) { console.log(error); });
+
+
     let url = 'https://scrumserver.tenobe.org/scrum/api/profiel/create.php';
-    let exi = 'https://scrumserver.tenobe.org/scrum/api/profiel/exists.php';
 
     let data = {
         familienaam: document.getElementById("achternaam").value,
@@ -70,6 +104,7 @@ async function persoonToevoegen() {
             return resp.json();
         })
         .then(function (nickdata) {
+ 
             var request = new Request(url, {
                 method: 'POST',
                 body: JSON.stringify(data),

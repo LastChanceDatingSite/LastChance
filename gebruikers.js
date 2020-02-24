@@ -1,6 +1,15 @@
 "use strict";
 
 
+//Is the user authenticated?
+if (localStorage.getItem('gebruiker') === null || localStorage.getItem('gebruiker') === "undefined") {
+    window.open("AccessDenied.html","_self");
+}
+else {
+//The user is authenticated and the authentication has not expired.
+}
+
+
 eenProfielAfhalen();
 async function eenProfielAfhalen() {
 
@@ -99,48 +108,55 @@ document.getElementById("bewerken").onclick = function () {
 }
 
 // profiel updaten
-document.getElementById("update").addEventListener('click', function (e) {
+    document.getElementById("update").addEventListener('click', function (e) {  
+         
+        let profielId =  localStorage.getItem("gebruiker");
+        let nieuweVoornaam =  document.getElementById("voornaam").value;
+        let nieuweAchternaam =  document.getElementById("achternaam").value;
+        let nieuweNickname = document.getElementById("nickname").value;
+        let nieuweGeboortedatum = document.getElementById("geboortedatum").value;
+        let nieuweBeroep = document.getElementById("beroep").value;
+        let nieuweEmail = document.getElementById("emailadres").value;
+        let nieuweSexe = document.getElementById("sexe").value;
+        let nieuweHaarkleur = document.getElementById("haarkleur").value;
+        let nieuweOogkleur = document.getElementById("oogkleur").value;
+        let nieuweGrootte = document.getElementById("grootte").value;
+        let nieuweGewicht = document.getElementById("gewicht").value;
+        let nieuweWachtwoord = document.getElementById("wachtwoord").value;
+        const rooturl = "https://scrumserver.tenobe.org/scrum/api";  
+        let url=rooturl+'/profiel/read_one.php?id='+profielId;
+                      
+        fetch(url)
+            .then(function (resp) { return resp.json(); }) //haal de JSON op en stuur die als resultaat van je promise                         
+            .then(function (data) {
+                //nadat de vorige promise opgelost werd kwamen we in deze procedure tercht
+                //hier kunnen we nu , met het resultat (data) van de vorige promise, aan de slag
+                //we passen de voornaam aan en sturen ook dit terug zodat deze promise afgesloten kan worden                        
+                let urlUpdate=rooturl+'/profiel/update.php';
 
-    let profielId = localStorage.getItem("gebruiker");
-    let nieuweVoornaam = document.getElementById("voornaam").value;
-    let nieuweNickname = document.getElementById("nickname").value;
-    const rooturl = "https://scrumserver.tenobe.org/scrum/api";
-    let url = rooturl + '/profiel/read_one.php?id=' + profielId;
+                data = { "id" : profielId,
+                         "familienaam" : nieuweAchternaam,
+                         "voornaam" : nieuweVoornaam,
+                         "geboorteDatum" : nieuweGeboortedatum,
+                         "email" : nieuweEmail,
+                         "nickname" : nieuweNickname,
+                         "beroep" : nieuweBeroep,
+                         "sexe" : nieuweSexe,        
+                         "haarkleur" : nieuweHaarkleur,
+                         "oogkleur" : nieuweOogkleur,
+                         "gewicht" : nieuweGewicht,
+                         "grootte" : nieuweGrootte,
+                         "wachtwoord" : nieuweWachtwoord
+                         };
+                
+                console.log(data);
 
-    fetch(url)
-        .then(function (resp) { return resp.json(); }) //haal de JSON op en stuur die als resultaat van je promise                         
-        .then(function (data) {
-            //nadat de vorige promise opgelost werd kwamen we in deze procedure tercht
-            //hier kunnen we nu , met het resultat (data) van de vorige promise, aan de slag
-            //we passen de voornaam aan en sturen ook dit terug zodat deze promise afgesloten kan worden                        
-            let urlUpdate = rooturl + '/profiel/update.php';
-
-            data = {
-                "id": profielId,
-                "voornaam": nieuweVoornaam,
-                "nickname": nieuweNickname,
-            };
-
-            console.log(data);
-
-            var request = new Request(urlUpdate, {
-                method: 'PUT',
-                body: JSON.stringify(data),
-                headers: new Headers({
-                    'Content-Type': 'application/json'
-                })
-            });
-            fetch(request)
-                .then(function (resp) { return resp.json(); })
-                .then(function (data) {
-                    console.log(data);
-                    if (data.message === "Het profiel kon niet ge&uuml;pdatet worden. De nickname bestaat reeds.") {
-                        document.getElementById("updateFout").innerText = "Deze nickname bestaat al.";
-                    }
-                })
-                .catch(function (error) {
-                    console.log(error);
-                    console.log(JSON);
+                var request = new Request(urlUpdate, {
+                    method: 'PUT',
+                    body: JSON.stringify(data),
+                    headers: new Headers({
+                        'Content-Type': 'application/json'
+                    })
                 });
 
 

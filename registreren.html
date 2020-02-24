@@ -14,13 +14,13 @@
         <ol>
           <li><a href="index.html">Home</a></li>
           <li><a href="aanmelden.html">Aanmelden</a></li>
-          <li><a class="actief" href="registreren.html">Inschrijven</a></li>
+          <li><a class="actief" href="registreren.html">Registreren</a></li>
         </ol>
       </div>
       <div class="topfoto centraal">
           <img  src="img/holdingHands.png">
         </div>
-    <div class="inschrijf formulier">
+    <div class="formulier">
     <div>
         <label for="achternaam">Achternaam *</label>
         <input type="text" id="achternaam" required>
@@ -80,11 +80,11 @@
         <span id="oogkleurFout" class="Fout"></span><br></div>
     <div>
         <label for="grootte">Grootte *(in cm)</label>
-        <input type="text" id="grootte" required>
+        <input type="text" id="grootte" required min="0" max="250">
         <span id="grootteFout" class="Fout">Het veld 'grootte' is verplicht in te vulleni</span></div>
     <div>
         <label for="gewicht">Gewicht *(in kg)</label>
-        <input type="number" id="gewicht" required>
+        <input type="number" id="gewicht" required min="0", max="300">
         <span id="gewichtFout" class="Fout">Het veld 'gewicht' is verplicht in te vullen!</span><br></div>
     <div>
         <label for="wachtwoord">Wachtwoord *</label>

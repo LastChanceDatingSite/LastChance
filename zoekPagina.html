@@ -20,47 +20,65 @@
     <div class="topfoto centraal">
         <img src="img/holdingHands.png">
     </div>
-    <div class="formulier">
-        <div class="zoeken">
-            <div>
-                <label for="sexe">Ik zoek</label>
-                <select class="search" id="sexe">
-                    <option value="">(Maak een keuze)</option>
-                    <option value="m">Man</option>
-                    <option value="v">Vrouw</option>
-                    <option value="x">Andere</option>
-                </select>
-                <!--<input id="sexe"  type="text"><br>-->
+    <div class="centraal">
+        <div class="formulier">
+            <div class="zoeken">
+                <div>
+                    <label for="sexe">Ik zoek</label>
+                    <select class="search" id="sexe">
+                        <option value="">(Maak een keuze)</option>
+                        <option value="m">Man</option>
+                        <option value="v">Vrouw</option>
+                        <option value="x">Andere</option>
+                    </select>
+                    <!--<input id="sexe"  type="text"><br>-->
+                </div>
+                <div>
+                    <label for="nickname">Nickname</label>
+                    <input class="search" id="nickname" type="text"><br></div>
+                <div>
+                    <label for="beroep">Beroep</label>
+                    <input class="search" id="beroep" type="text"><br></div>
+                <div>
+                    <label for="haarkleur">Haarkleur</label>
+                    <input class="search" id="haarkleur" type="text"><br></div>
+                <div>
+                    <label for="oogkleur">Oogkleur</label>
+                    <input class="search" id="oogkleur" type="text"><br></div>
+                <div>
+                    <label for="rangeMinGeboortedatum">Minumum geboortedatum</label>
+                    <input class="search" id="rangeMinGeboortedatum" type="date"></div>
+                <div>
+                    <label for="rangeMaxGeboortedatum">Maximum geboortedatum</label>
+                    <input class="search" id="rangeMaxGeboortedatum" type="date"></div>
+                <div>
+                    <label for="rangeMinGrootte">Minumum lengte</label>
+                    <input class="search" id="rangeMinGrootte" type="number"></div>
+                <div>
+                    <label for="rangeMaxGrootte">Maximum lengte</label>
+                    <input class="search" id="rangeMaxGrootte" type="number"></div>
+                <div>
+                    <label for="gewicht">Minimum Gewicht</label>
+                    <input class="search" id="gewicht" type="number"><br></div>
+
+
             </div>
-            <div>
-                <label for="nickname">Nickname</label>
-                <input class="search" id="nickname" type="text"><br></div>
-            <div>
-                <label for="beroep">Beroep</label>
-                <input class="search" id="beroep" type="text"><br></div>
-            <div>
-                <label for="haarkleur">Haarkleur</label>
-                <input class="search" id="haarkleur" type="text"><br></div>
-            <div>
-                <label for="oogkleur">Oogkleur</label>
-                <input class="search" id="oogkleur" type="text"><br></div>
-            <div>
-                <label for="rangeMinGeboortedatum">Minumum geboortedatum</label>
-                <input class="search" id="rangeMinGeboortedatum" type="date"></div>
-            <div>
-                <label for="rangeMaxGeboortedatum">Maximum geboortedatum</label>
-                <input class="search" id="rangeMaxGeboortedatum" type="date"></div>
-            <div>
-                <label for="rangeMinGrootte">Minumum lengte</label>
-                <input class="search" id="rangeMinGrootte" type="number"></div>
-            <div>
-                <label for="rangeMaxGrootte">Maximum lengte</label>
-                <input class="search" id="rangeMaxGrootte" type="number"></div>
-            <div>
-                <label for="gewicht">Minimum Gewicht</label>
-                <input class="search" id="gewicht" type="number"><br></div>
+            <button id="zoeken">Zoeken</button>
+<br>
 
+            <ul id="gebruikersLijst">
 
+                <li><a href="index.html">
+                        <div class="mediumIcons">one</div>
+                    </a></li>
+                <li><a href="index.html">
+                        <div class="mediumIcons">two</div>
+                    </a></li>
+                <li><a href="index.html">
+                        <div class="mediumIcons">three</div>
+                    </a></li>
+            </ul>
+            <div id="standaard"><span id="geenResultaten"></span></div>
         </div>
         <button id="zoeken">Zoeken</button>
         <button id="lucky">Feeling lucky</button>
