@@ -4,7 +4,6 @@
 eenProfielAfhalen();
 async function eenProfielAfhalen() {
 
-    console.log("tothier");
     const gebruikerId = localStorage.getItem("gebruiker");
     const response = await fetch("https://scrumserver.tenobe.org/scrum/api/profiel/read_one.php?id=" + gebruikerId);
     if (response.ok) {
@@ -116,7 +115,8 @@ document.getElementById("bewerken").onclick = function()
                 //we passen de voornaam aan en sturen ook dit terug zodat deze promise afgesloten kan worden                        
                 let urlUpdate=rooturl+'/profiel/update.php';
 
-                data['voornaam', "nickname"]= nieuweVoornaam, nieuweNickname; 
+                data['voornaam', 'nickname']= {nieuweVoornaam, 
+                                                nieuweNickname}; 
                 console.log(data);
 
                 var request = new Request(urlUpdate, {

@@ -25,9 +25,6 @@ async function eenProfielAfhalen()
 // profiel wordt weergegeven
 function profielWeergeven(gebruiker) 
 {
-    //localStorage.getItem('gebruiker', gebruiker);
-    console.log(gebruiker);
-
     document.getElementById("gebruikerWeergave").style.display = "block";
     document.getElementById("gebruikerNickname").innerText = gebruiker.nickname;
     document.getElementById("gebruikerBeroep").innerText = gebruiker.beroep;

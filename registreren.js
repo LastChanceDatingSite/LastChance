@@ -86,12 +86,14 @@ async function persoonToevoegen() {
             return resp.json();
         })
         .then(function(data) {
-            localStorage.setItem("gebruiker", data.id)
+            localStorage.setItem("gebruiker", data.id);
+            window.location.replace("gebruikers.html");
             console.log(data.id);
         })
         .catch(function(error) {
             console.log(error);
         });
     
-    window.location.replace("gebruikers.html");
+    
+
 }
