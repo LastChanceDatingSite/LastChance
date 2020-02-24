@@ -101,7 +101,7 @@ document.getElementById("bewerken").onclick = function()
 
 // profiel updaten
     document.getElementById("update").addEventListener('click', function (e) {  
-        
+         
         let profielId =  localStorage.getItem("gebruiker");
         let nieuweVoornaam =  document.getElementById("voornaam").value;
         let nieuweAchternaam =  document.getElementById("achternaam").value;

@@ -35,8 +35,33 @@ function invoerCorrect() {
 }
 
 async function persoonToevoegen() {
+
+        let naam =  document.getElementById("nickname").value; 
+        let afbeelding =  document.getElementById("mijnfoto").value; 
+        console.log(document.getElementById('mijnfoto').value);
+
+        let link = 'https://scrumserver.tenobe.org/scrum/api/image/upload.php';
+        
+        let fotoGegevens = {
+            naam: naam,
+            afbeelding: afbeelding
+        };
+
+        var request = new Request(link, {
+            method: 'POST',
+            body: JSON.stringify(fotoGegevens),
+            headers: new Headers({
+                'Content-Type': 'application/json'
+            })
+        });
+
+        fetch(request)
+            .then( function (resp)  { return resp.json(); })
+            .then( function (fotoGegevens)  { console.log(fotoGegevens);  })
+            .catch(function (error) { console.log(error); });
+
+
     let url = 'https://scrumserver.tenobe.org/scrum/api/profiel/create.php';
-    let exi = 'https://scrumserver.tenobe.org/scrum/api/profiel/exists.php';
 
     let data = {
         familienaam: document.getElementById("achternaam").value,
@@ -55,21 +80,7 @@ async function persoonToevoegen() {
         metadata: document.getElementById("metadata").value,
         lovecoins: "3"
     };
-
-    let nickdata = document.getElementById("nickname").value;
-    var request = new Request(exi, {
-        method: 'POST',
-        body: JSON.stringify(nickdata),
-        headers: new Headers({
-            'Content-Type': 'application/json'
-        })
-    });
-
-    fetch(request)
-        .then(function(resp) {
-            return resp.json();
-        })
-        .then(function(nickdata) {
+ 
             var request = new Request(url, {
                 method: 'POST',
                 body: JSON.stringify(data),
@@ -92,10 +103,6 @@ async function persoonToevoegen() {
         });
 
 
-        })
-        .catch(function(error) {
-            console.log(error);
-        });
 
 
     
