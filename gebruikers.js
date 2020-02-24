@@ -2,7 +2,7 @@
 
 
 //Is the user authenticated?
-if (localStorage.getItem('gebruiker') === null) {
+if (localStorage.getItem('gebruiker') === null| localStorage.getItem('gebruiker') === "undefined") {
     window.open("AccessDenied.html","_self");
 }
 else {
