@@ -1,5 +1,5 @@
 "use strict";
-/*profielenAfhalen();
+profielenAfhalen();
 async function profielenAfhalen() {
     const response = await fetch("https://scrumserver.tenobe.org/scrum/api/profiel/read.php");
     if (response.ok) {
@@ -10,7 +10,7 @@ async function profielenAfhalen() {
     }
 };
 
-
+/*
 profielenZoeken();
 async function profielenZoeken() {
     const response = await fetch("https://scrumserver.tenobe.org/scrum/api/profiel/search/.php");
