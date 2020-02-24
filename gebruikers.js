@@ -146,3 +146,15 @@ document.getElementById("bewerken").onclick = function()
                 console.log(error);
             });
     });
+
+// favorieten weergeven
+document.getElementById("favorieten").addEventListener('click', function (e) {  
+    let profielId =  localStorage.getItem("gebruiker"); 
+    const rooturl = "https://scrumserver.tenobe.org/scrum/api";
+    let url=rooturl+'/favoriet/read.php?profielId='+profielId;
+    
+    fetch(url)
+        .then(function (resp)   { return resp.json(); })
+        .then(function (data)   { console.log(data);  })
+        .catch(function (error) { console.log(error); });
+});
