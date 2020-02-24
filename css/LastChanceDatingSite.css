@@ -46,6 +46,7 @@ button{
     text-decoration: none;
     letter-spacing: 0.1em;
     border:none;
+    border-radius: 4px;
 }
 a{
     text-decoration: none;
@@ -75,19 +76,24 @@ a{
     letter-spacing: 0.1em;
     align-items: center;
     text-decoration: none;
+    border-radius: 4px;
 }
 label{
     display: inline-block;
     width: 9em;
     padding: 0.25em;
+    text-align: right;
 }
 
 input, select{
     display: inline-block;
+    padding: 0px;
+    margin:0px;
     border: 1px solid  #b1b1b1;
     background-color: #dddddd;
     width: 75%;
     max-width: 25em;
+    border-radius: 4px;
 }
 /*** TOPMENU ***/
 .topfoto img{
@@ -178,6 +184,7 @@ input, select{
     letter-spacing: 0.1em;
     text-align: center;
     overflow:hidden;
+    border-radius: 4px;
 }
 
 #gebruikersLijst li a {
@@ -190,6 +197,7 @@ input, select{
     height:7em;
     width: 15em;
     align-items: center;
+    border-radius: 4px;
 }
 
 .mediumIcons:hover{
@@ -235,6 +243,7 @@ input, select{
 
 #gebruikerWeergave dt{
     text-align: right;
+    border-radius: 4px;
     width:7em;
     background-color: rosybrown;
     display:inline-block;
@@ -244,6 +253,7 @@ input, select{
 
 #gebruikerWeergave dd{
     text-align: left;
+    border-radius: 4px;
     width:50%;
     max-width: 30em;
     background-color: silver;
