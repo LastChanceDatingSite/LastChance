@@ -42,17 +42,20 @@ button{
     padding: 1em; /*6px 8px*/
     border: 1px solid #b1b1b1;
     margin: 10px;
-    color: #000000;
+    color: white;
     text-decoration: none;
     letter-spacing: 0.1em;
     border:none;
 }
-.bigButton:hover, button:hover, a:hover{
+a{
+    text-decoration: none;
+}
+.bigButton:hover, button:hover{
     text-decoration: none;
     background-color: darksalmon;
     color: white;
 }
-.bigButton:active, a:active{
+.bigButton:active, button:active{
     background-color: slateblue;
 }
 .bigButton{
@@ -67,15 +70,16 @@ button{
     font-size: 1em;
     padding: 0.5em; /*6px 8px*/
     border: 1px solid #b1b1b1;
-    color: #000000;
+    color:white;
     text-decoration: none;
     letter-spacing: 0.1em;
     align-items: center;
+    text-decoration: none;
 }
 label{
     display: inline-block;
-width: 9em;
-padding: 0.25em;
+    width: 9em;
+    padding: 0.25em;
 }
 
 input, select{
@@ -122,11 +126,19 @@ input, select{
     text-decoration: none;
     letter-spacing: 0.1em; 
 }
+.topmenu ol li a:hover{
+    text-decoration: none;
+    background-color: darksalmon;
+    color: white;
+}
+.topmenu ol li a:active{
+    background-color: slateblue;
+}
     
 .topmenu ol li a.actief {
-        text-decoration: none;
-        background: rgb(158, 75, 147);
-        color: white;
+    text-decoration: none;
+    background: rgb(158, 75, 147);
+    color: white;
 }
 
 /***Formulieren***/
@@ -146,8 +158,10 @@ input, select{
 
 /***Zoeken lijst weergeven***/
 #gebruikersLijst {
-    padding: 0;
-    margin-left: 20em;
+    padding: 0;/*
+    margin-left: 20em;*/
+    margin:0;
+    display: inline-block;
     list-style-type: none;
     width: 100%;
     max-width: 54em;
@@ -182,7 +196,9 @@ input, select{
     background: rgb(255, 114, 92);
     color: white;
 }
-
+.mediumIcons:active{
+    background-color: slateblue;
+}
 /***RECLAME***/
 .reclame {
     width: 100%;
@@ -229,6 +245,7 @@ input, select{
 #gebruikerWeergave dd{
     text-align: left;
     width:50%;
+    max-width: 30em;
     background-color: silver;
     display:inline-block;
     padding:0.125em;
@@ -236,10 +253,10 @@ input, select{
 }
 
 #gebruikerWeergave img{
-margin: 0 0 0 5%;
-padding: 1em;
-width: 15em;
-height: 15em;
+    margin: 0 0 0 5%;
+    padding: 1em;
+    width: 15em;
+    height: 15em;
 }
 
 /***Foutmelding***/
