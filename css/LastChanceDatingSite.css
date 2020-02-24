@@ -21,10 +21,10 @@
 /* NORMALIZE */
 html, body, div, section, article, aside, nav {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 16px;
     margin: 0;
     padding: 0;
-    background-color: lightgoldenrodyellow;/*
-    background-color: seagreen;*/
+    background-color: lightgoldenrodyellow;
  }
  img {
     border: none;
@@ -39,14 +39,52 @@ html, body, div, section, article, aside, nav {
 button{
     display: inline-block;
     background-color:rgb(158, 75, 147);/* color == very light purple*/
-    padding: 0.5em; /*6px 8px*/
+    padding: 1em; /*6px 8px*/
     border: 1px solid #b1b1b1;
     margin: 10px;
     color: #000000;
     text-decoration: none;
     letter-spacing: 0.1em;
+    border:none;
+}
+.bigButton:hover, button:hover, a:hover{
+    text-decoration: none;
+    background-color: darksalmon;
+    color: white;
+}
+.bigButton:active, a:active{
+    background-color: slateblue;
+}
+.bigButton{
+    background-color:rgb(158, 75, 147);/* color == very light purple*/
+    display: inline-flex;
+    justify-content: center;
+    margin: 2%;
+    height: 5em;
+    min-width: 17.5em;
+    width: 75%;
+    max-width: 40em;
+    font-size: 1em;
+    padding: 0.5em; /*6px 8px*/
+    border: 1px solid #b1b1b1;
+    color: #000000;
+    text-decoration: none;
+    letter-spacing: 0.1em;
+    align-items: center;
+}
+label{
+    display: inline-block;
+width: 9em;
+padding: 0.25em;
 }
 
+input, select{
+    display: inline-block;
+    border: 1px solid  #b1b1b1;
+    background-color: #dddddd;
+    width: 75%;
+    max-width: 25em;
+}
 /*** TOPMENU ***/
 .topfoto img{
     width: 100%;
@@ -58,7 +96,7 @@ button{
     background-color: lightgoldenrodyellow;
     overflow: hidden;
     position: fixed;
-    height: 3em;
+    min-height: 3em;
     width: 100%;
     margin: 0em;
 }
@@ -84,12 +122,6 @@ button{
     text-decoration: none;
     letter-spacing: 0.1em; 
 }
-
-.topmenu ol li a:hover{
-    text-decoration: none;
-    background: rgb(255, 114, 92);
-    color: white;
-}
     
 .topmenu ol li a.actief {
         text-decoration: none;
@@ -100,31 +132,22 @@ button{
 /***Formulieren***/
 .formulier {
     width: 90%;
-    max-width: 60em;
+    max-width: 50em;
+    text-align: center;
+    display: inline;
+}
+.marge {
     margin-left: 15%;
 }
-
 .formulier div{
     margin: 0.5em;
 }
 
-label{
-    display: inline-block;
-width: 9em;
-padding: 0.25em;
-}
-
-input, select{
-    display: inline-block;
-    border: 1px solid  #b1b1b1;
-    background-color: #dddddd;
-    width: 75%;
-    max-width: 25em;
-}
 
 /***Zoeken lijst weergeven***/
 #gebruikersLijst {
     padding: 0;
+    margin-left: 20em;
     list-style-type: none;
     width: 100%;
     max-width: 54em;
@@ -132,7 +155,7 @@ input, select{
 
 #gebruikersLijst li {
     background-color: slateblue;
-    display:inline-block;
+    display: inline-block;
     width: 16em;
     height: 8em;
     margin: 0.5em ;
