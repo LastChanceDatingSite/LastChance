@@ -33,7 +33,7 @@ function lijstGebruikers(gebruiker) {
     document.getElementById("gebruikerHaarkleur").innerText = gebruiker.haarkleur;
     document.getElementById("gebruikerGewicht").innerText = gebruiker.gewicht;
     document.getElementById("gebruikerGrootte").innerText = gebruiker.grootte;
-    console.log(gebruiker.foto);
+    document.getElementById("lovecoins").innerText = gebruiker.lovecoins;
     document.getElementById("avatar").src = "https://scrumserver.tenobe.org/scrum/img/" + gebruiker.foto;
 
     console.log(gebruiker.achternaam);
@@ -50,7 +50,7 @@ function lijstGebruikers(gebruiker) {
     document.getElementById("grootte").value = gebruiker.grootte;
     document.getElementById("gewicht").value = gebruiker.gewicht;
     document.getElementById("wachtwoord").value = gebruiker.wachtwoord;
-    
+
 
 }
 
@@ -91,70 +91,120 @@ function sterrenbeeldAfhalen(gebruiker) {
 }
 
 // korte lijst wordt veborgen profiel bewerken getoond
-document.getElementById("bewerken").onclick = function()
-     {
-        document.getElementById("update").style.display = "block";
-        document.getElementById("bewerken").style.display = "none";
-        document.getElementById("gebruikerWeergave").style.display = "none";
-        document.getElementById("formulierBewerken").style.display = "block";
-    }
+document.getElementById("bewerken").onclick = function () {
+    document.getElementById("update").style.display = "block";
+    document.getElementById("bewerken").style.display = "none";
+    document.getElementById("gebruikerWeergave").style.display = "none";
+    document.getElementById("formulierBewerken").style.display = "block";
+}
 
 // profiel updaten
-    document.getElementById("update").addEventListener('click', function (e) {  
-        
-        let profielId =  localStorage.getItem("gebruiker");
-        let nieuweVoornaam =  document.getElementById("voornaam").value;
-        let nieuweNickname = document.getElementById("nickname").value;
-        const rooturl = "https://scrumserver.tenobe.org/scrum/api";  
-        let url=rooturl+'/profiel/read_one.php?id='+profielId;
-                      
-        fetch(url)
-            .then(function (resp) { return resp.json(); }) //haal de JSON op en stuur die als resultaat van je promise                         
-            .then(function (data) {
-                //nadat de vorige promise opgelost werd kwamen we in deze procedure tercht
-                //hier kunnen we nu , met het resultat (data) van de vorige promise, aan de slag
-                //we passen de voornaam aan en sturen ook dit terug zodat deze promise afgesloten kan worden                        
-                let urlUpdate=rooturl+'/profiel/update.php';
+document.getElementById("update").addEventListener('click', function (e) {
 
-                data = { "id" : profielId,
-                         "voornaam" : nieuweVoornaam,
-                         "nickname" : nieuweNickname};
-                
-                console.log(data);
+    let profielId = localStorage.getItem("gebruiker");
+    let nieuweVoornaam = document.getElementById("voornaam").value;
+    let nieuweNickname = document.getElementById("nickname").value;
+    const rooturl = "https://scrumserver.tenobe.org/scrum/api";
+    let url = rooturl + '/profiel/read_one.php?id=' + profielId;
 
-                var request = new Request(urlUpdate, {
-                    method: 'PUT',
-                    body: JSON.stringify(data),
-                    headers: new Headers({
-                        'Content-Type': 'application/json'
-                    })
-                });
-                fetch(request)
-                    .then(function (resp)   { return resp.json(); })
-                    .then(function (data)   { console.log(data);
-                        if (data.message === "Het profiel kon niet ge&uuml;pdatet worden. De nickname bestaat reeds.")
-                        {
-                            document.getElementById("updateFout").innerText = "Deze nickname bestaat al.";
-                        } })
-                    .catch(function (error) { console.log(error);
-                                                console.log(JSON); });
+    fetch(url)
+        .then(function (resp) { return resp.json(); }) //haal de JSON op en stuur die als resultaat van je promise                         
+        .then(function (data) {
+            //nadat de vorige promise opgelost werd kwamen we in deze procedure tercht
+            //hier kunnen we nu , met het resultat (data) van de vorige promise, aan de slag
+            //we passen de voornaam aan en sturen ook dit terug zodat deze promise afgesloten kan worden                        
+            let urlUpdate = rooturl + '/profiel/update.php';
 
+            data = {
+                "id": profielId,
+                "voornaam": nieuweVoornaam,
+                "nickname": nieuweNickname,
+            };
 
+            console.log(data);
 
-            })
-            .catch(function (error) {
-                console.log(error);
+            var request = new Request(urlUpdate, {
+                method: 'PUT',
+                body: JSON.stringify(data),
+                headers: new Headers({
+                    'Content-Type': 'application/json'
+                })
             });
-    });
+            fetch(request)
+                .then(function (resp) { return resp.json(); })
+                .then(function (data) {
+                    console.log(data);
+                    if (data.message === "Het profiel kon niet ge&uuml;pdatet worden. De nickname bestaat reeds.") {
+                        document.getElementById("updateFout").innerText = "Deze nickname bestaat al.";
+                    }
+                })
+                .catch(function (error) {
+                    console.log(error);
+                    console.log(JSON);
+                });
+
+
+
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+});
 
 // favorieten weergeven
-document.getElementById("favorieten").addEventListener('click', function (e) {  
-    let profielId =  localStorage.getItem("gebruiker"); 
+document.getElementById("favorieten").addEventListener('click', function (e) {
+
+    document.getElementById("gebruikerWeergave").style.display = "none";
+
+    const favorietenLijst = document.querySelector("ul");
+    let index = 0;
+    favorietenLijst.style.display = "block";
+    let profielId = localStorage.getItem("gebruiker");
     const rooturl = "https://scrumserver.tenobe.org/scrum/api";
-    let url=rooturl+'/favoriet/read.php?profielId='+profielId;
-    
+    let url = rooturl + '/favoriet/read.php?profielId=' + profielId;
+
     fetch(url)
-        .then(function (resp)   { return resp.json(); })
-        .then(function (data)   { console.log(data);  })
+        .then(function (resp) { return resp.json(); })
+        .then(function (data) {
+            console.log(data);
+            for (const eenFavoriet of data) {
+                eenProfielAfhalen();
+                async function eenProfielAfhalen() {
+
+                    const gebruikerId = eenFavoriet.anderId;
+                    const response = await fetch("https://scrumserver.tenobe.org/scrum/api/profiel/read_one.php?id=" + gebruikerId);
+                    if (response.ok) {
+                        const eenProfiel = await response.json();
+                        console.log(eenProfiel);
+                        favorietenLijstMaken(eenProfiel);
+                        return eenProfiel;
+                    }
+                    else {
+                        document.getElementById("updateFout").innertext = "Er was een probleem.";
+                    }
+                };
+
+                function favorietenLijstMaken(eenProfiel) {
+
+                    const li = document.createElement("li");
+                    const hyperlink = document.createElement("a");
+                    hyperlink.innerText = eenProfiel.nickname;
+                    hyperlink.href = "#";
+                    hyperlink.dataset.index = index++;
+                    hyperlink.onclick = function()
+                    {
+                        localStorage.setItem("gezochteGebruiker", eenProfiel.id);
+                        window.location.replace("gezochtProfiel.html");
+                    }
+                    console.log(hyperlink);
+                    li.appendChild(hyperlink);
+                    favorietenLijst.appendChild(li);
+                }
+            }
+
+
+        })
         .catch(function (error) { console.log(error); });
+
+
 });

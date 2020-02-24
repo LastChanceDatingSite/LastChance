@@ -2,27 +2,26 @@
 
 var today = new Date();
 var dd = today.getDate();
-var mm = today.getMonth()+1; //January is 0!
-var yyyy = today.getFullYear()-18;
- if(dd<10){
-        dd='0'+dd
-    } 
-    if(mm<10){
-        mm='0'+mm
-    } 
+var mm = today.getMonth() + 1; //January is 0!
+var yyyy = today.getFullYear() - 18;
+if (dd < 10) {
+    dd = '0' + dd
+}
+if (mm < 10) {
+    mm = '0' + mm
+}
 
-today = yyyy+'-'+mm+'-'+dd;
+today = yyyy + '-' + mm + '-' + dd;
 document.getElementById("geboortedatum").setAttribute("max", today);
 
-document.getElementById("buttonInschrijven").onclick = function() {
-    if (invoerCorrect()) 
-    {
+document.getElementById("buttonInschrijven").onclick = function () {
+    if (invoerCorrect()) {
         persoonToevoegen();
     }
 }
 
 function invoerCorrect() {
-        const verkeerdeElementen = document.querySelectorAll("input:invalid,select:invalid");
+    const verkeerdeElementen = document.querySelectorAll("input:invalid,select:invalid");
     for (const element of verkeerdeElementen) {
         document.getElementById(`${element.id}Fout`).style.display = "inline";
     }
@@ -54,6 +53,7 @@ async function persoonToevoegen() {
         wachtwoord: document.getElementById("wachtwoord").value,
         metadata: document.getElementById("metadata").value,
         lovecoins: "3"
+
     };
 
     let nickdata = document.getElementById("nickname").value;
@@ -66,10 +66,10 @@ async function persoonToevoegen() {
     });
 
     fetch(request)
-        .then(function(resp) {
+        .then(function (resp) {
             return resp.json();
         })
-        .then(function(nickdata) {
+        .then(function (nickdata) {
             var request = new Request(url, {
                 method: 'POST',
                 body: JSON.stringify(data),
@@ -79,29 +79,20 @@ async function persoonToevoegen() {
             });
 
             fetch(request)
-        .then(function(resp) {
-            return resp.json();
-        })
-             .then(function(data) {
-            console.log("heydaarqsdfsdf");
-            localStorage.setItem("gebruiker", data.id);
-            window.location.replace("gebruikers.html");
-        })
-                .catch(function(error) {
-                console.log(error);
-        });
+                .then(function (resp) {
+                    return resp.json();
+                })
+                .then(function (data) {
+                    localStorage.setItem("gebruiker", data.id);
+                    window.location.replace("gebruikers.html");
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
 
 
         })
-        .catch(function(error) {
+        .catch(function (error) {
             console.log(error);
         });
-
-
-    
-
-    
-    
-    
-
 }

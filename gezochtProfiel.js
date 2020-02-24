@@ -17,6 +17,7 @@ async function eenProfielAfhalen()
         console.log(eenProfiel);
         profielWeergeven(eenProfiel);
         document.getElementById("sterrenbeeld").src = sterrenbeeldAfhalen(eenProfiel);
+        return eenProfiel;
     }                                      
     else {
         document.getElementById("nietGevonden").style.display = "block";
@@ -78,6 +79,7 @@ function sterrenbeeldAfhalen(gebruiker) {
 // een favoriet maken
 
         document.getElementById("favoriet").addEventListener('click', function (e) {  
+        const foutDiv = document.getElementById("fout");
         let gebruikerId =  localStorage.getItem("gebruiker"); 
         let gezochteId =  localStorage.getItem("gezochteGebruiker");
         const rooturl = "https://scrumserver.tenobe.org/scrum/api";
@@ -100,4 +102,56 @@ function sterrenbeeldAfhalen(gebruiker) {
             .then( function (resp)  { return resp.json(); })
             .then( function (data)  { console.log(data);  })
             .catch(function (error) { console.log(error); });
+   
+
+     
+      //  let profielId =  localStorage.getItem("gebruiker");
+       // console.log(profielId);
+        let bedrag =  -1;
+        console.log(bedrag);
+      //  const rooturl = "https://scrumserver.tenobe.org/scrum/api";
+        let favUrl=rooturl+'/profiel/read_one.php?id='+ gebruikerId;
+                       
+        fetch(favUrl)
+            .then(function (resp) { return resp.json(); }) //haal de JSON op en stuur die als resultaat van je promise                         
+            .then(function (data) {
+                //nadat de vorige promise opgelost werd kwamen we in deze procedure tercht
+                //hier kunnen we nu , met het resultat (data) van de vorige promise, aan de slag
+                //we passen de voornaam aan en sturen ook dit terug zodat deze promise afgesloten kan worden                        
+                if (data.lovecoins === "0")
+                {
+                    console.log(data.lovecoins);
+                    foutDiv.innerText = "Geen lovecoins meer!"
+                }
+                else
+                {
+                let urlUpdate=rooturl+'/profiel/lovecoinTransfer.php';
+
+                data = {"profielID": gebruikerId,
+                            "bedrag": bedrag}; 
+
+                var request = new Request(urlUpdate, {
+                    method: 'PUT',
+                    body: JSON.stringify(data),
+                    headers: new Headers({
+                        'Content-Type': 'application/json'
+                    })
+                });
+                fetch(request)
+                    .then(function (resp)   { return resp.json(); })
+                    .then(function (data)   { console.log(data);
+                                              if (data.message === "Transactie werd niet uitgevoerd. Geen Lovecoins genoeg")
+                                              {
+                                              console.log("gelukt");
+                                              
+                     }                           })
+                    .catch(function (error) { console.log(error); });
+
+
+
+            }})
+            .catch(function (error) {
+                console.log(error);
+            });
     });
+        

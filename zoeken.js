@@ -87,3 +87,41 @@ function lijstGebruikers(gebruikers)
     
 }
 
+document.getElementById("lucky").onclick = function() {
+    document.querySelector("ul").innerHTML = "";
+    const randomId = Math.floor(Math.random() * 5000);
+    console.log(randomId);
+
+    eenProfielAfhalen();
+    async function eenProfielAfhalen() {
+        const response = await fetch("https://scrumserver.tenobe.org/scrum/api/profiel/read_one.php?id=" + randomId);
+    if (response.ok) {
+        const gebruiker = await response.json();
+        console.log(gebruiker);
+        const gebruikersLijst = document.querySelector("ul");
+    
+        let index = 0;
+            const hyperlink = document.createElement("a");
+            hyperlink.href = "#";
+            hyperlink.dataset.index = index++;
+            hyperlink.dataset.id = gebruiker.id;
+            hyperlink.onclick = function () 
+            {
+                window.location.replace("gezochtProfiel.html");
+                const gebruikerId = this.dataset.id;
+                localStorage.setItem("gezochteGebruiker", gebruikerId);
+            }
+           
+            const li = document.createElement("li");
+            const img="<img src=\" https://scrumserver.tenobe.org/scrum/img/" + gebruiker.foto + "\" >";
+            hyperlink.innerHTML = "<div class='mediumIcons'>" + img + " <br> " + gebruiker.nickname + "</div>";
+            li.appendChild(hyperlink);
+            gebruikersLijst.appendChild(li);
+        
+        
+    
+    } else {
+        document.getElementById("nietGevonden").style.display = "block";
+    }
+};
+}
