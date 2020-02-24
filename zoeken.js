@@ -75,12 +75,12 @@ function lijstGebruikers(gebruikers)
         {
             window.location.replace("gezochtProfiel.html");
             const gebruikerId = this.dataset.id;
-            localStorage.setItem("gebruiker", gebruikerId);
+            localStorage.setItem("gezochteGebruiker", gebruikerId);
         }
        
         const li = document.createElement("li");
         const img="<img src=\" https://scrumserver.tenobe.org/scrum/img/" + gebruiker.foto + "\" >";
-        hyperlink.innerHTML = img + " <br> " + gebruiker.nickname;
+        hyperlink.innerHTML = "<div class='mediumIcons'>" + img + " <br> " + gebruiker.nickname + "</div>";
         li.appendChild(hyperlink);
         gebruikersLijst.appendChild(li);
     }

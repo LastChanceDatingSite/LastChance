@@ -7,7 +7,7 @@ eenProfielAfhalen();
 // juiste profiel wordt afgehaald
 async function eenProfielAfhalen() 
 {
-    const gebruikerId = localStorage.getItem("gebruiker");
+    const gebruikerId = localStorage.getItem("gezochteGebruiker");
    /* console.log(gezochteGebruiker);
     const gebruikerId = gezochteGebruiker.id;*/
     const response =
