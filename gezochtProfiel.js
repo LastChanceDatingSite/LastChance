@@ -74,3 +74,30 @@ function sterrenbeeldAfhalen(gebruiker) {
         return "img/sterrenbeeld/boogschutter.png";
     }
 }
+
+// een favoriet maken
+
+        document.getElementById("favoriet").addEventListener('click', function (e) {  
+        let gebruikerId =  localStorage.getItem("gebruiker"); 
+        let gezochteId =  localStorage.getItem("gezochteGebruiker");
+        const rooturl = "https://scrumserver.tenobe.org/scrum/api";
+        let url=rooturl+"/favoriet/like.php";
+        
+        let data = {
+            "mijnId": gebruikerId,
+            "anderId": gezochteId
+        }
+
+        var request = new Request(url, {
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: new Headers({
+                'Content-Type': 'application/json'
+            })
+        });
+        
+        fetch(request)
+            .then( function (resp)  { return resp.json(); })
+            .then( function (data)  { console.log(data);  })
+            .catch(function (error) { console.log(error); });
+    });
