@@ -75,7 +75,7 @@ function lijstGebruikers(gebruikers)
         {
             window.location.replace("gezochtProfiel.html");
             const gebruikerId = this.dataset.id;
-            localStorage.setItem("gebruiker", gebruikerId);
+            localStorage.setItem("gezochteGebruiker", gebruikerId);
         }
        
         const li = document.createElement("li");
