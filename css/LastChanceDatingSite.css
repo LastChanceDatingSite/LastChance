@@ -58,6 +58,7 @@ button{
     background-color: lightgoldenrodyellow;
     overflow: hidden;
     position: fixed;
+    height: 3em;
     width: 100%;
     margin: 0em;
 }
@@ -130,7 +131,7 @@ input, select{
 }
 
 #gebruikersLijst li {
-    background-color: lime;
+    background-color: slateblue;
     display:inline-block;
     width: 16em;
     height: 8em;
@@ -143,15 +144,18 @@ input, select{
 }
 
 #gebruikersLijst li a {
-    padding: 0.5em; /*6px 8px*/
-    margin: 10px;
     color: #000000;
     text-decoration: none;
     letter-spacing: 0.1em; 
 }
+.mediumIcons {
+    background-color: yellow;
+    height:7em;
+    width: 15em;
+    align-items: center;
+}
 
-#gebruikersLijst  li a:hover{
-    text-decoration: none;
+.mediumIcons:hover{
     background: rgb(255, 114, 92);
     color: white;
 }
