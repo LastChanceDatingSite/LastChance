@@ -11,7 +11,7 @@ async function eenProfielAfhalen() {
         console.log(eenProfiel);
         document.getElementById("begroeting").innerText = "Welkom " + eenProfiel.nickname;
         lijstGebruikers(eenProfiel);
-        
+        document.getElementById("update").style.display = "none";
         document.getElementById("sterrenbeeld").src = sterrenbeeldAfhalen(eenProfiel);
         return eenProfiel;
     }
@@ -93,6 +93,7 @@ function sterrenbeeldAfhalen(gebruiker) {
 // korte lijst wordt veborgen profiel bewerken getoond
 document.getElementById("bewerken").onclick = function()
      {
+        document.getElementById("update").style.display = "block";
         document.getElementById("bewerken").style.display = "none";
         document.getElementById("gebruikerWeergave").style.display = "none";
         document.getElementById("formulierBewerken").style.display = "block";
@@ -115,9 +116,9 @@ document.getElementById("bewerken").onclick = function()
                 //we passen de voornaam aan en sturen ook dit terug zodat deze promise afgesloten kan worden                        
                 let urlUpdate=rooturl+'/profiel/update.php';
 
-               /* data['voornaam', 'nickname']= {nieuweVoornaam, 
-                                                nieuweNickname}; */
-                data['voornaam'] = {nieuweVoornaam};
+                data = { "id" : profielId,
+                         "voornaam" : nieuweVoornaam,
+                         "nickname" : nieuweNickname};
                 
                 console.log(data);
 
