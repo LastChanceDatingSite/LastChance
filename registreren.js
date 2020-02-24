@@ -45,14 +45,15 @@ async function persoonToevoegen() {
 
         let naam =  document.getElementById("nickname").value; 
         let afbeelding =  document.getElementById("mijnfoto").value; 
-        console.log(document.getElementById('mijnfoto').src);
-        console.log(afbeelding);
+        var encodedData = btoa(afbeelding);
+        console.log(encodedData);
+        var eindCode = afbeelding + ";base64," + encodedData;
 
         let link = 'https://scrumserver.tenobe.org/scrum/api/image/upload.php';
         
         let fotoGegevens = {
             "naam": naam,
-            "afbeelding": afbeelding
+            "afbeelding": eindCode
         };
 
         var request = new Request(link, {
@@ -104,7 +105,7 @@ async function persoonToevoegen() {
              .then(function(data) {
             console.log("heydaarqsdfsdf");
             localStorage.setItem("gebruiker", data.id);
-            // window.location.replace("gebruikers.html");
+            window.location.replace("gebruikers.html");
         })
                 .catch(function(error) {
                 console.log(error);
