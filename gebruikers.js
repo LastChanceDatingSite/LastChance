@@ -55,7 +55,7 @@ function lijstGebruikers(gebruiker) {
 }
 
 function sterrenbeeldAfhalen(gebruiker) {
-    //let sterrenbeeldAfbeelding = document.getElementById("sterrenbeeld").src;
+
     console.log(gebruiker.geboortedatum);
     const geboortedatum = new Date(gebruiker.geboortedatum);
     const month = geboortedatum.getMonth() + 1;
@@ -93,7 +93,7 @@ function sterrenbeeldAfhalen(gebruiker) {
 // korte lijst wordt veborgen profiel bewerken getoond
 document.getElementById("bewerken").onclick = function()
      {
-        //const eenProfiel = eenProfielAfhalen();
+        document.getElementById("bewerken").style.display = "none";
         document.getElementById("gebruikerWeergave").style.display = "none";
         document.getElementById("formulierBewerken").style.display = "block";
     }
@@ -115,8 +115,10 @@ document.getElementById("bewerken").onclick = function()
                 //we passen de voornaam aan en sturen ook dit terug zodat deze promise afgesloten kan worden                        
                 let urlUpdate=rooturl+'/profiel/update.php';
 
-                data['voornaam', 'nickname']= {nieuweVoornaam, 
-                                                nieuweNickname}; 
+               /* data['voornaam', 'nickname']= {nieuweVoornaam, 
+                                                nieuweNickname}; */
+                data['voornaam'] = {nieuweVoornaam};
+                
                 console.log(data);
 
                 var request = new Request(urlUpdate, {
@@ -133,7 +135,8 @@ document.getElementById("bewerken").onclick = function()
                         {
                             document.getElementById("updateFout").innerText = "Deze nickname bestaat al.";
                         } })
-                    .catch(function (error) { console.log(error); });
+                    .catch(function (error) { console.log(error);
+                                                console.log(JSON); });
 
 
 
