@@ -104,15 +104,16 @@ document.getElementById("bewerken").onclick = function()
         
         let profielId =  localStorage.getItem("gebruiker");
         let nieuweVoornaam =  document.getElementById("voornaam").value;
+        let nieuweAchternaam =  document.getElementById("achternaam").value;
         let nieuweNickname = document.getElementById("nickname").value;
-        let nieuweAchternaam = document.getElementById("nickname").value;
-        let nieuweEmail = document.getElementById("nickname").value;
-        let nieuwe = document.getElementById("nickname").value;
-        let nieuweNickname = document.getElementById("nickname").value;
-        let nieuweNickname = document.getElementById("nickname").value;
-        let nieuweNickname = document.getElementById("nickname").value;
-        let nieuweNickname = document.getElementById("nickname").value;
-        let nieuweNickname = document.getElementById("nickname").value;
+        let nieuweGeboortedatum = document.getElementById("geboortedatum").value;
+        let nieuweBeroep = document.getElementById("beroep").value;
+        let nieuweSexe = document.getElementById("sexe").value;
+        let nieuweHaarkleur = document.getElementById("haarkleur").value;
+        let nieuweOogkleur = document.getElementById("oogkleur").value;
+        let nieuweGrootte = document.getElementById("grootte").value;
+        let nieuweGewicht = document.getElementById("gewicht").value;
+        let nieuweWachtwoord = document.getElementById("wachtwoord").value;
         const rooturl = "https://scrumserver.tenobe.org/scrum/api";  
         let url=rooturl+'/profiel/read_one.php?id='+profielId;
                       
@@ -125,9 +126,9 @@ document.getElementById("bewerken").onclick = function()
                 let urlUpdate=rooturl+'/profiel/update.php';
 
                 data = { "id" : profielId,
-                         "voornaam" : nieuweVoornaam,
-                         "voornaam" : nieuweVoornaam,
-                         "voornaam" : nieuweVoornaam,
+                         "familienaam" : nieuweAchternaam,
+                         "achternaam" : nieuweAchternaam,
+                         "sexe" : nieuweSexe,
                          "voornaam" : nieuweVoornaam,
                          "voornaam" : nieuweVoornaam,
                          "voornaam" : nieuweVoornaam,
