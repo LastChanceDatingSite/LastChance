@@ -59,8 +59,6 @@ function lijstGebruikers(gebruiker) {
     document.getElementById("gebruikerGrootte").innerText = gebruiker.grootte;
     document.getElementById("lovecoins").innerText = gebruiker.lovecoins;
     document.getElementById("avatar").src = "https://scrumserver.tenobe.org/scrum/img/" + gebruiker.foto;
-    console.log(document.getElementById("avatar").src);
-    console.log("heydaarbabe");
 
     // profiel bewerken
     document.getElementById("achternaam").value = gebruiker.familienaam;
@@ -70,7 +68,6 @@ function lijstGebruikers(gebruiker) {
     document.getElementById("nickname").value = gebruiker.nickname;
     document.getElementById("beroep").value = gebruiker.beroep;
     document.getElementById("sexe").value = gebruiker.sexe;
-    console.log(document.getElementById("mijnfoto").src);
     document.getElementById("mijnfoto").src = gebruiker.foto;
     document.getElementById("haarkleur").value = gebruiker.haarkleur;
     document.getElementById("oogkleur").value = gebruiker.oogkleur;
