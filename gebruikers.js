@@ -59,6 +59,8 @@ function lijstGebruikers(gebruiker) {
     document.getElementById("gebruikerGrootte").innerText = gebruiker.grootte;
     document.getElementById("lovecoins").innerText = gebruiker.lovecoins;
     document.getElementById("avatar").src = "https://scrumserver.tenobe.org/scrum/img/" + gebruiker.foto;
+    //foto lokaal opslaan
+    localStorage.setItem("fotoVanDeGebruiker", gebruiker.foto);
 
     // profiel bewerken
     document.getElementById("achternaam").value = gebruiker.familienaam;
