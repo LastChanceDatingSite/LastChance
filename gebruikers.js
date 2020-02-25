@@ -49,7 +49,7 @@ function startDisplay() {
 // gepaste values worden in geladen
 function lijstGebruikers(gebruiker) {
 
-    console.log(gebruiker.achternaam);
+    
     console.log(gebruiker.beroep);
     document.getElementById("gebruikerWeergave").style.display = "block";
     document.getElementById("gebruikerBeroep").innerText = gebruiker.beroep;
@@ -60,6 +60,8 @@ function lijstGebruikers(gebruiker) {
     document.getElementById("gebruikerGrootte").innerText = gebruiker.grootte;
     document.getElementById("lovecoins").innerText = gebruiker.lovecoins;
     document.getElementById("avatar").src = "https://scrumserver.tenobe.org/scrum/img/" + gebruiker.foto;
+    console.log(document.getElementById("avatar").src);
+    console.log("heydaarbabe");
 
     console.log(gebruiker.achternaam);
     document.getElementById("achternaam").value = gebruiker.familienaam;
@@ -69,14 +71,13 @@ function lijstGebruikers(gebruiker) {
     document.getElementById("nickname").value = gebruiker.nickname;
     document.getElementById("beroep").value = gebruiker.beroep;
     document.getElementById("sexe").value = gebruiker.sexe;
+    console.log(document.getElementById("mijnfoto").src);
     document.getElementById("mijnfoto").src = gebruiker.foto;
     document.getElementById("haarkleur").value = gebruiker.haarkleur;
     document.getElementById("oogkleur").value = gebruiker.oogkleur;
     document.getElementById("grootte").value = gebruiker.grootte;
     document.getElementById("gewicht").value = gebruiker.gewicht;
     document.getElementById("wachtwoord").value = gebruiker.wachtwoord;
-
-
 }
 
 function sterrenbeeldAfhalen(gebruiker) {

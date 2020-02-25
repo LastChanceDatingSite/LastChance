@@ -47,6 +47,7 @@ async function persoonToevoegen() {
         var encodedData = btoa(afbeelding);
         console.log(encodedData);
         var eindCode = afbeelding + ";base64," + encodedData;
+        console.log(eindCode);
 
         let link = 'https://scrumserver.tenobe.org/scrum/api/image/upload.php';
         
@@ -90,21 +91,6 @@ async function persoonToevoegen() {
 
     };
 
-    let nickdata = document.getElementById("nickname").value;
-    var request = new Request(exi, {
-        method: 'POST',
-        body: JSON.stringify(nickdata),
-        headers: new Headers({
-            'Content-Type': 'application/json'
-        })
-    });
-
-    fetch(request)
-        .then(function (resp) {
-            return resp.json();
-        })
-        .then(function (nickdata) {
- 
             var request = new Request(url, {
                 method: 'POST',
                 body: JSON.stringify(data),
@@ -119,15 +105,9 @@ async function persoonToevoegen() {
                 })
                 .then(function (data) {
                     localStorage.setItem("gebruiker", data.id);
-                    window.location.replace("gebruikers.html");
+                    // window.location.replace("gebruikers.html");
                 })
                 .catch(function (error) {
                     console.log(error);
                 });
-
-
-        })
-        .catch(function (error) {
-            console.log(error);
-        });
 }
