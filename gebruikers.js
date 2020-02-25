@@ -122,6 +122,7 @@ document.getElementById("home").onclick=function(){
     //update
     document.getElementById("home").style.display = "none"; //bovenste knop
     document.getElementById("gebruikerWeergave").style.display = "inline"; 
+    window.location.replace("gebruikers.html");
 }
 
 
@@ -237,6 +238,9 @@ document.getElementById("favorieten").addEventListener('click', function (e) {
 
                     const li = document.createElement("li");
                     const hyperlink = document.createElement("a");
+                   // const img = document.createElement("img");
+                    const img="<img src=\" https://scrumserver.tenobe.org/scrum/img/" + eenProfiel.foto + "\" >";
+                    console.log(img);
                     hyperlink.innerText = eenProfiel.nickname;
                     hyperlink.href = "#";
                     hyperlink.dataset.index = index++;
@@ -244,9 +248,13 @@ document.getElementById("favorieten").addEventListener('click', function (e) {
                     {
                         localStorage.setItem("gezochteGebruiker", eenProfiel.id);
                         window.location.replace("gezochtProfiel.html");
+                        
                     }
                     console.log(hyperlink);
+                    hyperlink.innerHTML = "<div class='mediumIcons'>" + img + " <br> " + eenProfiel.nickname + "</div>";
                     li.appendChild(hyperlink);
+                   // li.appendChild(img);
+                    
                     favorietenLijst.appendChild(li);
                 }
             }
