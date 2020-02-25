@@ -129,6 +129,7 @@ function laadBerichtenVanDezeGebruiker(data) {
 function toonChatgesprekMetDezeGebruiker(dataChatgesprekDezeGebruiker) {
     console.log("toon chatgesprek met deze gebruiker");
     //console.log(dataChatgesprekDezeGebruiker);
+    
     dataChatgesprekDezeGebruiker.forEach(element => {
         //console.log("chatbericht:");
         //console.log(element["bericht"]);
@@ -142,8 +143,6 @@ function toonChatgesprekMetDezeGebruiker(dataChatgesprekDezeGebruiker) {
 function toonAlGeschrevenChatbericht(chatbubble) {
     console.log("chatbericht schrijven");
     const chatGesprekMetAndereGebruiker = document.getElementById("chatGesprek");
-
-
     const benIkZender = chatbubble["benIkZender"];
     const bubbleWrapper = document.createElement("div");
     bubbleWrapper.className = "bubbleWrapper";
@@ -209,7 +208,13 @@ document.getElementById("stuurTekst").addEventListener("click", function (e) {
     fetch(request)
         .then(function (resp) { return resp.json(); })
         .then(function (data) { console.log(data);
-                window.location.replace("chatbox.html") 
-            })
+            // de volledige pagina refreshen. dit is niet nodig 
+            //    window.location.replace("chatbox.html") 
+            haalHetLaatsteBerichtOpEnSchrijf();
+        })
         .catch(function (error) { console.log(error); });
 });
+
+function haalHetLaatsteBerichtOpEnSchrijf(){
+    console.log("haal het laatste bericht op en schrijf");
+}
