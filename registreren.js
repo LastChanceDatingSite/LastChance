@@ -1,12 +1,12 @@
 "use strict";
 let Base64;
 //Is the user NOT authenticated?
-if (localStorage.getItem('gebruiker') !== null && localStorage.getItem('gebruiker') !== "undefined") {
-    window.open("gebruikers.html", "_self");
-}
-else {
-    //The user is NOT authenticated.
-}
+// if (localStorage.getItem('gebruiker') !== null && localStorage.getItem('gebruiker') !== "undefined") {
+//     window.open("gebruikers.html", "_self");
+// }
+// else {
+//     //The user is NOT authenticated.
+// }
 
 var today = new Date();
 var dd = today.getDate();
@@ -22,12 +22,14 @@ if (mm < 10) {
 today = yyyy + '-' + mm + '-' + dd;
 document.getElementById("geboortedatum").setAttribute("max", today);
 
+//Als alles correct ingevuld is voegt hij de functie persoonToevoegen uit
 document.getElementById("buttonInschrijven").onclick = function () {
     if (invoerCorrect()) {
-        persoonToevoegen();
+        existTesten();
     }
 }
 
+//Controleert als alle velden correct ingevuld zijn
 function invoerCorrect() {
     const verkeerdeElementen = document.querySelectorAll("input:invalid,select:invalid");
     for (const element of verkeerdeElementen) {
@@ -41,6 +43,42 @@ function invoerCorrect() {
     return verkeerdeElementen.length === 0;
 }
 
+async function existTesten() {
+let url = 'https://scrumserver.tenobe.org/scrum/api/profiel/exists.php';
+let nicknameData = {
+    "nickname": document.getElementById("nickname").value
+}
+
+var request = new Request(url, {
+    method: 'POST',
+    body: JSON.stringify(nicknameData),
+    headers: new Headers({
+        'Content-Type': 'application/json'
+    })
+});
+
+fetch(request)
+    .then(function (resp) { return resp.json(); })
+    .then(async function (nicknameData) {
+        const FotoFileUrl = await nicknameData.fileName;
+        if (nicknameData.message === "Profiel nickname beschikbaar") {
+            persoonToevoegen();    
+        }
+        else {
+            document.getElementById("nicknameFout").innerText = "Deze nickname bestaal al!"
+            document.getElementById("nicknameFout").style.display = "inline";
+        }
+
+        console.log(nicknameData);
+    })
+
+
+    .catch(function (error) { console.log(error); });
+
+}
+
+
+//Encoderen naar Base64
 function getBase() {
     const input = document.querySelector('input[type=file]')
     const file = input.files[0];
@@ -54,20 +92,21 @@ function getBase() {
     }
 }
 
+
 async function NieuweProfiel(FotoFileUrl) {
     let url = 'https://scrumserver.tenobe.org/scrum/api/profiel/create.php';
 
     let data = {
-        familienaam: document.getElementById("achternaam").value,
+          beroep: document.getElementById("beroep").value,
+        sexe: document.getElementById("sexe").value,
+        haarkleur: document.getElementById("haarkleur").value,
+     familienaam: document.getElementById("achternaam").value,
         voornaam: document.getElementById("voornaam").value,
         geboortedatum: document.getElementById("geboortedatum").value,
         email: document.getElementById("emailadres").value,
         nickname: document.getElementById("nickname").value,
         foto: FotoFileUrl,
-        beroep: document.getElementById("beroep").value,
-        sexe: document.getElementById("sexe").value,
-        haarkleur: document.getElementById("haarkleur").value,
-        oogkleur: document.getElementById("oogkleur").value,
+         oogkleur: document.getElementById("oogkleur").value,
         grootte: document.getElementById("grootte").value,
         gewicht: document.getElementById("gewicht").value,
         wachtwoord: document.getElementById("wachtwoord").value,
@@ -75,9 +114,6 @@ async function NieuweProfiel(FotoFileUrl) {
         lovecoins: "3"
 
     };
-    console.log(FotoFileUrl);
-    console.log("test");
-    console.log(data.foto);
 
     var request = new Request(url, {
         method: 'POST',
