@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>chat box</title>
+	<link rel="stylesheet" href="css/ChatboxStyle.css">
+	<script src="ChatbboxScript.js" defer></script>
+	<script src="chatberichten.js" defer></script>
+
+</head>
+
+<body>
+	<div class="centraal">
+		<!-- Demo over berichten -->
+		<h3>Voorbeelden met berichten</h3>
+
+
+		<table>
+			<thead>
+				<tr>
+					<th>Omschrijving</th>
+					<th>Invoerparameters</th>
+					<th class="rb"></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Alle bericht opvragen van een gebruiker</td>
+					<td>
+						<label for="input20_1" class="api_demo_lbl">profiel id : </label>
+						<input type="text" id="input20_1" value="1" class="api_demo_param" /><br />
+					</td>
+					<td><button class="myButton" type="button" id="knop20">Voer Uit</button></td>
+				</tr>
+				<tr>
+					<td>Lees een bericht</td>
+					<td>
+						<label for="input21_1" class="api_demo_lbl">bericht id : </label>
+						<input type="text" id="input21_1" value="11" class="api_demo_param" /><br />
+					</td>
+					<td><button class="myButton" type="button" id="knop21">Voer Uit</button></td>
+				</tr>
+				<tr>
+					<td>Post een bericht</td>
+					<td>
+						<label for="input22_1" class="api_demo_lbl">van Profiel id : </label>
+						<input type="text" id="input22_1" value="6" class="api_demo_param" /><br />
+						<label for="input22_2" class="api_demo_lbl">naar Profiel id : </label>
+						<input type="text" id="input22_2" value="7" class="api_demo_param" /><br />
+						<label for="input22_3" class="api_demo_lbl">bericht : </label>
+						<textarea id="input22_3" class="api_demo_param_text">
+Un peu de poivre,
+un peu de sel, 
+un peu d'amour, 
+un peu de miel
+</textarea><br />
+					</td>
+					<td><button class="myButton" type="button" id="knop22">Voer Uit</button></td>
+				</tr>
+				<tr>
+					<td>Update de status van een bericht</td>
+					<td>
+						<label for="input24_1" class="api_demo_lbl">bericht id : </label>
+						<input type="text" id="input24_1" value="11" class="api_demo_param" /><br />
+
+						<label for="input24_2" class="api_demo_lbl">status : </label>
+
+						<select id="input24_2" class="api_demo_param_chb">
+							<option value="verzonden" selected>verzonden</option>
+							<option value="ontvangen">ontvangen</option>
+							<option value="gelezen">gelezen</option>
+						</select>
+
+					</td>
+					<td><button class="myButton" type="button" id="knop24">Voer Uit</button></td>
+				</tr>
+				<tr>
+					<td>Verwijder een bericht</td>
+					<td>
+						<label for="input23_1" class="api_demo_lbl">bericht id : </label>
+						<input type="text" id="input23_1" value="11" class="api_demo_param" /><br />
+					</td>
+					<td><button class="myButton" type="button" id="knop23">Voer Uit</button></td>
+				</tr>
+			</tbody>
+		</table>
+
+
+		<div class="chatPersoon">
+			<ul id="berichtenLijst">
+				<!-- 
+		<li><a href="#"><div class="mediumIcons">one</div></a></li>
+		<li><a href="#"><div class="mediumIcons">two</div></a></li>
+		<li><a href="#"><div class="mediumIcons">three</div></a></li> 
+	-->
+			</ul>
+		</div>
+		<br>
+
+
+		<div class="groteContainer">
+			<div class="container" id="chatGesprek">
+				<div class="bubbleWrapper">
+					<div class="inlineContainer">
+						<img class="inlineIcon"
+							src="https://cdn1.iconfinder.com/data/icons/ninja-things-1/1772/ninja-simple-512.png">
+						<div class="otherBubble other">
+							No ninjas!
+						</div>
+					</div>
+					<span class="other">08:41</span>
+				</div>
+				<div class="bubbleWrapper">
+					<div class="inlineContainer own">
+						<img class="inlineIcon"
+							src="https://www.pinclipart.com/picdir/middle/205-2059398_blinkk-en-mac-app-store-ninja-icon-transparent.png">
+						<div class="ownBubble own">
+							The first rule of being a ninja is, 'Do no harm.'
+						</div>
+					</div><span class="own">08:55</span>
+				</div>
+				<div class="bubbleWrapper">
+					<div class="inlineContainer">
+						<img class="inlineIcon"
+							src="https://cdn1.iconfinder.com/data/icons/ninja-things-1/1772/ninja-simple-512.png">
+						<div class="otherBubble other">
+							Knowing when to leave requires training.
+						</div>
+					</div><span class="other">10:13</span>
+				</div>
+				<div class="bubbleWrapper">
+					<div class="inlineContainer own">
+						<img class="inlineIcon"
+							src="https://www.pinclipart.com/picdir/middle/205-2059398_blinkk-en-mac-app-store-ninja-icon-transparent.png">
+						<div class="ownBubble own">
+							Stunned but impressed.
+						</div>
+					</div><span class="own">11:07</span>
+				</div>
+				<div class="bubbleWrapper">
+					<div class="inlineContainer">
+						<img class="inlineIcon"
+							src="https://cdn1.iconfinder.com/data/icons/ninja-things-1/1772/ninja-simple-512.png">
+						<div class="otherBubble other">
+							How about throwing stars?
+						</div>
+					</div><span class="other">11:11</span>
+				</div>
+
+			</div>
+			<div class="textbox">
+				<textarea id="teSturenTekst" placeholder="tik hier je tekst..."></textarea>
+				<button id="stuurTekst">go</button>
+			</div>
+		</div>
+	</div>
+
+
+</body>
+
+</html>

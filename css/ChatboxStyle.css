@@ -1,0 +1,375 @@
+@charset "utf-8";
+/*CSS document voor Last Chance Datingsite*/
+/* basis 1em = 16 px
+   4px  = 0.25em
+   6px  = 0.375em
+   8px  = 0.5em
+   10px = 0.625em
+   12px = 0.75em
+   14px = 0.875em
+   18px = 1.125em
+   20px = 1.25em
+   22px = 1.375em
+   24px = 1.5em
+   32px = 2em
+*/
+/*NogTeDoen*/
+.NogTeDoen {
+    background-color: red;
+    color: white;
+}
+table, th, td{
+    border: 1px solid rebeccapurple;
+}
+/* NORMALIZE */
+html, body, div, section, article, aside, nav {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+    background-color: lightgoldenrodyellow;
+ }
+ img {
+    border: none;
+    width: 5em;
+    height: 5em;
+    margin: 0em 0em 0em 0em;
+ }
+.centraal {
+    text-align: center;
+}
+
+button{
+    display: inline-block;
+    background-color:rgb(158, 75, 147);/* color == very light purple*/
+    padding: 1em; /*6px 8px*/
+    border: 1px solid #b1b1b1;
+    margin: 10px;
+    color: white;
+    text-decoration: none;
+    letter-spacing: 0.1em;
+    border:none;
+    border-radius: 4px;
+}
+a{
+    text-decoration: none;
+}
+.bigButton:hover, button:hover{
+    text-decoration: none;
+    background-color: darksalmon;
+    color: white;
+}
+.bigButton:active, button:active{
+    background-color: slateblue;
+}
+.bigButton{
+    background-color:rgb(158, 75, 147);/* color == very light purple*/
+    display: inline-flex;
+    justify-content: center;
+    margin: 2%;
+    height: 5em;
+    min-width: 17.5em;
+    width: 75%;
+    max-width: 40em;
+    font-size: 1em;
+    padding: 0.5em; /*6px 8px*/
+    border: 1px solid #b1b1b1;
+    color:white;
+    text-decoration: none;
+    letter-spacing: 0.1em;
+    align-items: center;
+    text-decoration: none;
+    border-radius: 4px;
+}
+label{
+    display: inline-block;
+    width: 9em;
+    padding: 0.25em;
+    text-align: right;
+}
+
+input, select{
+    display: inline-block;
+    padding: 2px;
+    margin:0px;
+    border: 1px solid  #b1b1b1;
+    background-color: #dddddd;
+    width: 75%;
+    max-width: 25em;
+    border-radius: 4px;
+}
+/*** TOPMENU ***/
+.topfoto img{
+    width: 100%;
+    max-width: 60em;
+    height: 80%;
+    margin: 5em 0em 0em 0em;
+} 
+.topmenu {
+    background-color: lightgoldenrodyellow;
+    overflow: hidden;
+    position: fixed;
+    min-height: 3em;
+    width: 100%;
+    margin: 0em;
+}
+.topmenu ol {
+    list-style-type: none;
+    width: 100%;
+    max-width: 60em;
+    margin-left: 10%;
+   
+}
+
+.topmenu ol li {
+    float: left;
+    color: #000000;
+    text-decoration: none;
+    letter-spacing: 0.1em;
+}
+
+.topmenu ol li a {
+    padding: 0.5em; /*6px 8px*/
+    margin: 10px;
+    color: #000000;
+    text-decoration: none;
+    letter-spacing: 0.1em; 
+}
+.topmenu ol li a:hover{
+    text-decoration: none;
+    background-color: darksalmon;
+    color: white;
+}
+.topmenu ol li a:active{
+    background-color: slateblue;
+}
+    
+.topmenu ol li a.actief {
+    text-decoration: none;
+    background: rgb(158, 75, 147);
+    color: white;
+}
+
+/***Formulieren***/
+.formulier, .favorieten, .chatPersoon {
+    width: 90%;
+    max-width: 50em;
+    text-align: center;
+    display: inline;
+}
+.marge {
+    margin-left: 15%;
+}
+.formulier div, .favorieten div, .chatPersoon div{
+    margin: 0.5em;
+}
+
+/***Zoeken lijst weergeven***/
+#gebruikersLijst, #favorietenlijst, #berichtenLijst {
+    padding: 0;
+    list-style-type: none;
+    width: 100%;
+    max-width: 54em;
+    display: inline-block;
+}
+
+#gebruikersLijst li, #favorietenlijst li, #berichtenLijst li{
+    background-color: rgb(158, 75, 147);
+    display: inline-block;
+    width: 16em;
+    height: 8em;
+    margin: 0.5em ;
+    color: #000000;
+    text-decoration: none;
+    letter-spacing: 0.1em;
+    text-align: center;
+    overflow:hidden;
+    border-radius: 4px;
+}
+
+#gebruikersLijst li a, #favorietenlijst li a, #berichtenLijst li a {
+    color: #000000;
+    text-decoration: none;
+    letter-spacing: 0.1em; 
+}
+.mediumIcons {
+    background-color: peachpuff;
+    height:7em;
+    width: 15em;
+    align-items: center;
+    border-radius: 4px;
+}
+
+.mediumIcons:hover{
+    background: darksalmon;
+    color: white;
+}
+.mediumIcons:active{
+    background-color: slateblue;
+}
+/***RECLAME***/
+.reclame {
+    width: 100%;
+    max-width: 60em;
+    text-align: center;
+    display: inline-block;
+}
+
+.reclame h1{
+    max-width: 51em;
+    margin: 1em;
+}
+
+.reclame img {
+    width: 15em;
+    height: 15em;
+    margin: 1em;
+}
+
+/***Profielweergave***/
+.profiel {
+    width:80%;
+    max-width: 60em;
+    padding:0;
+    margin:0;
+}
+
+#gebruikerWeergave{
+    width:  100%;
+    display:inline-block;
+    padding:0;
+    margin:0;
+}
+
+#gebruikerWeergave dt{
+    text-align: right;
+    border-radius: 4px;
+    width:7em;
+    background-color: rosybrown;
+    display:inline-block;
+    padding:0.125em;
+    margin:0.125em;
+}
+
+#gebruikerWeergave dd{
+    text-align: left;
+    border-radius: 4px;
+    width:50%;
+    max-width: 30em;
+    background-color: silver;
+    display:inline-block;
+    padding:0.125em;
+    margin:0.125em;
+}
+
+#gebruikerWeergave img{
+    margin: 0;
+    padding: 1em;
+    width: 15em;
+    height: 15em;
+}
+
+/***Foutmelding***/
+.feedback, .Fout {
+    color: white;
+    padding-left: 0.2em;
+    padding-right: 0.2em;
+}
+
+.feedback {
+    background-color: navy;
+}
+
+.Fout {
+    background-color: red;
+    display:none;
+    margin-top:0.5em;
+}
+
+.feedback:empty, .Fout:empty {
+    display: none;
+}
+
+/***berichtenMenu***/
+.chatPersoon {
+  background-color: lime;
+  width: 90%;
+  max-width: 50em;
+  text-align: center;
+  display: inline;
+}
+/*
+.chatPersoon div{;
+  margin: 0.5em;
+}*/
+
+#berichtenLijst {
+  background-color:blue;
+  height: 9em;
+  overflow: auto;
+}
+/* berichten */
+  .container{
+    height: 50em;
+    border: 1px solid;
+    overflow: auto;
+    width:75%;
+    min-width: 27em;
+    max-width: 60em;
+  }
+  .bubbleWrapper {
+    padding: 10px 10px;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    align-self: flex-end;
+    color: #fff;
+  }
+  .inlineContainer {
+    display: inline-flex;
+  }
+  .inlineContainer.own {
+    flex-direction: row-reverse;
+  }
+  .inlineIcon {
+    width:20px;
+    height: 20px;
+    object-fit: contain;
+    margin-top: auto;
+    border-radius: 10px;
+  }
+  .ownBubble {
+    min-width: 60px;
+    max-width: 700px;
+    padding: 14px 18px;
+    margin: 6px 8px;
+    background-color: #5b5377;
+    border-radius: 16px 16px 0 16px;
+    border: 1px solid #443f56;
+  }
+  .otherBubble {
+    min-width: 60px;
+    max-width: 700px;
+    padding: 14px 18px;
+    margin: 6px 8px;
+    background-color: #6C8EA4;
+    border-radius: 16px 16px 16px 0;
+    border: 1px solid #54788e;
+    
+  }
+  .own {
+    align-self: flex-end;
+  }
+  .other {
+    align-self: flex-start;
+  }
+  span.own,
+  span.other{
+    font-size: 14px;
+    color: grey;
+  }
+  /***Publiek en verborgen***/
+
+.verborgen {
+  display: none;
+}
