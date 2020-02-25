@@ -26,6 +26,7 @@ async function eenProfielAfhalen() {
         lijstGebruikers(eenProfiel);
         document.getElementById("update").style.display = "none";
         document.getElementById("sterrenbeeld").src = sterrenbeeldAfhalen(eenProfiel);
+        localStorage.setItem("lovecoins", eenProfiel.lovecoins);
         return eenProfiel;
     }
     else {
@@ -52,8 +53,7 @@ function startDisplay() {
 // gepaste values worden in geladen
 function lijstGebruikers(gebruiker) {
 
-    
-    console.log(gebruiker.beroep);
+    // kort profiel
     document.getElementById("gebruikerWeergave").style.display = "block";
     document.getElementById("gebruikerBeroep").innerText = gebruiker.beroep;
     document.getElementById("gebruikerSexe").innerText = gebruiker.sexe;
@@ -63,6 +63,8 @@ function lijstGebruikers(gebruiker) {
     document.getElementById("gebruikerGrootte").innerText = gebruiker.grootte;
     document.getElementById("lovecoins").innerText = gebruiker.lovecoins;
     document.getElementById("avatar").src = "https://scrumserver.tenobe.org/scrum/img/" + gebruiker.foto;
+    //foto lokaal opslaan
+    localStorage.setItem("fotoVanDeGebruiker", gebruiker.foto);
 
     // profiel bewerken
     document.getElementById("achternaam").value = gebruiker.familienaam;
@@ -263,7 +265,7 @@ document.getElementById("favorieten").addEventListener('click', function (e) {
                         localStorage.setItem("favorietId", favorietId)
                         console.log(favorietId);
                         localStorage.setItem("gezochteGebruiker", eenProfiel.id);
-                        window.location.replace("gezochtProfiel.html");
+                        window.location.replace("favorietProfiel.html");
                     }
                     hyperlink.innerHTML = "<div class='mediumIcons'>" + img + " <br> " + eenProfiel.nickname + "</div>";
                     li.appendChild(hyperlink);

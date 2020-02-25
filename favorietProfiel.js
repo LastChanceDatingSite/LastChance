@@ -31,9 +31,8 @@ async function eenProfielAfhalen()
 };
 
 // profiel wordt weergegeven
-async function profielWeergeven(gebruiker) 
+ function profielWeergeven(gebruiker) 
 {
-    await favorietControle(gebruiker.id);
     document.getElementById("gebruikerWeergave").style.display = "block";
     document.getElementById("gebruikerNickname").innerText = gebruiker.nickname;
     document.getElementById("gebruikerBeroep").innerText = gebruiker.beroep;
@@ -83,6 +82,7 @@ function sterrenbeeldAfhalen(gebruiker) {
 
 document.getElementById("favorietVerwijderen").onclick = function()
 {
+    console.log("tothier");
     const favorietId = localStorage.getItem("favorietId");
     const foutDiv = document.getElementById("fout");
     
@@ -105,9 +105,51 @@ document.getElementById("favorietVerwijderen").onclick = function()
         fetch(request)
             .then( function (resp)  { return resp.json(); })
             .then( function (data)  { console.log(data); 
-                foutDiv.innerText = "Favoriet verwijderd";
-                document.getElementById("favorietVerwijderen").style.display = "none";  })
+                foutDiv.innerText = "Favoriet verwijderd"; 
+                document.getElementById("favorietVerwijderen").style.display = "none"; 
+                 favorietMetaVerwijderen(); })
             .catch(function (error) { console.log(error); });
     
 };
+
+async function favorietMetaVerwijderen() 
+{
+const id = localStorage.getItem("gezochteGebruiker");
+const rooturl = "https://scrumserver.tenobe.org/scrum/api";  
+let url=rooturl+'/profiel/read_one.php?id='+ id;
+              
+fetch(url)
+    .then(function (resp) { return resp.json(); }) //haal de JSON op en stuur die als resultaat van je promise                         
+    .then(function (data) {
+        //nadat de vorige promise opgelost werd kwamen we in deze procedure tercht
+        //hier kunnen we nu , met het resultat (data) van de vorige promise, aan de slag
+        //we passen de voornaam aan en sturen ook dit terug zodat deze promise afgesloten kan worden                        
+        let urlUpdate=rooturl+'/profiel/update.php';
+
+        data = { "id" : id,
+                 "metadata" : ""
+                 };
+        
+        var request = new Request(urlUpdate, {
+            method: 'PUT',
+            body: JSON.stringify(data),
+            headers: new Headers({
+                'Content-Type': 'application/json'
+            })
+        });
+
+
+
+    fetch(request)
+    .then(function (resp) {
+        return resp.json();
+    })
+    .then(function (data) {
+      console.log(data);
+    })
+    .catch(function (error) {
+        console.log(error);
+    });
+
+})};
         
