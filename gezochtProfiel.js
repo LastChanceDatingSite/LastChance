@@ -1,6 +1,15 @@
 "use strict";
 
 
+//Is the user authenticated?
+if (localStorage.getItem('gebruiker') === null || localStorage.getItem('gebruiker') === "undefined") {
+    window.open("AccessDenied.html","_self");
+}
+else {
+//The user is authenticated and the authentication has not expired.
+
+}
+
 
 eenProfielAfhalen();
 
@@ -8,8 +17,6 @@ eenProfielAfhalen();
 async function eenProfielAfhalen() 
 {
     const gebruikerId = localStorage.getItem("gezochteGebruiker");
-   /* console.log(gezochteGebruiker);
-    const gebruikerId = gezochteGebruiker.id;*/
     const response =
         await fetch("https://scrumserver.tenobe.org/scrum/api/profiel/read_one.php?id=" + gebruikerId);
     if (response.ok) {
@@ -20,13 +27,14 @@ async function eenProfielAfhalen()
         return eenProfiel;
     }                                      
     else {
-        document.getElementById("nietGevonden").style.display = "block";
+        foutDiv.innerText = "Er liep iets fout.";
     }
 };
 
 // profiel wordt weergegeven
 function profielWeergeven(gebruiker) 
 {
+    favorietControle(gebruiker.id);
     document.getElementById("gebruikerWeergave").style.display = "block";
     document.getElementById("gebruikerNickname").innerText = gebruiker.nickname;
     document.getElementById("gebruikerBeroep").innerText = gebruiker.beroep;
@@ -35,19 +43,15 @@ function profielWeergeven(gebruiker)
     document.getElementById("gebruikerHaarkleur").innerText = gebruiker.haarkleur;
     document.getElementById("gebruikerGewicht").innerText = gebruiker.gewicht;
     document.getElementById("gebruikerGrootte").innerText = gebruiker.grootte;
-    console.log(gebruiker.foto);
     document.getElementById("avatar").src = "https://scrumserver.tenobe.org/scrum/img/" + gebruiker.foto;
 }
 
 // sterrenbeeld wordt bepaald en weergegeven
 function sterrenbeeldAfhalen(gebruiker) {
 
-    console.log(gebruiker.geboortedatum);
     const geboortedatum = new Date(gebruiker.geboortedatum);
     const month = geboortedatum.getMonth() + 1;
-    console.log(month);
     const day = geboortedatum.getDay();
-    console.log(day);
 
     if ((month == 1 && day <= 20) || (month == 12 && day >= 22)) {
         return "img/sterrenbeeld/steenbok.png";
@@ -97,19 +101,23 @@ function sterrenbeeldAfhalen(gebruiker) {
                 'Content-Type': 'application/json'
             })
         });
-        
+
+        if (data.lovecoins === "0")
+                {
+                    foutDiv.innerText = "Geen lovecoins meer!"
+                }
+                else
+                {
         fetch(request)
             .then( function (resp)  { return resp.json(); })
-            .then( function (data)  { console.log(data);  })
-            .catch(function (error) { console.log(error); });
+            .then( function (data)  { console.log(data);
+                                       favorietInstellen(gezochteId); 
+                                       favorietControle(gezochteId); })
+            .catch(function (error) { console.log(error); });}
    
 
      
-      //  let profielId =  localStorage.getItem("gebruiker");
-       // console.log(profielId);
         let bedrag =  -1;
-        console.log(bedrag);
-      //  const rooturl = "https://scrumserver.tenobe.org/scrum/api";
         let favUrl=rooturl+'/profiel/read_one.php?id='+ gebruikerId;
                        
         fetch(favUrl)
@@ -120,11 +128,11 @@ function sterrenbeeldAfhalen(gebruiker) {
                 //we passen de voornaam aan en sturen ook dit terug zodat deze promise afgesloten kan worden                        
                 if (data.lovecoins === "0")
                 {
-                    console.log(data.lovecoins);
                     foutDiv.innerText = "Geen lovecoins meer!"
                 }
                 else
                 {
+                   
                 let urlUpdate=rooturl+'/profiel/lovecoinTransfer.php';
 
                 data = {"profielID": gebruikerId,
@@ -140,7 +148,7 @@ function sterrenbeeldAfhalen(gebruiker) {
                 fetch(request)
                     .then(function (resp)   { return resp.json(); })
                     .then(function (data)   { console.log(data);
-                                              if (data.message === "Transactie werd niet uitgevoerd. Geen Lovecoins genoeg")
+                                              if (data.message === "Transactie werd uitgevoerd.")
                                               {
                                               console.log("gelukt");
                                               
@@ -154,4 +162,35 @@ function sterrenbeeldAfhalen(gebruiker) {
                 console.log(error);
             });
     });
+
+    async function favorietInstellen(id) 
+{
+    const gebruikerId = id;
+    const response =
+        await fetch("https://scrumserver.tenobe.org/scrum/api/profiel/read_one.php?id=" + gebruikerId);
+    if (response.ok) {
+        const eenProfiel = await response.json();
+        
+        eenProfiel.metadata = "favoriet";
+        console.log(eenProfiel);
+    }                                      
+    else {
+        foutDiv.innerText = "Er liep iets fout.";
+    }
+};
+
+async function favorietControle(id)
+{
+    const gebruikerId = id;
+    const response =
+        await fetch("https://scrumserver.tenobe.org/scrum/api/profiel/read_one.php?id=" + gebruikerId);
+    if (response.ok) {
+        const eenProfiel = await response.json();
+        console.log(eenProfiel);
+        document.getElementById("favoriet").style.display = "none";
+    }                                      
+    else {
+        foutDiv.innerText = "Er liep iets fout.";
+    }
+}
         
