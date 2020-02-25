@@ -126,12 +126,13 @@ document.getElementById("bewerken").onclick = function () {
     document.getElementById("bewerken").style.display = "none"; //bovenste knop
     document.getElementById("formulierBewerken").style.display = "inline"; 
     document.getElementById("update").style.display = "inline-block";
+    document.getElementById("begroeting").style.display = "none";
 }
 
 // profiel updaten
     document.getElementById("update").addEventListener('click', function (e) {  
 
-        document.getElementById("begroeting").style.display = "none";
+        
         let profielId =  localStorage.getItem("gebruiker");
         let nieuweVoornaam =  document.getElementById("voornaam").value;
         let nieuweAchternaam =  document.getElementById("achternaam").value;
