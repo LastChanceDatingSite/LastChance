@@ -139,7 +139,6 @@ document.getElementById("bewerken").onclick = function () {
 // profiel updaten
     document.getElementById("update").addEventListener('click', function (e) {  
 
-        
         let profielId =  localStorage.getItem("gebruiker");
         let nieuweVoornaam =  document.getElementById("voornaam").value;
         let nieuweAchternaam =  document.getElementById("achternaam").value;
@@ -229,7 +228,6 @@ document.getElementById("favorieten").addEventListener('click', function (e) {
     fetch(url)
         .then(function (resp) { return resp.json(); })
         .then(function (data) {
-            console.log(data);
             let index = 0;
             for (const eenFavoriet of data) {
                 eenProfielAfhalen();
@@ -239,9 +237,7 @@ document.getElementById("favorieten").addEventListener('click', function (e) {
                     const response = await fetch("https://scrumserver.tenobe.org/scrum/api/profiel/read_one.php?id=" + gebruikerId);
                     if (response.ok) {
                         const eenProfiel = await response.json();
-                        console.log(data[index].id);
                         favorietenLijstMaken(eenProfiel, data[index].id);
-                        //index ++;
                         return eenProfiel;
                     }
                     else {
