@@ -178,9 +178,19 @@ document.getElementById("bewerken").onclick = function () {
                     })
                 });
 
-        })
-        .catch(function (error) {
-            console.log(error);
+        
+        
+            fetch(request)
+            .then(function (resp) {
+                return resp.json();
+            })
+            .then(function (data) {
+              console.log(data);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+
         });
 });
 
