@@ -32,9 +32,9 @@ async function eenProfielAfhalen()
 };
 
 // profiel wordt weergegeven
-function profielWeergeven(gebruiker) 
+async function profielWeergeven(gebruiker) 
 {
-    favorietControle(gebruiker.id);
+    await favorietControle(gebruiker.id);
     document.getElementById("gebruikerWeergave").style.display = "block";
     document.getElementById("gebruikerNickname").innerText = gebruiker.nickname;
     document.getElementById("gebruikerBeroep").innerText = gebruiker.beroep;
@@ -105,6 +105,10 @@ function sterrenbeeldAfhalen(gebruiker) {
         if (data.lovecoins === "0")
                 {
                     foutDiv.innerText = "Geen lovecoins meer!"
+                }
+                else if (data.message === "Kon favoriet niet aanmaken.")
+                {
+                    foutDiv.innerText = "kon favoriet niet aanmaken.";
                 }
                 else
                 {
