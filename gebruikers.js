@@ -2,13 +2,17 @@
 
 
 //Is the user authenticated?
-if (localStorage.getItem('gebruiker') === null || localStorage.getItem('gebruiker') === "undefined") {
-    window.open("AccessDenied.html","_self");
-}
-else {
-//The user is authenticated and the authentication has not expired.
+// if (localStorage.getItem('gebruiker') === null || localStorage.getItem('gebruiker') === "undefined") {
+//     window.open("AccessDenied.html","_self");
+// }
+// else {
+// //The user is authenticated and the authentication has not expired.
 
-}
+// }
+
+
+
+    
 
 eenProfielAfhalen();
 async function eenProfielAfhalen() {
@@ -130,6 +134,7 @@ document.getElementById("bewerken").onclick = function () {
     document.getElementById("begroeting").style.display = "none";
 }
 
+     
 // profiel updaten
     document.getElementById("update").addEventListener('click', function (e) {  
 
@@ -140,6 +145,7 @@ document.getElementById("bewerken").onclick = function () {
         let nieuweNickname = document.getElementById("nickname").value;
         let nieuweGeboortedatum = document.getElementById("geboortedatum").value;
         let nieuweBeroep = document.getElementById("beroep").value;
+        let nieuweFoto = FotoFileUrl;
         let nieuweEmail = document.getElementById("emailadres").value;
         let nieuweSexe = document.getElementById("sexe").value;
         let nieuweHaarkleur = document.getElementById("haarkleur").value;
