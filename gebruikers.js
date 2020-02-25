@@ -131,6 +131,7 @@ document.getElementById("bewerken").onclick = function () {
 // profiel updaten
     document.getElementById("update").addEventListener('click', function (e) {  
 
+        document.getElementById("begroeting").style.display = "none";
         let profielId =  localStorage.getItem("gebruiker");
         let nieuweVoornaam =  document.getElementById("voornaam").value;
         let nieuweAchternaam =  document.getElementById("achternaam").value;
@@ -186,6 +187,15 @@ document.getElementById("bewerken").onclick = function () {
             })
             .then(function (data) {
               console.log(data);
+              if (data.message === "Het profiel kon niet ge&uuml;pdatet worden. De nickname bestaat reeds.")
+              {
+                document.getElementById("updateFout").innerText = "Deze nickname bestaat al!";
+                console.log("probleempje");
+              }
+              else
+              {
+                  document.getElementById("updateFout").innerText = "";
+              }
             })
             .catch(function (error) {
                 console.log(error);
