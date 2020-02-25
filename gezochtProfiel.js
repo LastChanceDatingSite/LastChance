@@ -188,7 +188,6 @@ document.getElementById("favoriet").addEventListener('click', function (e) {
                 });
 
 
-
                 fetch(request)
                     .then(function (resp) {
                         return resp.json();
@@ -199,7 +198,6 @@ document.getElementById("favoriet").addEventListener('click', function (e) {
                     .catch(function (error) {
                         console.log(error);
                     });
-
             })
     };
 });

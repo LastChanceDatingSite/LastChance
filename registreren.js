@@ -100,7 +100,7 @@ async function NieuweProfiel(FotoFileUrl) {
           beroep: document.getElementById("beroep").value,
         sexe: document.getElementById("sexe").value,
         haarkleur: document.getElementById("haarkleur").value,
-     familienaam: document.getElementById("achternaam").value,
+        familienaam: document.getElementById("achternaam").value,
         voornaam: document.getElementById("voornaam").value,
         geboortedatum: document.getElementById("geboortedatum").value,
         email: document.getElementById("emailadres").value,
