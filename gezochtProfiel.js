@@ -20,7 +20,6 @@ async function eenProfielAfhalen() {
         await fetch("https://scrumserver.tenobe.org/scrum/api/profiel/read_one.php?id=" + gebruikerId);
     if (response.ok) {
         const eenProfiel = await response.json();
-        console.log(eenProfiel);
         profielWeergeven(eenProfiel);
         document.getElementById("sterrenbeeld").src = sterrenbeeldAfhalen(eenProfiel);
         return eenProfiel;
@@ -106,10 +105,8 @@ document.getElementById("favoriet").addEventListener('click', function (e) {
 
     if (lovecoins === "0") {
         foutDiv.innerText = "Geen lovecoins meer!"
-        console.log("tot hier.")
     }
     else {
-        console.log("tothier.")
         let data = {
             "mijnId": gebruikerId,
             "anderId": gezochteId
@@ -123,8 +120,6 @@ document.getElementById("favoriet").addEventListener('click', function (e) {
             })
         });
 
-
-
         fetch(request)
             .then(function (resp) { return resp.json(); })
             .then(function (data) {
@@ -132,9 +127,6 @@ document.getElementById("favoriet").addEventListener('click', function (e) {
                 favorietInstellen(gezochteId);
             })
             .catch(function (error) { console.log(error); });
-
-
-
 
 
         let bedrag = -1;
@@ -166,10 +158,6 @@ document.getElementById("favoriet").addEventListener('click', function (e) {
                     .then(function (resp) { return resp.json(); })
                     .then(function (data) { console.log(data); })
                     .catch(function (error) { console.log(error); });
-
-
-
-
             });
     }
 
