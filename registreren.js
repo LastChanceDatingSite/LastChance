@@ -1,11 +1,11 @@
 "use strict";
-let Base64; 
+let Base64;
 //Is the user NOT authenticated?
 if (localStorage.getItem('gebruiker') !== null && localStorage.getItem('gebruiker') !== "undefined") {
-    window.open("gebruikers.html","_self");
+    window.open("gebruikers.html", "_self");
 }
 else {
-//The user is NOT authenticated.
+    //The user is NOT authenticated.
 }
 
 var today = new Date();
@@ -41,57 +41,20 @@ function invoerCorrect() {
     return verkeerdeElementen.length === 0;
 }
 
-function getBase() 
-        {
-            const input = document.querySelector('input[type=file]')
-            const file = input.files[0];
-            const reader = new FileReader();
-            reader.addEventListener("load", function () {
-                Base64 = reader.result
-                console.log(Base64);
-            }, false);
-            if (file){
-                reader.readAsDataURL(file);
-            }
-        }
-async function persoonToevoegen() {
-        // base64start
-        function getBase() 
-        {
-            const input = document.querySelector('input[type=file]')
-            const file = input.files[0];
-            const reader = new FileReader();
-            reader.addEventListener("load", function () {
-                Base64 = reader.result
-                console.log(Base64);
-            }, false);
-            if (file){
-                reader.readAsDataURL(file);
-            }
-        }
-        let naam =  document.getElementById("mijnfoto").files.item(0).name;
-        let link = 'https://scrumserver.tenobe.org/scrum/api/image/upload.php';
-        console.log(naam);  
-        
-        let fotoGegevens = {
-            "naam": naam,
-            "afbeelding": Base64
-        };
+function getBase() {
+    const input = document.querySelector('input[type=file]')
+    const file = input.files[0];
+    const reader = new FileReader();
+    reader.addEventListener("load", function () {
+        Base64 = reader.result
+        console.log(Base64);
+    }, false);
+    if (file) {
+        reader.readAsDataURL(file);
+    }
+}
 
-        var request = new Request(link, {
-            method: 'POST',
-            body: JSON.stringify(fotoGegevens),
-            headers: new Headers({
-                'Content-Type': 'application/json'
-            })
-        });
-
-        fetch(request)
-            .then( function (resp)  { return resp.json(); })
-            .then( function (fotoGegevens)  { console.log(fotoGegevens);  })
-            .catch(function (error) { console.log(error); });
-
-
+async function NieuweProfiel(FotoFileUrl) {
     let url = 'https://scrumserver.tenobe.org/scrum/api/profiel/create.php';
 
     let data = {
@@ -100,7 +63,7 @@ async function persoonToevoegen() {
         geboortedatum: document.getElementById("geboortedatum").value,
         email: document.getElementById("emailadres").value,
         nickname: document.getElementById("nickname").value,
-        foto: document.getElementById("mijnfoto").value,
+        foto: FotoFileUrl,
         beroep: document.getElementById("beroep").value,
         sexe: document.getElementById("sexe").value,
         haarkleur: document.getElementById("haarkleur").value,
@@ -112,24 +75,63 @@ async function persoonToevoegen() {
         lovecoins: "3"
 
     };
+    console.log(FotoFileUrl);
+    console.log("test");
+    console.log(data.foto);
 
-            var request = new Request(url, {
-                method: 'POST',
-                body: JSON.stringify(data),
-                headers: new Headers({
-                    'Content-Type': 'application/json'
-                })
-            });
+    var request = new Request(url, {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: new Headers({
+            'Content-Type': 'application/json'
+        })
+    });
 
-            fetch(request)
-                .then(function (resp) {
-                    return resp.json();
-                })
-                .then(function (data) {
-                    localStorage.setItem("gebruiker", data.id);
-                    // window.location.replace("gebruikers.html");
-                })
-                .catch(function (error) {
-                    console.log(error);
-                });
+    fetch(request)
+        .then(function (resp) {
+            return resp.json();
+        })
+        .then(function (data) {
+            localStorage.setItem("gebruiker", data.id);
+            window.location.replace("gebruikers.html");
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+}
+
+async function persoonToevoegen() {
+
+    let naam = document.getElementById("mijnfoto").files.item(0).name;
+    let link = 'https://scrumserver.tenobe.org/scrum/api/image/upload.php';
+    console.log(naam);
+
+
+    let fotoGegevens = {
+        "naam": naam,
+        "afbeelding": Base64
+    };
+
+    var request = new Request(link, {
+        method: 'POST',
+        body: JSON.stringify(fotoGegevens),
+        headers: new Headers({
+            'Content-Type': 'application/json'
+        })
+    });
+
+    fetch(request)
+        .then(function (resp) { return resp.json(); })
+        .then(async function (fotoGegevens) {
+            const FotoFileUrl = await fotoGegevens.fileName;
+            if (fotoGegevens.message === "De afbeelding werd opgeslaan") {
+                NieuweProfiel(FotoFileUrl)
+            }
+
+            console.log(fotoGegevens);
+        })
+
+
+        .catch(function (error) { console.log(error); });
+    
 }
