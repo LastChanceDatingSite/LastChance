@@ -1,4 +1,5 @@
 "use strict";
+let Base64; 
 //Is the user NOT authenticated?
 if (localStorage.getItem('gebruiker') !== null && localStorage.getItem('gebruiker') !== "undefined") {
     window.open("gebruikers.html","_self");
@@ -40,19 +41,41 @@ function invoerCorrect() {
     return verkeerdeElementen.length === 0;
 }
 
+function getBase() 
+        {
+            const input = document.querySelector('input[type=file]')
+            const file = input.files[0];
+            const reader = new FileReader();
+            reader.addEventListener("load", function () {
+                Base64 = reader.result
+                console.log(Base64);
+            }, false);
+            if (file){
+                reader.readAsDataURL(file);
+            }
+        }
 async function persoonToevoegen() {
-
-        let naam =  document.getElementById("nickname").value; 
-        let afbeelding =  document.getElementById("mijnfoto").value; 
-        var encodedData = btoa(afbeelding);
-        console.log(encodedData);
-        var eindCode = afbeelding + ";base64," + encodedData;
-
+        // base64start
+        function getBase() 
+        {
+            const input = document.querySelector('input[type=file]')
+            const file = input.files[0];
+            const reader = new FileReader();
+            reader.addEventListener("load", function () {
+                Base64 = reader.result
+                console.log(Base64);
+            }, false);
+            if (file){
+                reader.readAsDataURL(file);
+            }
+        }
+        let naam =  document.getElementById("mijnfoto").files.item(0).name;
         let link = 'https://scrumserver.tenobe.org/scrum/api/image/upload.php';
+        console.log(naam);  
         
         let fotoGegevens = {
             "naam": naam,
-            "afbeelding": eindCode
+            "afbeelding": Base64
         };
 
         var request = new Request(link, {
@@ -90,21 +113,6 @@ async function persoonToevoegen() {
 
     };
 
-    let nickdata = document.getElementById("nickname").value;
-    var request = new Request(exi, {
-        method: 'POST',
-        body: JSON.stringify(nickdata),
-        headers: new Headers({
-            'Content-Type': 'application/json'
-        })
-    });
-
-    fetch(request)
-        .then(function (resp) {
-            return resp.json();
-        })
-        .then(function (nickdata) {
- 
             var request = new Request(url, {
                 method: 'POST',
                 body: JSON.stringify(data),
@@ -119,15 +127,9 @@ async function persoonToevoegen() {
                 })
                 .then(function (data) {
                     localStorage.setItem("gebruiker", data.id);
-                    window.location.replace("gebruikers.html");
+                    // window.location.replace("gebruikers.html");
                 })
                 .catch(function (error) {
                     console.log(error);
                 });
-
-
-        })
-        .catch(function (error) {
-            console.log(error);
-        });
 }
