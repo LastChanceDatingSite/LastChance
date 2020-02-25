@@ -112,7 +112,7 @@ function sterrenbeeldAfhalen(gebruiker) {
             .then( function (resp)  { return resp.json(); })
             .then( function (data)  { console.log(data);
                                        favorietInstellen(gezochteId); 
-                                       favorietControle(gezochteId); })
+                                     /*  favorietControle(gezochteId); */})
             .catch(function (error) { console.log(error); });}
    
 
@@ -164,20 +164,45 @@ function sterrenbeeldAfhalen(gebruiker) {
     });
 
     async function favorietInstellen(id) 
-{
-    const gebruikerId = id;
-    const response =
-        await fetch("https://scrumserver.tenobe.org/scrum/api/profiel/read_one.php?id=" + gebruikerId);
-    if (response.ok) {
-        const eenProfiel = await response.json();
-        
-        eenProfiel.metadata = "favoriet";
-        console.log(eenProfiel);
-    }                                      
-    else {
-        foutDiv.innerText = "Er liep iets fout.";
-    }
-};
+    {
+    const rooturl = "https://scrumserver.tenobe.org/scrum/api";  
+    let url=rooturl+'/profiel/read_one.php?id='+ id;
+                  
+    fetch(url)
+        .then(function (resp) { return resp.json(); }) //haal de JSON op en stuur die als resultaat van je promise                         
+        .then(function (data) {
+            //nadat de vorige promise opgelost werd kwamen we in deze procedure tercht
+            //hier kunnen we nu , met het resultat (data) van de vorige promise, aan de slag
+            //we passen de voornaam aan en sturen ook dit terug zodat deze promise afgesloten kan worden                        
+            document.getElementById("favoriet").style.display = "none";
+            let urlUpdate=rooturl+'/profiel/update.php';
+
+            data = { "id" : id,
+                     "metadata" : "favoriet"
+                     };
+            
+            var request = new Request(urlUpdate, {
+                method: 'PUT',
+                body: JSON.stringify(data),
+                headers: new Headers({
+                    'Content-Type': 'application/json'
+                })
+            });
+
+    
+    
+        fetch(request)
+        .then(function (resp) {
+            return resp.json();
+        })
+        .then(function (data) {
+          console.log(data);
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+
+    })};
 
 async function favorietControle(id)
 {
@@ -186,8 +211,11 @@ async function favorietControle(id)
         await fetch("https://scrumserver.tenobe.org/scrum/api/profiel/read_one.php?id=" + gebruikerId);
     if (response.ok) {
         const eenProfiel = await response.json();
-        console.log(eenProfiel);
-        document.getElementById("favoriet").style.display = "none";
+        if (eenProfiel.metadata === "favoriet")
+        {
+            console.log(eenProfiel);
+            document.getElementById("favoriet").style.display = "none";
+        }
     }                                      
     else {
         foutDiv.innerText = "Er liep iets fout.";
