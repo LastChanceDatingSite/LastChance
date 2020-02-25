@@ -219,7 +219,6 @@ document.getElementById("favorieten").addEventListener('click', function (e) {
     document.getElementById("toonFavorieten").style.display = "inline";
 
     const favorietenLijst = document.querySelector("ul");
-    let index = 0;
     favorietenlijst.style.display = "inline-block";
     let profielId = localStorage.getItem("gebruiker");
     const rooturl = "https://scrumserver.tenobe.org/scrum/api";
