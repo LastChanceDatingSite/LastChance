@@ -223,6 +223,7 @@ document.getElementById("favorieten").addEventListener('click', function (e) {
         .then(function (resp) { return resp.json(); })
         .then(function (data) {
             console.log(data);
+            let index = 0;
             for (const eenFavoriet of data) {
                 eenProfielAfhalen();
                 async function eenProfielAfhalen() {
@@ -231,7 +232,9 @@ document.getElementById("favorieten").addEventListener('click', function (e) {
                     const response = await fetch("https://scrumserver.tenobe.org/scrum/api/profiel/read_one.php?id=" + gebruikerId);
                     if (response.ok) {
                         const eenProfiel = await response.json();
-                        favorietenLijstMaken(eenProfiel);
+                        console.log(data[index].id);
+                        favorietenLijstMaken(eenProfiel, data[index].id);
+                        //index ++;
                         return eenProfiel;
                     }
                     else {
@@ -239,7 +242,7 @@ document.getElementById("favorieten").addEventListener('click', function (e) {
                     }
                 };
 
-                function favorietenLijstMaken(eenProfiel) {
+                function favorietenLijstMaken(eenProfiel, id) {
 
                     const li = document.createElement("li");
                     const hyperlink = document.createElement("a");
@@ -247,8 +250,12 @@ document.getElementById("favorieten").addEventListener('click', function (e) {
                     hyperlink.innerText = eenProfiel.nickname;
                     hyperlink.href = "#";
                     hyperlink.dataset.index = index++;
+                    const favorietId = id;
+                    console.log(id);
                     hyperlink.onclick = function()
                     {
+                        localStorage.setItem("favorietId", favorietId)
+                        console.log(favorietId);
                         localStorage.setItem("gezochteGebruiker", eenProfiel.id);
                         window.location.replace("gezochtProfiel.html");
                     }

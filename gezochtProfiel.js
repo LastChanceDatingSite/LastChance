@@ -115,8 +115,7 @@ function sterrenbeeldAfhalen(gebruiker) {
         fetch(request)
             .then( function (resp)  { return resp.json(); })
             .then( function (data)  { console.log(data);
-                                       favorietInstellen(gezochteId); 
-                                     /*  favorietControle(gezochteId); */})
+                                       favorietInstellen(gezochteId); })
             .catch(function (error) { console.log(error); });}
    
 
@@ -225,4 +224,31 @@ async function favorietControle(id)
         foutDiv.innerText = "Er liep iets fout.";
     }
 }
+
+document.getElementById("favorietVerwijderen").onclick = function()
+{
+    const favorietId = localStorage.getItem("favorietId");
+    
+        
+    const rooturl = "https://scrumserver.tenobe.org/scrum/api";
+        let url=rooturl+'/favoriet/delete.php';
+        
+        let data = {
+            id: favorietId
+        }
+
+        var request = new Request(url, {
+            method: 'DELETE',
+            body: JSON.stringify(data),
+            headers: new Headers({
+                'Content-Type': 'application/json'
+            })
+        });
+
+        fetch(request)
+            .then( function (resp)  { return resp.json(); })
+            .then( function (data)  { console.log(data);  })
+            .catch(function (error) { console.log(error); });
+    
+};
         
