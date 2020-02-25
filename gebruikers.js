@@ -42,15 +42,13 @@ function startDisplay() {
     //favorieten
     document.getElementById("favorieten").style.display = "inline-block"; //bovenste knop
     document.getElementById("toonFavorieten").style.display = "none"; 
-
 }
 
 
 // gepaste values worden in geladen
 function lijstGebruikers(gebruiker) {
 
-    console.log(gebruiker.achternaam);
-    console.log(gebruiker.beroep);
+    // korte profiel weergave
     document.getElementById("gebruikerWeergave").style.display = "block";
     document.getElementById("gebruikerBeroep").innerText = gebruiker.beroep;
     document.getElementById("gebruikerSexe").innerText = gebruiker.sexe;
@@ -61,7 +59,7 @@ function lijstGebruikers(gebruiker) {
     document.getElementById("lovecoins").innerText = gebruiker.lovecoins;
     document.getElementById("avatar").src = "https://scrumserver.tenobe.org/scrum/img/" + gebruiker.foto;
 
-    console.log(gebruiker.achternaam);
+    // profiel bewerken
     document.getElementById("achternaam").value = gebruiker.familienaam;
     document.getElementById("voornaam").value = gebruiker.voornaam;
     document.getElementById("geboortedatum").value = gebruiker.geboortedatum;
@@ -75,18 +73,14 @@ function lijstGebruikers(gebruiker) {
     document.getElementById("grootte").value = gebruiker.grootte;
     document.getElementById("gewicht").value = gebruiker.gewicht;
     document.getElementById("wachtwoord").value = gebruiker.wachtwoord;
-
-
 }
 
+// sterrenbeelden afhalen en weergeven onder kort profiel
 function sterrenbeeldAfhalen(gebruiker) {
 
-    console.log(gebruiker.geboortedatum);
     const geboortedatum = new Date(gebruiker.geboortedatum);
     const month = geboortedatum.getMonth() + 1;
-    console.log(month);
     const day = geboortedatum.getDay();
-    console.log(day);
 
     if ((month == 1 && day <= 20) || (month == 12 && day >= 22)) {
         return "img/sterrenbeeld/steenbok.png";
@@ -129,14 +123,9 @@ document.getElementById("home").onclick=function(){
 // korte lijst wordt verborgen profiel bewerken getoond
 document.getElementById("bewerken").onclick = function () {
     startDisplay();
-    //update
     document.getElementById("bewerken").style.display = "none"; //bovenste knop
     document.getElementById("formulierBewerken").style.display = "inline"; 
-
     document.getElementById("update").style.display = "inline-block";
-    // document.getElementById("bewerken").style.display = "none";
-    // document.getElementById("gebruikerWeergave").style.display = "none";
-    // document.getElementById("formulierBewerken").style.display = "block";
 }
 
 // profiel updaten
@@ -181,8 +170,6 @@ document.getElementById("bewerken").onclick = function () {
                          "wachtwoord" : nieuweWachtwoord
                          };
                 
-                console.log(data);
-
                 var request = new Request(urlUpdate, {
                     method: 'PUT',
                     body: JSON.stringify(data),
@@ -225,7 +212,6 @@ document.getElementById("favorieten").addEventListener('click', function (e) {
                     const response = await fetch("https://scrumserver.tenobe.org/scrum/api/profiel/read_one.php?id=" + gebruikerId);
                     if (response.ok) {
                         const eenProfiel = await response.json();
-                        console.log(eenProfiel);
                         favorietenLijstMaken(eenProfiel);
                         return eenProfiel;
                     }
@@ -238,9 +224,7 @@ document.getElementById("favorieten").addEventListener('click', function (e) {
 
                     const li = document.createElement("li");
                     const hyperlink = document.createElement("a");
-                   // const img = document.createElement("img");
                     const img="<img src=\" https://scrumserver.tenobe.org/scrum/img/" + eenProfiel.foto + "\" >";
-                    console.log(img);
                     hyperlink.innerText = eenProfiel.nickname;
                     hyperlink.href = "#";
                     hyperlink.dataset.index = index++;
@@ -248,20 +232,16 @@ document.getElementById("favorieten").addEventListener('click', function (e) {
                     {
                         localStorage.setItem("gezochteGebruiker", eenProfiel.id);
                         window.location.replace("gezochtProfiel.html");
-                        
                     }
-                    console.log(hyperlink);
                     hyperlink.innerHTML = "<div class='mediumIcons'>" + img + " <br> " + eenProfiel.nickname + "</div>";
                     li.appendChild(hyperlink);
-                   // li.appendChild(img);
-                    
                     favorietenLijst.appendChild(li);
                 }
             }
-
-
         })
         .catch(function (error) { console.log(error); });
-
-
 });
+
+
+
+
