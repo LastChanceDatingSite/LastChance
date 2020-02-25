@@ -177,10 +177,7 @@ document.getElementById("bewerken").onclick = function () {
                         'Content-Type': 'application/json'
                     })
                 });
-/////////////////
-///////////////// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! HIER NOG NAAR EEN MELDING OF TERUG NAAR GEBRUIKERS.HTML LATEN GAAN
-///////////////// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! EN PROFIEL OPNIEUW LATEN INLADEN, VERANDERINGEN KOMEN NIET DOOR
-/////////////////
+
         })
         .catch(function (error) {
             console.log(error);
