@@ -186,6 +186,11 @@ async function favorietcontrole() {
 }
 
 
-
+//stuur een bericht naar deze persoon:
+document.getElementById("stuurEenBericht").addEventListener("click", function (e) {
+    const berichtNaarDezeGebruiker = localStorage.getItem("gezochteGebruiker");
+    localStorage.setItem("berichtenAndereGebruiker",berichtNaarDezeGebruiker); 
+    window.location.replace("chatbox.html");
+});
 
   
