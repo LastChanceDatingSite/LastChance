@@ -177,7 +177,7 @@ input, select{
     background-color: rgb(158, 75, 147);
     display: inline-block;
     width: 16em;
-    height: 8em;
+    height: 9em;
     margin: 0.5em ;
     color: #000000;
     text-decoration: none;
@@ -194,7 +194,7 @@ input, select{
 }
 .mediumIcons {
     background-color: peachpuff;
-    height:7em;
+    height:8em;
     width: 15em;
     align-items: center;
     border-radius: 4px;

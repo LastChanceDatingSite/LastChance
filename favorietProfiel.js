@@ -2,19 +2,20 @@
 
 //Is the user authenticated?
 if (localStorage.getItem('gebruiker') === null || localStorage.getItem('gebruiker') === "undefined") {
-    window.open("AccessDenied.html","_self");
+    window.open("AccessDenied.html", "_self");
 }
 else {
-//The user is authenticated and the authentication has not expired.
+    //The user is authenticated and the authentication has not expired.
 
 }
 
-
-eenProfielAfhalen();
-
 // juiste profiel wordt afgehaald
-async function eenProfielAfhalen() 
-{
+eenProfielAfhalen();
+// controle als profiel favoriet is voor buttonweergave
+favorietcontrole();
+
+
+async function eenProfielAfhalen() {
     const gebruikerId = localStorage.getItem("gezochteGebruiker");
     const response =
         await fetch("https://scrumserver.tenobe.org/scrum/api/profiel/read_one.php?id=" + gebruikerId);
@@ -24,15 +25,14 @@ async function eenProfielAfhalen()
         profielWeergeven(eenProfiel);
         document.getElementById("sterrenbeeld").src = sterrenbeeldAfhalen(eenProfiel);
         return eenProfiel;
-    }                                      
+    }
     else {
-        foutDiv.innerText = "Er liep iets fout.";
+        message.innerText = "Er liep iets fout.";
     }
 };
 
 // profiel wordt weergegeven
- function profielWeergeven(gebruiker) 
-{
+function profielWeergeven(gebruiker) {
     document.getElementById("gebruikerWeergave").style.display = "block";
     document.getElementById("gebruikerNickname").innerText = gebruiker.nickname;
     document.getElementById("gebruikerBeroep").innerText = gebruiker.beroep;
@@ -76,26 +76,71 @@ function sterrenbeeldAfhalen(gebruiker) {
     } else if ((month == 11 && day >= 23) || (month == 12 && day <= 21)) {
         return "img/sterrenbeeld/boogschutter.png";
     }
-}
+};
 
+// favoriet verwijderen
+const message = document.getElementById("message");
+const favorietVerwijderenButton = document.getElementById("favorietVerwijderen");
+favorietVerwijderenButton.onclick = async function () {
 
+  /*  //dubbelcheck
+    favorietVerwijderenButton.innerText = "Zeker? dit is misschien je laatste kans.." */
 
-document.getElementById("favorietVerwijderen").onclick = function()
-{
-    console.log("tothier");
     const favorietId = localStorage.getItem("favorietId");
-    const foutDiv = document.getElementById("fout");
-    
-        
     const rooturl = "https://scrumserver.tenobe.org/scrum/api";
-        let url=rooturl+'/favoriet/delete.php';
-        
+  
+
+
+            // favoriet verwijderen
+            let url = rooturl + '/favoriet/delete.php';
+
+            let favorietData = {
+                id: favorietId
+            }
+
+            var request = new Request(url, {
+                method: 'DELETE',
+                body: JSON.stringify(favorietData),
+                headers: new Headers({
+                    'Content-Type': 'application/json'
+                })
+            });
+
+            fetch(request)
+                .then(function (resp) { return resp.json(); })
+                .then(function (data) {
+                    console.log(data);
+                    favorietVerwijderenButton.style.display = "none";
+                    message.innerText = data.message;
+                })
+                .catch(function (error) { console.log(error); });
+   
+
+};
+
+
+// een favoriet maken
+
+document.getElementById("favoriet").addEventListener('click', function (e) {
+    const message = document.getElementById("message");
+    let gebruikerId = localStorage.getItem("gebruiker");
+    let gezochteId = localStorage.getItem("gezochteGebruiker");
+    const rooturl = "https://scrumserver.tenobe.org/scrum/api";
+    let url = rooturl + "/favoriet/like.php";
+    const lovecoins = localStorage.getItem("lovecoins");
+
+    if (lovecoins === "0") {
+        message.innerText = "Geen lovecoins meer!";
+        console.log("geen lovecoins");
+    }
+    else {
         let data = {
-            id: favorietId
+            "mijnId": gebruikerId,
+            "anderId": gezochteId
         }
 
         var request = new Request(url, {
-            method: 'DELETE',
+            method: 'POST',
             body: JSON.stringify(data),
             headers: new Headers({
                 'Content-Type': 'application/json'
@@ -103,53 +148,83 @@ document.getElementById("favorietVerwijderen").onclick = function()
         });
 
         fetch(request)
-            .then( function (resp)  { return resp.json(); })
-            .then( function (data)  { console.log(data); 
-                foutDiv.innerText = "Favoriet verwijderd"; 
-                document.getElementById("favorietVerwijderen").style.display = "none"; 
-                 favorietMetaVerwijderen(); })
-            .catch(function (error) { console.log(error); });
-    
-};
-
-async function favorietMetaVerwijderen() 
-{
-const id = localStorage.getItem("gezochteGebruiker");
-const rooturl = "https://scrumserver.tenobe.org/scrum/api";  
-let url=rooturl+'/profiel/read_one.php?id='+ id;
-              
-fetch(url)
-    .then(function (resp) { return resp.json(); }) //haal de JSON op en stuur die als resultaat van je promise                         
-    .then(function (data) {
-        //nadat de vorige promise opgelost werd kwamen we in deze procedure tercht
-        //hier kunnen we nu , met het resultat (data) van de vorige promise, aan de slag
-        //we passen de voornaam aan en sturen ook dit terug zodat deze promise afgesloten kan worden                        
-        let urlUpdate=rooturl+'/profiel/update.php';
-
-        data = { "id" : id,
-                 "metadata" : ""
-                 };
-        
-        var request = new Request(urlUpdate, {
-            method: 'PUT',
-            body: JSON.stringify(data),
-            headers: new Headers({
-                'Content-Type': 'application/json'
+            .then(function (resp) { return resp.json(); })
+            .then(function (data) {
+                console.log(data);
+                document.getElementById("favoriet").style.display = "none";
+                message.innerText = data.message;
             })
-        });
+            .catch(function (error) { console.log(error); });
 
 
+        let bedrag = -1;
+        let favUrl = rooturl + '/profiel/read_one.php?id=' + gebruikerId;
 
-    fetch(request)
-    .then(function (resp) {
-        return resp.json();
-    })
-    .then(function (data) {
-      console.log(data);
-    })
-    .catch(function (error) {
-        console.log(error);
-    });
+        fetch(favUrl)
+            .then(function (resp) { return resp.json(); }) //haal de JSON op en stuur die als resultaat van je promise                         
+            .then(function (data) {
+                //nadat de vorige promise opgelost werd kwamen we in deze procedure tercht
+                //hier kunnen we nu , met het resultat (data) van de vorige promise, aan de slag
+                //we passen de voornaam aan en sturen ook dit terug zodat deze promise afgesloten kan worden                        
 
-})};
-        
+
+                let urlUpdate = rooturl + '/profiel/lovecoinTransfer.php';
+
+                data = {
+                    "profielID": gebruikerId,
+                    "bedrag": bedrag
+                };
+
+                var request = new Request(urlUpdate, {
+                    method: 'PUT',
+                    body: JSON.stringify(data),
+                    headers: new Headers({
+                        'Content-Type': 'application/json'
+                    })
+                });
+                fetch(request)
+                    .then(function (resp) { return resp.json(); })
+                    .then(function (data) { console.log(data); })
+                    .catch(function (error) { console.log(error); });
+            });
+    }
+})
+
+// controle als gezocht profiel favoriet is
+async function favorietcontrole() {
+
+    const profielId = localStorage.getItem("gebruiker");
+    const gezochtId = localStorage.getItem("gezochteGebruiker");
+    const favorietButton = document.getElementById("favoriet");
+    const rooturl = "https://scrumserver.tenobe.org/scrum/api";
+    let url = rooturl + '/favoriet/read.php?profielId=' + profielId;
+
+    fetch(url)
+        .then(function (resp) { return resp.json(); })
+        .then(function (data) {
+            console.log(data);
+            for (const eenFavoriet of data) {
+                if (eenFavoriet.anderId === gezochtId) {
+                    console.log(eenFavoriet);
+                    console.log(eenFavoriet.status);
+                    switch (eenFavoriet.status) {
+                        case "wederzijds":
+                            favorietButton.style.display = "none";
+                            console.log("wederzijds log");
+                            break;
+                        case "niet wederzijds":
+                            favorietButton.style.display = "none";
+                            console.log("niet wederzijds log")
+                            break;
+                        case "ik heb de ander niet als favoriet":
+                            favorietButton.style.display = "inline-block";
+                            console.log("ik heb de ander niet als favoriet log");
+                            break;
+                    }
+                }
+            }
+                             })
+        .catch(function (error) { console.log(error); });
+
+}
+

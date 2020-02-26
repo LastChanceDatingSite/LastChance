@@ -236,7 +236,7 @@ document.getElementById("favorieten").addEventListener('click', function (e) {
                     const response = await fetch("https://scrumserver.tenobe.org/scrum/api/profiel/read_one.php?id=" + gebruikerId);
                     if (response.ok) {
                         const eenProfiel = await response.json();
-                        favorietenLijstMaken(eenProfiel, data[index].id);
+                        favorietenLijstMaken(eenProfiel, data[index].id, data[index].status);
                         return eenProfiel;
                     }
                     else {
@@ -244,8 +244,12 @@ document.getElementById("favorieten").addEventListener('click', function (e) {
                     }
                 };
 
-                function favorietenLijstMaken(eenProfiel, id) {
+                function favorietenLijstMaken(eenProfiel, id, status) {
 
+                    console.log(eenProfiel);
+                    console.log(status);
+                    let statusNaControle =  statusControle(status);
+                    console.log(statusNaControle);
                     const li = document.createElement("li");
                     const hyperlink = document.createElement("a");
                     const img="<img src=\" https://scrumserver.tenobe.org/scrum/img/" + eenProfiel.foto + "\" >";
@@ -258,10 +262,11 @@ document.getElementById("favorieten").addEventListener('click', function (e) {
                     {
                         localStorage.setItem("favorietId", favorietId)
                         console.log(favorietId);
+                        
                         localStorage.setItem("gezochteGebruiker", eenProfiel.id);
                         window.location.replace("favorietProfiel.html");
                     }
-                    hyperlink.innerHTML = "<div class='mediumIcons'>" + img + " <br> " + eenProfiel.nickname + "</div>";
+                    hyperlink.innerHTML = "<div class='mediumIcons'>" + img + " <br> " + eenProfiel.nickname + " <br> " + statusNaControle + "</div>";
                     li.appendChild(hyperlink);
                     favorietenLijst.appendChild(li);
                 }
@@ -270,6 +275,16 @@ document.getElementById("favorieten").addEventListener('click', function (e) {
         .catch(function (error) { console.log(error); });
 });
 
-
+function statusControle(status) {
+    if (status === "ik heb de ander niet als favoriet")
+    {
+        console.log(status);
+        return status = "Mogelijke match";
+    }
+    else
+    {
+        return status;
+    }
+}
 
 
