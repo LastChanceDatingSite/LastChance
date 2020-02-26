@@ -5,87 +5,24 @@
 	<title>chat box</title>
 	<link rel="stylesheet" href="css/ChatboxStyle.css">
 	<script src="ChatbboxScript.js" defer></script>
-	<script src="chatberichten.js" defer></script>
+	<script src="https://kit.fontawesome.com/a076d05399.js"></script>
 
 </head>
 
 <body>
+	<div class="topmenu">
+        <ol>
+            <li><a href="gebruikers.html">Home</a></li>
+            <li><a href="chatbox.html">Berichten</a></li>
+            <li><a class="actief" href="zoekPagina.html">Zoeken</a></li>
+            <li><a href="lovecoinsAankopen.html">LoveCoins</a></li>
+            <li><a href="uitloggen.html">Uitloggen</a></li>
+        </ol>
+    </div>
+    <div class="topfoto centraal">
+        <img src="img/holdingHands.png">
+    </div>
 	<div class="centraal">
-		<!-- Demo over berichten -->
-		<h3>Voorbeelden met berichten</h3>
-
-
-		<table>
-			<thead>
-				<tr>
-					<th>Omschrijving</th>
-					<th>Invoerparameters</th>
-					<th class="rb"></th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>Alle bericht opvragen van een gebruiker</td>
-					<td>
-						<label for="input20_1" class="api_demo_lbl">profiel id : </label>
-						<input type="text" id="input20_1" value="1" class="api_demo_param" /><br />
-					</td>
-					<td><button class="myButton" type="button" id="knop20">Voer Uit</button></td>
-				</tr>
-				<tr>
-					<td>Lees een bericht</td>
-					<td>
-						<label for="input21_1" class="api_demo_lbl">bericht id : </label>
-						<input type="text" id="input21_1" value="11" class="api_demo_param" /><br />
-					</td>
-					<td><button class="myButton" type="button" id="knop21">Voer Uit</button></td>
-				</tr>
-				<tr>
-					<td>Post een bericht</td>
-					<td>
-						<label for="input22_1" class="api_demo_lbl">van Profiel id : </label>
-						<input type="text" id="input22_1" value="6" class="api_demo_param" /><br />
-						<label for="input22_2" class="api_demo_lbl">naar Profiel id : </label>
-						<input type="text" id="input22_2" value="7" class="api_demo_param" /><br />
-						<label for="input22_3" class="api_demo_lbl">bericht : </label>
-						<textarea id="input22_3" class="api_demo_param_text">
-Un peu de poivre,
-un peu de sel, 
-un peu d'amour, 
-un peu de miel
-</textarea><br />
-					</td>
-					<td><button class="myButton" type="button" id="knop22">Voer Uit</button></td>
-				</tr>
-				<tr>
-					<td>Update de status van een bericht</td>
-					<td>
-						<label for="input24_1" class="api_demo_lbl">bericht id : </label>
-						<input type="text" id="input24_1" value="11" class="api_demo_param" /><br />
-
-						<label for="input24_2" class="api_demo_lbl">status : </label>
-
-						<select id="input24_2" class="api_demo_param_chb">
-							<option value="verzonden" selected>verzonden</option>
-							<option value="ontvangen">ontvangen</option>
-							<option value="gelezen">gelezen</option>
-						</select>
-
-					</td>
-					<td><button class="myButton" type="button" id="knop24">Voer Uit</button></td>
-				</tr>
-				<tr>
-					<td>Verwijder een bericht</td>
-					<td>
-						<label for="input23_1" class="api_demo_lbl">bericht id : </label>
-						<input type="text" id="input23_1" value="11" class="api_demo_param" /><br />
-					</td>
-					<td><button class="myButton" type="button" id="knop23">Voer Uit</button></td>
-				</tr>
-			</tbody>
-		</table>
-
-
 		<div class="chatPersoon">
 			<ul id="berichtenLijst">
 				<!-- 
@@ -99,8 +36,9 @@ un peu de miel
 
 
 		<div class="groteContainer">
+			<h1 id="naarWieStuurIk"></h1>
 			<div class="container" id="chatGesprek">
-				<div class="bubbleWrapper">
+				<div class="bubbleWrapper" id="1">
 					<div class="inlineContainer">
 						<img class="inlineIcon"
 							src="https://cdn1.iconfinder.com/data/icons/ninja-things-1/1772/ninja-simple-512.png">
@@ -108,7 +46,12 @@ un peu de miel
 							No ninjas!
 						</div>
 					</div>
-					<span class="other">08:41</span>
+					<span class="other">
+						<a href="#0"class="delete">
+							<i class="fas fa-minus-circle"></i>
+						</a>
+						08:41
+					</span>
 				</div>
 				<div class="bubbleWrapper">
 					<div class="inlineContainer own">

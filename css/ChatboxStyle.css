@@ -177,7 +177,7 @@ input, select{
     background-color: rgb(158, 75, 147);
     display: inline-block;
     width: 16em;
-    height: 8em;
+    height: 9em;
     margin: 0.5em ;
     color: #000000;
     text-decoration: none;
@@ -194,7 +194,7 @@ input, select{
 }
 .mediumIcons {
     background-color: peachpuff;
-    height:7em;
+    height:8em;
     width: 15em;
     align-items: center;
     border-radius: 4px;
@@ -350,6 +350,7 @@ input, select{
     background-color: #5b5377;
     border-radius: 16px 16px 0 16px;
     border: 1px solid #443f56;
+    text-align: right;
   }
   .otherBubble {
     min-width: 60px;
@@ -359,6 +360,7 @@ input, select{
     background-color: #6C8EA4;
     border-radius: 16px 16px 16px 0;
     border: 1px solid #54788e;
+    text-align: left;
     
   }
   .own {
@@ -367,10 +369,24 @@ input, select{
   .other {
     align-self: flex-start;
   }
+  .other button {
+    background-color: none;
+    padding:0;
+    margin: 0;
+  }
   span.own,
   span.other{
     font-size: 14px;
     color: grey;
+  }
+  span a, span a:hover, span a:active{
+      text-decoration: none;
+      background-color: none;
+  }
+  span img{
+    width: 25px;
+    height: 25px;
+    vertical-align: middle;
   }
 
   .textbox{
