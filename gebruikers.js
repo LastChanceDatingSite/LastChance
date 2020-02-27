@@ -1,5 +1,7 @@
 "use strict";
-
+let Base64;
+let FotoFileUrl;
+let naam;
 
 if (localStorage.getItem('gebruiker') === null || localStorage.getItem('gebruiker') === "undefined") {
     window.open("AccessDenied.html","_self");
@@ -10,7 +12,18 @@ else {
 }
 
 
-
+function invoerCorrect() {
+    const verkeerdeElementen = document.querySelectorAll("input:invalid,select:invalid");
+    for (const element of verkeerdeElementen) {
+        document.getElementById(`${element.id}Fout`).style.display = "inline";
+    }
+    const correcteElementen =
+        document.querySelectorAll("input:valid,select:valid");
+    for (const element of correcteElementen) {
+        document.getElementById(`${element.id}Fout`).style.display = "";
+    }
+    return verkeerdeElementen.length === 0;
+}
     
 
 eenProfielAfhalen();
@@ -81,6 +94,8 @@ function lijstGebruikers(gebruiker) {
     document.getElementById("grootte").value = gebruiker.grootte;
     document.getElementById("gewicht").value = gebruiker.gewicht;
     document.getElementById("wachtwoord").value = gebruiker.wachtwoord;
+
+    FotoFileUrl = gebruiker.foto;
 }
 
 // sterrenbeelden afhalen en weergeven onder kort profiel
@@ -140,14 +155,26 @@ document.getElementById("bewerken").onclick = function () {
      
 // profiel updaten
     document.getElementById("update").addEventListener('click', function (e) {  
+        if (invoerCorrect()) {
+            naam = document.getElementById("mijnfoto").value;
+            if(naam){
+            persoonToevoegen();
+        }
+        else{
+            profielUpdaten();
+        }
+        }
+        
+});
 
-        let profielId =  localStorage.getItem("gebruiker");
+function profielUpdaten() {
+let profielId =  localStorage.getItem("gebruiker");
         let nieuweVoornaam =  document.getElementById("voornaam").value;
         let nieuweAchternaam =  document.getElementById("achternaam").value;
         let nieuweNickname = document.getElementById("nickname").value;
         let nieuweGeboortedatum = document.getElementById("geboortedatum").value;
         let nieuweBeroep = document.getElementById("beroep").value;
-        let nieuweFoto = document.getElementById("mijnfoto").value;
+        let nieuweFoto = FotoFileUrl;
         let nieuweEmail = document.getElementById("emailadres").value;
         let nieuweSexe = document.getElementById("sexe").value;
         let nieuweHaarkleur = document.getElementById("haarkleur").value;
@@ -172,6 +199,7 @@ document.getElementById("bewerken").onclick = function () {
                          "geboorteDatum" : nieuweGeboortedatum,
                          "email" : nieuweEmail,
                          "nickname" : nieuweNickname,
+                         "foto" : nieuweFoto,
                          "beroep" : nieuweBeroep,
                          "sexe" : nieuweSexe,        
                          "haarkleur" : nieuweHaarkleur,
@@ -188,7 +216,7 @@ document.getElementById("bewerken").onclick = function () {
                         'Content-Type': 'application/json'
                     })
                 });
-
+            
         
         
             fetch(request)
@@ -212,7 +240,7 @@ document.getElementById("bewerken").onclick = function () {
             });
 
         });
-});
+    }
 
 // favorieten weergeven
 document.getElementById("favorieten").addEventListener('click', function (e) {
@@ -290,3 +318,51 @@ function statusControle(status) {
 }
 
 
+async function persoonToevoegen() {
+    naam = document.getElementById("mijnfoto").files.item(0).name;
+    let link = 'https://scrumserver.tenobe.org/scrum/api/image/upload.php';
+    console.log(naam);
+
+
+    let fotoGegevens = {
+        "naam": naam,
+        "afbeelding": Base64
+    };
+
+    var request = new Request(link, {
+        method: 'POST',
+        body: JSON.stringify(fotoGegevens),
+        headers: new Headers({
+            'Content-Type': 'application/json'
+        })
+    });
+
+    fetch(request)
+        .then(function (resp) { return resp.json(); })
+        .then(async function (fotoGegevens) {
+             FotoFileUrl = await fotoGegevens.fileName;
+            if (fotoGegevens.message === "De afbeelding werd opgeslaan") {
+                profielUpdaten(FotoFileUrl);
+            }
+
+            console.log(fotoGegevens);
+        })
+
+
+        .catch(function (error) { console.log(error); });
+    
+}
+
+//Encoderen naar Base64
+function getBase() {
+    const input = document.querySelector('input[type=file]')
+    const file = input.files[0];
+    const reader = new FileReader();
+    reader.addEventListener("load", function () {
+        Base64 = reader.result
+        console.log(Base64);
+    }, false);
+    if (file) {
+        reader.readAsDataURL(file);
+    }
+}
