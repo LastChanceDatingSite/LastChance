@@ -33,31 +33,33 @@ else {
             .then( function (data)  { console.log(data.id); 
                 window.location.replace("gebruikers.html");
                 sessionStorage.setItem('gebruiker', data.id); })
-               // gebruikersInArrayEersteBezoek(data.id); })
+              //  gebruikersInArrayEersteBezoek(data.id); })
                // sessionStorage.setItem("gebruikersArray", data.id) })
             .catch(function (error) { console.log(error); });
     });
 
 
-var gebruikersArray = [];
+
+
 console.log(gebruikersArray);
 function gebruikersInArrayEersteBezoek(id) {
 
+    var gebruikersArray = [];
     console.log("wordt gebruikt");
     console.log(gebruikersArray);
-    gebruikersArray = JSON.parse(sessionStorage.getItem("gebruikersArray"));
+    if (gebruikersArray !== null)
+    {
+        gebruikersArray = JSON.parse(sessionStorage.getItem("gebruikersArray"));
+    }
+  /*  if (gebruikersArray === null)
+    {
+        gebruikersArray[0] = 0;
+        gebruikersArray[0].push(id);
+    }*/
+    gebruikersArray[0] = "0";
     console.log(id);
     gebruikersArray.push(id);
     sessionStorage.setItem("gebruikersArray", JSON.stringify(gebruikersArray));
 }
 
 
-/*
- var names = [];
-names[0] = prompt("New member name?");
-sessionStorage.setItem("names", JSON.stringify(names));
-
-//...
-var storedNames = JSON.parse(sessionStorage.getItem("names"));
-
-*/
