@@ -34,7 +34,7 @@ function justFetchData(){
      fetch(url)
          .then(function (resp) { return resp.json(); })
          .then(function (data) { //console.log(data);
-            haalGezochteGebruikerFoto(berichtenAndereGebruiker);
+            haalGezochteGebruikerFoto(berichtenAndereGebruiker,data);
          })
          .catch(function (error) { console.log(error); });
  }
@@ -71,7 +71,7 @@ function gebruikersDieAlGestuurdHebbenZoeken(profielId,data) {
             gezochtePersoonId = vanPersoonId;
         }
         if (berichtenAndereGebruiker !== gezochtePersoonId){
-        haalGezochteGebruikerFoto(gezochtePersoonId);
+        haalGezochteGebruikerFoto(gezochtePersoonId,data);
         console.log(gezochtePersoonId);
         }
 
@@ -79,7 +79,7 @@ function gebruikersDieAlGestuurdHebbenZoeken(profielId,data) {
 }
 
 //gebruikerfoto's zetten in lijst om op te klikken (nog niet laatste gesprek eerst)
-function haalGezochteGebruikerFoto(profielId) {
+function haalGezochteGebruikerFoto(profielId,data) {
     console.log("haal gezochte gebruiker foto");
     document.querySelector("ul").innerHTML = "";
     eenProfielAfhalen();
@@ -98,7 +98,7 @@ function haalGezochteGebruikerFoto(profielId) {
             hyperlink.dataset.id = gebruiker.id;
             hyperlink.onclick = function () {
                 deleteChatbubbles();
-                laadHetBericht(this.dataset.id,gebruiker["nickname"],gebruiker.foto);
+                laadHetBericht(this.dataset.id,gebruiker["nickname"],gebruiker.foto,data);
             }
 
             const li = document.createElement("li");
@@ -119,7 +119,7 @@ function laadHetBericht(gebruikerId,nickname,foto,data){
                 localStorage.setItem("berichtenAndereGebruiker", gebruikerId);
                 localStorage.setItem("fotoVanDeAndere", foto)
 
-                
+                console.log(data);
                 controleerDeStatusOpGelezen(data);
                 haalNieuweBerichtenOp();
 }
