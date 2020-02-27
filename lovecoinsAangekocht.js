@@ -22,6 +22,7 @@ async function eenProfielAfhalen() {
         return eenProfiel;
     }
     else {
-        console.log("Er liet iets fout.")
+        console.log("Er liet iets fout.");
+        document.getElementById("message").innerText = "Er liep iets fout";
     }
 };
