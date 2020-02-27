@@ -1,7 +1,7 @@
 "use strict";
 
 //Is the user authenticated?
-if (localStorage.getItem('gebruiker') === null || localStorage.getItem('gebruiker') === "undefined") {
+if (sessionStorage.getItem('gebruiker') === null || sessionStorage.getItem('gebruiker') === "undefined") {
     window.open("AccessDenied.html", "_self");
 }
 else {
@@ -16,7 +16,7 @@ else {
     berichtenInladen();
 
 
-    var berichtenAndereGebruiker = localStorage.getItem("berichtenAndereGebruiker");
+    var berichtenAndereGebruiker = sessionStorage.getItem("berichtenAndereGebruiker");
     if (berichtenAndereGebruiker !== null && berichtenAndereGebruiker !== 'undefined') {
         deleteChatbubbles();
         //haalGezochteGebruikerFoto();
@@ -27,7 +27,7 @@ else {
 }
 
 function justFetchData() {
-    let profielId = localStorage.getItem('gebruiker');
+    let profielId = sessionStorage.getItem('gebruiker');
 
     let url = rooturl + '/bericht/read.php?profielId=' + profielId;
     //LET OP : rooturl = https://scrumserver.tenobe.org/scrum/api
@@ -42,7 +42,7 @@ function justFetchData() {
 // gebruiker berichten inladen 
 function berichtenInladen() {
     console.log("berichten inladen")
-    let profielId = localStorage.getItem('gebruiker');
+    let profielId = sessionStorage.getItem('gebruiker');
 
     let url = rooturl + '/bericht/read.php?profielId=' + profielId;
     //LET OP : rooturl = https://scrumserver.tenobe.org/scrum/api
@@ -118,8 +118,8 @@ function haalGezochteGebruikerFoto(profielId, data) {
 function laadHetBericht(gebruikerId, nickname, foto, data) {
     console.log("laadHetBericht");
     document.getElementById("naarWieStuurIk").innerText = nickname;
-    localStorage.setItem("berichtenAndereGebruiker", gebruikerId);
-    localStorage.setItem("fotoVanDeAndere", foto)
+    sessionStorage.setItem("berichtenAndereGebruiker", gebruikerId);
+    sessionStorage.setItem("fotoVanDeAndere", foto)
 
     console.log(data);
     controleerDeStatusOpGelezen(data);
@@ -136,7 +136,7 @@ function haalNieuweBerichtenOp() {
     console.log("haal het laatste bericht op en schrijf");
 
     console.log("berichten inladen")
-    let profielId = localStorage.getItem('gebruiker');
+    let profielId = sessionStorage.getItem('gebruiker');
     let url = rooturl + '/bericht/read.php?profielId=' + profielId;
     //LET OP : rooturl = https://scrumserver.tenobe.org/scrum/api
     fetch(url)
@@ -151,8 +151,8 @@ function haalNieuweBerichtenOp() {
 // op gebruiker geklikt en nu laden we de berichten van dit gesprek
 function laadBerichtenVanDezeGebruiker(data) {
     console.log("laad berichten van deze gebruiker");
-    const naarGebruiker = localStorage.getItem("berichtenAndereGebruiker");
-    const vanGebruiker = localStorage.getItem("gebruiker");
+    const naarGebruiker = sessionStorage.getItem("berichtenAndereGebruiker");
+    const vanGebruiker = sessionStorage.getItem("gebruiker");
     console.log(data);
     var eenEersteGesprek = 1;//1=waar, 0=niet waar
     var gesprek,gezochtePersoonId;
@@ -223,7 +223,7 @@ function toonAlGeschrevenChatbericht(chatbubble) {
         otherBubble.innerText = chatbubble["bericht"];
         span.innerText = chatbubble["status"];
         span.className = "other";
-        foto.src = "https://scrumserver.tenobe.org/scrum/img/" + localStorage.getItem("fotoVanDeAndere");
+        foto.src = "https://scrumserver.tenobe.org/scrum/img/" + sessionStorage.getItem("fotoVanDeAndere");
     } else {
         //console.log("ik");
         inlineContainer.className = "inlineContainer own";
@@ -237,10 +237,11 @@ function toonAlGeschrevenChatbericht(chatbubble) {
         linkDelete.href = "#0";
         linkDelete.onclick = function () {
             deleteEenBericht(chatbubble["berichtId"]);
+            deleteChatbubbles();
         };
         span.appendChild(linkDelete);
         span.appendChild(berichtId);
-        foto.src = "https://scrumserver.tenobe.org/scrum/img/" + localStorage.getItem("fotoVanDeGebruiker");
+        foto.src = "https://scrumserver.tenobe.org/scrum/img/" + sessionStorage.getItem("fotoVanDeGebruiker");
     }
 
     foto.className = "inlineIcon";
@@ -260,8 +261,8 @@ function toonAlGeschrevenChatbericht(chatbubble) {
 //stuur een bericht
 document.getElementById("stuurTekst").addEventListener("click", function (e) {
     console.log("ik stuur een bericht");
-    let vanId = localStorage.getItem('gebruiker');
-    let naarId = localStorage.getItem('berichtenAndereGebruiker');
+    let vanId = sessionStorage.getItem('gebruiker');
+    let naarId = sessionStorage.getItem('berichtenAndereGebruiker');
     let bericht = document.getElementById('teSturenTekst').value;
     document.getElementById('teSturenTekst').value = "";
     let url = rooturl + '/bericht/post.php';

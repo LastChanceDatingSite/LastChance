@@ -227,12 +227,9 @@ let profielId =  sessionStorage.getItem("gebruiker");
               console.log(data);
               if (data.message === "Het profiel kon niet ge&uuml;pdatet worden. De nickname bestaat reeds.")
               {
-                document.getElementById("updateFout").innerText = "Deze nickname bestaat al!";
+                document.getElementById("nicknameFout").style.display = "inline";
+                document.getElementById("nicknameFout").innerText = "Deze nickname bestaat al!";
                 console.log("probleempje");
-              }
-              else
-              {
-                  document.getElementById("updateFout").innerText = "";
               }
             })
             .catch(function (error) {
