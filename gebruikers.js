@@ -8,7 +8,10 @@ if (sessionStorage.getItem('gebruiker') === null || sessionStorage.getItem('gebr
 }
 else {
 //The user is authenticated and the authentication has not expired.
-
+    if (sessionStorage.getItem("berichtenAndereGebruiker" === null || sessionStorage.getItem('berichtenAndereGebruiker') === "undefined")){
+    } else{
+        sessionStorage.removeItem("berichtenAndereGebruiker");
+    }
 }
 
 

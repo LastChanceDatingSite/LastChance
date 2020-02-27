@@ -73,7 +73,7 @@ function gebruikersDieAlGestuurdHebbenZoeken(profielId, data) {
         }
         if (berichtenAndereGebruiker !== gezochtePersoonId) {
             haalGezochteGebruikerFoto(gezochtePersoonId, data);
-            console.log(gezochtePersoonId);
+            //console.log(gezochtePersoonId);
         }
 
     });
@@ -153,7 +153,7 @@ function laadBerichtenVanDezeGebruiker(data) {
     console.log("laad berichten van deze gebruiker");
     const naarGebruiker = sessionStorage.getItem("berichtenAndereGebruiker");
     const vanGebruiker = sessionStorage.getItem("gebruiker");
-    console.log(data);
+    //console.log(data);
     var eenEersteGesprek = 1;//1=waar, 0=niet waar
     var gesprek, gezochtePersoonId;
     data.forEach(verschillendePersoon => {
@@ -170,7 +170,7 @@ function laadBerichtenVanDezeGebruiker(data) {
             eenEersteGesprek = 0;
             //console.log(gesprek);
         }
-        console.log("een eerste gesprek: " + eenEersteGesprek)
+        //console.log("een eerste gesprek: " + eenEersteGesprek)
     });
 
     if (eenEersteGesprek === 1) {
@@ -180,7 +180,7 @@ function laadBerichtenVanDezeGebruiker(data) {
         deleteChatbubbles();
     } else {
         //console.log("dit gesprek is gevonden");
-        console.log(gesprek);
+        //console.log(gesprek);
         toonChatgesprekMetDezeGebruiker(gesprek);
     }
 }
@@ -188,7 +188,7 @@ function laadBerichtenVanDezeGebruiker(data) {
 //berichten geladen, nu de berichten tonen
 function toonChatgesprekMetDezeGebruiker(dataChatgesprekDezeGebruiker) {
     console.log("toon chatgesprek met deze gebruiker");
-    console.log(dataChatgesprekDezeGebruiker);
+    //console.log(dataChatgesprekDezeGebruiker);
 
     dataChatgesprekDezeGebruiker.forEach(element => {
         //console.log("chatbericht:");
