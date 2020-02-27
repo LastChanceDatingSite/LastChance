@@ -1,7 +1,7 @@
 "use strict";
 let Base64;
 //Is the user NOT authenticated?
-// if (localStorage.getItem('gebruiker') !== null && localStorage.getItem('gebruiker') !== "undefined") {
+// if (sessionStorage.getItem('gebruiker') !== null && sessionStorage.getItem('gebruiker') !== "undefined") {
 //     window.open("gebruikers.html", "_self");
 // }
 // else {
@@ -128,7 +128,7 @@ async function NieuweProfiel(FotoFileUrl) {
             return resp.json();
         })
         .then(function (data) {
-            localStorage.setItem("gebruiker", data.id);
+            sessionStorage.setItem("gebruiker", data.id);
             window.location.replace("gebruikers.html");
         })
         .catch(function (error) {

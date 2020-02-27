@@ -3,7 +3,7 @@ let Base64;
 let FotoFileUrl;
 let naam;
 
-if (localStorage.getItem('gebruiker') === null || localStorage.getItem('gebruiker') === "undefined") {
+if (sessionStorage.getItem('gebruiker') === null || sessionStorage.getItem('gebruiker') === "undefined") {
     window.open("AccessDenied.html","_self");
 }
 else {
@@ -29,7 +29,7 @@ function invoerCorrect() {
 eenProfielAfhalen();
 async function eenProfielAfhalen() {
 
-    const gebruikerId = localStorage.getItem("gebruiker");
+    const gebruikerId = sessionStorage.getItem("gebruiker");
     const response = await fetch("https://scrumserver.tenobe.org/scrum/api/profiel/read_one.php?id=" + gebruikerId);
     if (response.ok) {
         const eenProfiel = await response.json();
@@ -38,7 +38,7 @@ async function eenProfielAfhalen() {
         lijstGebruikers(eenProfiel);
         document.getElementById("update").style.display = "none";
         document.getElementById("sterrenbeeld").src = sterrenbeeldAfhalen(eenProfiel);
-        localStorage.setItem("lovecoins", eenProfiel.lovecoins);
+        sessionStorage.setItem("lovecoins", eenProfiel.lovecoins);
         return eenProfiel;
     }
     else {
@@ -76,7 +76,7 @@ function lijstGebruikers(gebruiker) {
     document.getElementById("lovecoins").innerText = gebruiker.lovecoins;
     document.getElementById("avatar").src = "https://scrumserver.tenobe.org/scrum/img/" + gebruiker.foto;
     //foto lokaal opslaan
-    localStorage.setItem("fotoVanDeGebruiker", gebruiker.foto);
+    sessionStorage.setItem("fotoVanDeGebruiker", gebruiker.foto);
 
     // profiel bewerken
     document.getElementById("achternaam").value = gebruiker.familienaam;
@@ -168,7 +168,7 @@ document.getElementById("bewerken").onclick = function () {
 });
 
 function profielUpdaten() {
-let profielId =  localStorage.getItem("gebruiker");
+let profielId =  sessionStorage.getItem("gebruiker");
         let nieuweVoornaam =  document.getElementById("voornaam").value;
         let nieuweAchternaam =  document.getElementById("achternaam").value;
         let nieuweNickname = document.getElementById("nickname").value;
@@ -247,7 +247,7 @@ document.getElementById("favorieten").addEventListener('click', function (e) {
 
     const favorietenLijst = document.querySelector("ul");
     favorietenlijst.style.display = "inline-block";
-    let profielId = localStorage.getItem("gebruiker");
+    let profielId = sessionStorage.getItem("gebruiker");
     const rooturl = "https://scrumserver.tenobe.org/scrum/api";
     let url = rooturl + '/favoriet/read.php?profielId=' + profielId;
 
@@ -287,10 +287,10 @@ document.getElementById("favorieten").addEventListener('click', function (e) {
                     console.log(id);
                     hyperlink.onclick = function()
                     {
-                        localStorage.setItem("favorietId", favorietId)
+                        sessionStorage.setItem("favorietId", favorietId)
                         console.log(favorietId);
                         
-                        localStorage.setItem("gezochteGebruiker", eenProfiel.id);
+                        sessionStorage.setItem("gezochteGebruiker", eenProfiel.id);
                         window.location.replace("favorietProfiel.html");
                     }
                     hyperlink.innerHTML = "<div class='mediumIcons'>" + img + " <br> " + eenProfiel.nickname + " <br> " + statusNaControle + "</div>";

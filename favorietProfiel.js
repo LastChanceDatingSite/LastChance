@@ -1,7 +1,7 @@
 "use strict";
 
 //Is the user authenticated?
-if (localStorage.getItem('gebruiker') === null || localStorage.getItem('gebruiker') === "undefined") {
+if (sessionStorage.getItem('gebruiker') === null || sessionStorage.getItem('gebruiker') === "undefined") {
     window.open("AccessDenied.html", "_self");
 }
 else {
@@ -16,7 +16,7 @@ favorietcontrole();
 
 
 async function eenProfielAfhalen() {
-    const gebruikerId = localStorage.getItem("gezochteGebruiker");
+    const gebruikerId = sessionStorage.getItem("gezochteGebruiker");
     const response =
         await fetch("https://scrumserver.tenobe.org/scrum/api/profiel/read_one.php?id=" + gebruikerId);
     if (response.ok) {
@@ -86,7 +86,7 @@ favorietVerwijderenButton.onclick = async function () {
   /*  //dubbelcheck
     favorietVerwijderenButton.innerText = "Zeker? dit is misschien je laatste kans.." */
 
-    const favorietId = localStorage.getItem("favorietId");
+    const favorietId = sessionStorage.getItem("favorietId");
     const rooturl = "https://scrumserver.tenobe.org/scrum/api";
 
             let url = rooturl + '/favoriet/delete.php';
@@ -120,11 +120,11 @@ favorietVerwijderenButton.onclick = async function () {
 
 document.getElementById("favoriet").addEventListener('click', function (e) {
     const message = document.getElementById("message");
-    let gebruikerId = localStorage.getItem("gebruiker");
-    let gezochteId = localStorage.getItem("gezochteGebruiker");
+    let gebruikerId = sessionStorage.getItem("gebruiker");
+    let gezochteId = sessionStorage.getItem("gezochteGebruiker");
     const rooturl = "https://scrumserver.tenobe.org/scrum/api";
     let url = rooturl + "/favoriet/like.php";
-    const lovecoins = localStorage.getItem("lovecoins");
+    const lovecoins = sessionStorage.getItem("lovecoins");
 
     if (lovecoins === "0") {
         message.innerText = "Geen lovecoins meer!";
@@ -190,8 +190,8 @@ document.getElementById("favoriet").addEventListener('click', function (e) {
 // controle als gezocht profiel favoriet is
 async function favorietcontrole() {
 
-    const profielId = localStorage.getItem("gebruiker");
-    const gezochtId = localStorage.getItem("gezochteGebruiker");
+    const profielId = sessionStorage.getItem("gebruiker");
+    const gezochtId = sessionStorage.getItem("gezochteGebruiker");
     const favorietButton = document.getElementById("favoriet");
     const rooturl = "https://scrumserver.tenobe.org/scrum/api";
     let url = rooturl + '/favoriet/read.php?profielId=' + profielId;
@@ -227,7 +227,7 @@ async function favorietcontrole() {
 
 //stuur een bericht naar deze persoon:
 document.getElementById("stuurEenBericht").addEventListener("click", function (e) {
-    const berichtNaarDezeGebruiker = localStorage.getItem("gezochteGebruiker");
-    localStorage.setItem("berichtenAndereGebruiker",berichtNaarDezeGebruiker); 
+    const berichtNaarDezeGebruiker = sessionStorage.getItem("gezochteGebruiker");
+    sessionStorage.setItem("berichtenAndereGebruiker",berichtNaarDezeGebruiker); 
     window.location.replace("chatbox.html");
 });

@@ -2,7 +2,7 @@
 
 
 //Is the user authenticated?
-if (localStorage.getItem('gebruiker') === null || localStorage.getItem('gebruiker') === "undefined") {
+if (sessionStorage.getItem('gebruiker') === null || sessionStorage.getItem('gebruiker') === "undefined") {
     window.open("AccessDenied.html","_self");
 }
 else {
@@ -14,7 +14,7 @@ else {
 eenProfielAfhalen();
 async function eenProfielAfhalen() {
 
-    const gebruikerId = localStorage.getItem("gebruiker");
+    const gebruikerId = sessionStorage.getItem("gebruiker");
     const response = await fetch("https://scrumserver.tenobe.org/scrum/api/profiel/read_one.php?id=" + gebruikerId);
     if (response.ok) {
         const eenProfiel = await response.json();
@@ -56,7 +56,7 @@ document.getElementById("aankoopKnop").addEventListener('click', function (e)
     }
 })
     document.getElementById("betalen").addEventListener('click', function (e) {  
-        let profielId =  localStorage.getItem("gebruiker");
+        let profielId =  sessionStorage.getItem("gebruiker");
         let bedrag =  document.getElementById("aankoopLovecoins").value;
         const rooturl = "https://scrumserver.tenobe.org/scrum/api";
         let url=rooturl+'/profiel/read_one.php?id='+profielId;
