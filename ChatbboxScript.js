@@ -154,6 +154,7 @@ function laadBerichtenVanDezeGebruiker(data) {
     const naarGebruiker = localStorage.getItem("berichtenAndereGebruiker");
     const vanGebruiker = localStorage.getItem("gebruiker");
     console.log(data);
+    var eenEersteGesprek = 1;//1=waar, 0=niet waar
     var gesprek,gezochtePersoonId;
     data.forEach(verschillendePersoon => {
         var berichtenPerPersoon = verschillendePersoon[0];
@@ -164,18 +165,23 @@ function laadBerichtenVanDezeGebruiker(data) {
         } else {
             gezochtePersoonId = vanPersoonId;
         }
-        //if (gezochtePersoonId === naarGebruiker) {
+        if (gezochtePersoonId === naarGebruiker) {
             gesprek = verschillendePersoon;
+            eenEersteGesprek=0;
             //console.log(gesprek);
-        //}
+        }
+        console.log("een eerste gesprek: " + eenEersteGesprek)
     });
-    
+
+    if (eenEersteGesprek===1){
+        console.log("undefined");
+        
+        //toonChatgesprekMetDezeGebruiker(gesprek);
+        deleteChatbubbles();
+    } else {
     //console.log("dit gesprek is gevonden");
     console.log(gesprek);
     toonChatgesprekMetDezeGebruiker(gesprek);
-    if (gezochtePersoonId !== naarGebruiker) {
-        deleteChatbubbles();
-        //console.log(gesprek);
     }
 }
 
@@ -281,6 +287,7 @@ document.getElementById("stuurTekst").addEventListener("click", function (e) {
             console.log(data);
             // de volledige pagina refreshen. dit is niet nodig 
             //    window.location.replace("chatbox.html") 
+            deleteChatbubbles();
             haalNieuweBerichtenOp();
         })
         .catch(function (error) { console.log(error); });

@@ -309,17 +309,30 @@ input, select{
   overflow: auto;
 }
 /* berichten */
+.chatberichten{
+  margin: 5em 0em 0em 0em;
+}
   .groteContainer{
     height: 60em;
-    width:75%;
+    width:80%;
     min-width: 27em;
     max-width: 60em;
+    display: inline-block;
+    margin:2px;
+    padding: 0;
   }
   .container{
     height: 90%;
     width: 100%;
     border: 1px solid;
     overflow: auto;
+    margin: 0;
+  }
+  #naarWieStuurIk{
+    background-color: purple;
+    color:white;
+    padding: 1em;
+    margin:0;
   }
   .bubbleWrapper {
     padding: 10px 10px;
@@ -382,12 +395,13 @@ input, select{
   span a, span a:hover, span a:active{
       text-decoration: none;
       background-color: none;
+      margin: 0 5px 0;
   }
-  span img{
+  /*span img{
     width: 25px;
     height: 25px;
     vertical-align: middle;
-  }
+  }*/
 
   .textbox{
     width:100%;
