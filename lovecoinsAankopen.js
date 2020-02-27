@@ -35,13 +35,9 @@ document.getElementById("aankoopKnop").addEventListener('click', function (e)
         
         if(aantal < 5){
             teBetalen = aantal*2;
-            console.log(teBetalen);        
-            console.log("kleiner dan");    
         }
         else {
             teBetalen = Math.floor((aantal*1.8)*10)/10;
-            console.log(teBetalen);
-            console.log("groter dan");
         }
         document.getElementById("aantalCredits").innerText=aantal;
         document.getElementById("aantalEuro").innerText=teBetalen;
@@ -50,7 +46,6 @@ document.getElementById("aankoopKnop").addEventListener('click', function (e)
     }
     
     document.getElementById("annuleren").onclick =function(){
-        console.log("functie starten")
         aantal=0;
         document.getElementById("aankoopLovecoins").value="";
         document.getElementById("aantalCredits").innerText=0;
@@ -62,9 +57,7 @@ document.getElementById("aankoopKnop").addEventListener('click', function (e)
 })
     document.getElementById("betalen").addEventListener('click', function (e) {  
         let profielId =  localStorage.getItem("gebruiker");
-        console.log(profielId);
         let bedrag =  document.getElementById("aankoopLovecoins").value;
-        console.log(bedrag);
         const rooturl = "https://scrumserver.tenobe.org/scrum/api";
         let url=rooturl+'/profiel/read_one.php?id='+profielId;
                        
