@@ -88,10 +88,7 @@ favorietVerwijderenButton.onclick = async function () {
 
     const favorietId = localStorage.getItem("favorietId");
     const rooturl = "https://scrumserver.tenobe.org/scrum/api";
-  
 
-
-            // favoriet verwijderen
             let url = rooturl + '/favoriet/delete.php';
 
             let favorietData = {

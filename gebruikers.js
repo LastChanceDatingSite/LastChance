@@ -86,7 +86,9 @@ function lijstGebruikers(gebruiker) {
     document.getElementById("nickname").value = gebruiker.nickname;
     document.getElementById("beroep").value = gebruiker.beroep;
     document.getElementById("sexe").value = gebruiker.sexe;
+   // console.log(gebruiker.foto);
     document.getElementById("mijnfoto").src = gebruiker.foto;
+   // console.log(document.getElementById("mijnfoto").src);
     document.getElementById("haarkleur").value = gebruiker.haarkleur;
     document.getElementById("oogkleur").value = gebruiker.oogkleur;
     document.getElementById("grootte").value = gebruiker.grootte;
