@@ -109,3 +109,34 @@ window.onload = function () {
             .catch(function (error) { console.log(error); });
     });
 }
+
+function LoveCoinsAanwezig(){
+    if(sessionStorage.getItem("lovecoins") === 0){
+        document.getElementById("stuurTekstFout").style.display = "inline";
+        LoveCoinsVerminderenMet1();
+    }
+}
+async function LoveCoinsVerminderenMet1(){
+let bedrag = -1;                       
+
+                const gebruikerId = localStorage.getItem('gebruiker');
+                let urlUpdate =  'https://scrumserver.tenobe.org/scrum/api/profiel/lovecoinTransfer.php';
+
+                data = {
+                    "profielID": gebruikerId,
+                    "bedrag": bedrag
+                };
+
+                var request = new Request(urlUpdate, {
+                    method: 'PUT',
+                    body: JSON.stringify(data),
+                    headers: new Headers({
+                        'Content-Type': 'application/json'
+                    })
+                });
+                fetch(request)
+                    .then(function (resp) { return resp.json(); })
+                    .then(function (data) { console.log(data); })
+                    .catch(function (error) { console.log(error); });
+            };
+    
