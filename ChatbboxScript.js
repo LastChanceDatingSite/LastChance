@@ -16,28 +16,28 @@ else {
     berichtenInladen();
 
 
-    var berichtenAndereGebruiker=localStorage.getItem("berichtenAndereGebruiker");
-    if (berichtenAndereGebruiker!==null&&berichtenAndereGebruiker!=='undefined'){
-               deleteChatbubbles(); 
-               haalGezochteGebruikerFoto();
-               //justFetchData();
+    var berichtenAndereGebruiker = localStorage.getItem("berichtenAndereGebruiker");
+    if (berichtenAndereGebruiker !== null && berichtenAndereGebruiker !== 'undefined') {
+        deleteChatbubbles();
+        //haalGezochteGebruikerFoto();
+        justFetchData();
 
     }
     haalNieuweBerichtenOp();
 }
 
-function justFetchData(){
-     let profielId = localStorage.getItem('gebruiker');
+function justFetchData() {
+    let profielId = localStorage.getItem('gebruiker');
 
-     let url = rooturl + '/bericht/read.php?profielId=' + profielId;
-     //LET OP : rooturl = https://scrumserver.tenobe.org/scrum/api
-     fetch(url)
-         .then(function (resp) { return resp.json(); })
-         .then(function (data) { //console.log(data);
-            haalGezochteGebruikerFoto(berichtenAndereGebruiker,data);
-         })
-         .catch(function (error) { console.log(error); });
- }
+    let url = rooturl + '/bericht/read.php?profielId=' + profielId;
+    //LET OP : rooturl = https://scrumserver.tenobe.org/scrum/api
+    fetch(url)
+        .then(function (resp) { return resp.json(); })
+        .then(function (data) { //console.log(data);
+            haalGezochteGebruikerFoto(berichtenAndereGebruiker, data);
+        })
+        .catch(function (error) { console.log(error); });
+}
 
 // gebruiker berichten inladen 
 function berichtenInladen() {
@@ -48,9 +48,11 @@ function berichtenInladen() {
     //LET OP : rooturl = https://scrumserver.tenobe.org/scrum/api
     fetch(url)
         .then(function (resp) { return resp.json(); })
-        .then(function (data) { console.log(data);
+        .then(function (data) {
+            console.log(data);
             gebruikersDieAlGestuurdHebbenZoeken(profielId, data);
-            controleerDeStatusOpOntvangen(data);
+            controleerDeStatusOpOntvangen(data)
+            console.log(profielId);
         })
         .catch(function (error) { console.log(error); });
 }
@@ -69,15 +71,16 @@ function gebruikersDieAlGestuurdHebbenZoeken(profielId, data) {
         } else {
             gezochtePersoonId = vanPersoonId;
         }
-        if (berichtenAndereGebruiker !== gezochtePersoonId){
-        haalGezochteGebruikerFoto(gezochtePersoonId,data);
+        if (berichtenAndereGebruiker !== gezochtePersoonId) {
+            haalGezochteGebruikerFoto(gezochtePersoonId, data);
+            console.log(gezochtePersoonId);
         }
 
     });
 }
 
 //gebruikerfoto's zetten in lijst om op te klikken (nog niet laatste gesprek eerst)
-function haalGezochteGebruikerFoto(profielId) {
+function haalGezochteGebruikerFoto(profielId, data) {
     console.log("haal gezochte gebruiker foto");
     document.querySelector("ul").innerHTML = "";
     eenProfielAfhalen();
@@ -86,7 +89,7 @@ function haalGezochteGebruikerFoto(profielId) {
         if (response.ok) {
             const gebruiker = await response.json();
             //console.log(gebruiker);
-            document.getElementById("naarWieStuurIk").innerText= gebruiker["nickname"];
+            document.getElementById("naarWieStuurIk").innerText = gebruiker["nickname"];
             const berichtenLijst = document.querySelector("ul");
 
             let index = 0;
@@ -96,7 +99,7 @@ function haalGezochteGebruikerFoto(profielId) {
             hyperlink.dataset.id = gebruiker.id;
             hyperlink.onclick = function () {
                 deleteChatbubbles();
-                laadHetBericht(this.dataset.id,gebruiker["nickname"],gebruiker.foto);
+                laadHetBericht(this.dataset.id, gebruiker["nickname"], gebruiker.foto, data);
             }
 
             const li = document.createElement("li");
@@ -112,17 +115,18 @@ function haalGezochteGebruikerFoto(profielId) {
 
 }
 
-function laadHetBericht(gebruikerId,nickname,foto,data){
-    document.getElementById("naarWieStuurIk").innerText= nickname;
-                localStorage.setItem("berichtenAndereGebruiker", gebruikerId);
-                localStorage.setItem("fotoVanDeAndere", foto)
+function laadHetBericht(gebruikerId, nickname, foto, data) {
+    console.log("laadHetBericht");
+    document.getElementById("naarWieStuurIk").innerText = nickname;
+    localStorage.setItem("berichtenAndereGebruiker", gebruikerId);
+    localStorage.setItem("fotoVanDeAndere", foto)
 
-                
-                controleerDeStatusOpGelezen(data);
-                haalNieuweBerichtenOp();
+    console.log(data);
+    controleerDeStatusOpGelezen(data);
+    haalNieuweBerichtenOp();
 }
 
-function deleteChatbubbles(){
+function deleteChatbubbles() {
     var div = document.getElementById("chatGesprek");
     while (div.firstChild) {
         div.removeChild(div.firstChild);
@@ -131,7 +135,7 @@ function deleteChatbubbles(){
 function haalNieuweBerichtenOp() {
     console.log("haal het laatste bericht op en schrijf");
 
-    //console.log("berichten inladen")
+    console.log("berichten inladen")
     let profielId = localStorage.getItem('gebruiker');
     let url = rooturl + '/bericht/read.php?profielId=' + profielId;
     //LET OP : rooturl = https://scrumserver.tenobe.org/scrum/api
@@ -150,12 +154,12 @@ function laadBerichtenVanDezeGebruiker(data) {
     const naarGebruiker = localStorage.getItem("berichtenAndereGebruiker");
     const vanGebruiker = localStorage.getItem("gebruiker");
     console.log(data);
-    var gesprek;
+    var eenEersteGesprek = 1;//1=waar, 0=niet waar
+    var gesprek,gezochtePersoonId;
     data.forEach(verschillendePersoon => {
         var berichtenPerPersoon = verschillendePersoon[0];
         var vanPersoonId = berichtenPerPersoon["vanId"];
         var naarPersoonId = berichtenPerPersoon["naarId"];
-        var gezochtePersoonId;
         if (vanPersoonId === vanGebruiker) {
             gezochtePersoonId = naarPersoonId;
         } else {
@@ -163,12 +167,22 @@ function laadBerichtenVanDezeGebruiker(data) {
         }
         if (gezochtePersoonId === naarGebruiker) {
             gesprek = verschillendePersoon;
+            eenEersteGesprek=0;
             //console.log(gesprek);
         }
+        console.log("een eerste gesprek: " + eenEersteGesprek)
     });
+
+    if (eenEersteGesprek===1){
+        console.log("undefined");
+        
+        //toonChatgesprekMetDezeGebruiker(gesprek);
+        deleteChatbubbles();
+    } else {
     //console.log("dit gesprek is gevonden");
-    //console.log(gesprek);
+    console.log(gesprek);
     toonChatgesprekMetDezeGebruiker(gesprek);
+    }
 }
 
 //berichten geladen, nu de berichten tonen
@@ -273,6 +287,7 @@ document.getElementById("stuurTekst").addEventListener("click", function (e) {
             console.log(data);
             // de volledige pagina refreshen. dit is niet nodig 
             //    window.location.replace("chatbox.html") 
+            deleteChatbubbles();
             haalNieuweBerichtenOp();
         })
         .catch(function (error) { console.log(error); });
@@ -305,12 +320,12 @@ function deleteEenBericht(id) {
 
 
 //check de status op ontvangen
-function controleerDeStatusOpOntvangen(data){
+function controleerDeStatusOpOntvangen(data) {
     //console.log(data);
     data.forEach(perPersoon => {
         perPersoon.forEach(perBericht => {
-            if(perBericht['status']==="verzonden"&&perBericht['benIkZender']==="0"){
-                veranderStatus(perBericht['berichtId'],'ontvangen');
+            if (perBericht['status'] === "verzonden" && perBericht['benIkZender'] === "0") {
+                veranderStatus(perBericht['berichtId'], 'ontvangen');
             }
             //console.log(perBericht);
         });
@@ -318,12 +333,12 @@ function controleerDeStatusOpOntvangen(data){
 }
 
 //check de status op ontvangen
-function controleerDeStatusOpGelezen(data){
+function controleerDeStatusOpGelezen(data) {
     //console.log(data);
     data.forEach(perPersoon => {
         perPersoon.forEach(perBericht => {
-            if(perBericht['status']!=="gelezen"&&perBericht['benIkZender']==="0"){
-                veranderStatus(perBericht['berichtId'],'gelezen');
+            if (perBericht['status'] !== "gelezen" && perBericht['benIkZender'] === "0") {
+                veranderStatus(perBericht['berichtId'], 'gelezen');
             }
             //console.log(perBericht);
         });
@@ -331,7 +346,7 @@ function controleerDeStatusOpGelezen(data){
 }
 
 //alle berichten van de ander zijn ontvangen als ze nog niet gelezen zijn.
-function veranderStatus(id,status) {
+function veranderStatus(id, status) {
     //let id = document.getElementById('input24_1').value;
     //let status = 'ontvangen';
 

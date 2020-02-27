@@ -46,7 +46,10 @@ document.getElementById("zoeken").onclick = async function()
                     urlArray.push("&" + area.id + "=" + area.value);
                 }
         
+        
     }
+    //urlArray.push("&nicknameFuzzy=1");
+
     const arrayToString = urlArray.join("");
     const Url = rootUrl + arrayToString ;
     console.log(Url);
