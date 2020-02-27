@@ -155,7 +155,7 @@ function laadBerichtenVanDezeGebruiker(data) {
     const vanGebruiker = sessionStorage.getItem("gebruiker");
     console.log(data);
     var eenEersteGesprek = 1;//1=waar, 0=niet waar
-    var gesprek,gezochtePersoonId;
+    var gesprek, gezochtePersoonId;
     data.forEach(verschillendePersoon => {
         var berichtenPerPersoon = verschillendePersoon[0];
         var vanPersoonId = berichtenPerPersoon["vanId"];
@@ -167,21 +167,21 @@ function laadBerichtenVanDezeGebruiker(data) {
         }
         if (gezochtePersoonId === naarGebruiker) {
             gesprek = verschillendePersoon;
-            eenEersteGesprek=0;
+            eenEersteGesprek = 0;
             //console.log(gesprek);
         }
         console.log("een eerste gesprek: " + eenEersteGesprek)
     });
 
-    if (eenEersteGesprek===1){
+    if (eenEersteGesprek === 1) {
         console.log("undefined");
-        
+
         //toonChatgesprekMetDezeGebruiker(gesprek);
         deleteChatbubbles();
     } else {
-    //console.log("dit gesprek is gevonden");
-    console.log(gesprek);
-    toonChatgesprekMetDezeGebruiker(gesprek);
+        //console.log("dit gesprek is gevonden");
+        console.log(gesprek);
+        toonChatgesprekMetDezeGebruiker(gesprek);
     }
 }
 
@@ -257,80 +257,94 @@ function toonAlGeschrevenChatbericht(chatbubble) {
     chatGesprekMetAndereGebruiker.appendChild(bubbleWrapper);
 }
 
-function LoveCoinsAanwezig(){
+function LoveCoinsAanwezig() {
     console.log(sessionStorage.getItem("lovecoins"));
     currentLovecoins = sessionStorage.getItem("lovecoins");
-    if(sessionStorage.getItem("lovecoins") === "0"){
+    if (sessionStorage.getItem("lovecoins") === "0") {
         document.getElementById("stuurTekstFout").style.display = "inline";
     }
-    else{
+    else {
         LoveCoinsVerminderenMet1();
         BerichtPlaatsen();
     }
 }
-async function LoveCoinsVerminderenMet1(){
-let bedrag = -1;                       
+async function LoveCoinsVerminderenMet1() {
+    let bedrag = -1;
 
-                const gebruikerId = sessionStorage.getItem('gebruiker');
-                let urlUpdate =  'https://scrumserver.tenobe.org/scrum/api/profiel/lovecoinTransfer.php';
+    const gebruikerId = sessionStorage.getItem('gebruiker');
 
-               var data = {
-                    "profielID": gebruikerId,
-                    "bedrag": bedrag
-                };
-                console.log(sessionStorage.getItem("lovecoins"));
-                var request = new Request(urlUpdate, {
-                    method: 'PUT',
-                    body: JSON.stringify(data),
-                    headers: new Headers({
-                        'Content-Type': 'application/json'
-                    })
-                });
-                fetch(request)
-                    .then(function (resp) { return resp.json(); })
-                    .then(function (data) { console.log(data);
-                    sessionStorage.setItem("lovecoins",currentLovecoins-1) })
+    let urlUpdate = 'https://scrumserver.tenobe.org/scrum/api/profiel/lovecoinTransfer.php';
 
-                    .catch(function (error) { console.log(error); });
-            };
+    var data = {
+        "profielID": gebruikerId,
+        "bedrag": bedrag
+    };
+    console.log(sessionStorage.getItem("lovecoins"));
+    var request = new Request(urlUpdate, {
+        method: 'PUT',
+        body: JSON.stringify(data),
+        headers: new Headers({
+            'Content-Type': 'application/json'
+        })
+    })
+    fetch(request)
+        .then(function (resp) { return resp.json(); })
+        .then(function (data) {
+            console.log(data);
+
+            const rooturl = "https://scrumserver.tenobe.org/scrum/api";
+            let favUrl = rooturl + '/profiel/read_one.php?id=' + gebruikerId;
+
+            fetch(favUrl)
+                .then(function (resp) { return resp.json(); })
+                .then(function (data) {
+
+
+                    sessionStorage.setItem("lovecoins", (data.lovecoins));
+                    console.log(data.lovecoins);
+                    console.log(data);
+                })
+                .catch(function (error) { console.log(error); });
+        })
+}
 //stuur een bericht
 document.getElementById("stuurTekst").addEventListener("click", function (e) {
     LoveCoinsAanwezig();
 });
 
-async function BerichtPlaatsen(){
-console.log("ik stuur een bericht");
-let vanId = sessionStorage.getItem('gebruiker');
-let naarId = sessionStorage.getItem('berichtenAndereGebruiker');
-let bericht = document.getElementById('teSturenTekst').value;
-document.getElementById('teSturenTekst').value = "";
-let url = rooturl + '/bericht/post.php';
-//LET OP : rooturl = https://scrumserver.tenobe.org/scrum/api
-let data = {
-    vanId: vanId,
-    naarId: naarId,
-    bericht: bericht,
-    status: "verzonden"
-}
+async function BerichtPlaatsen() {
+    console.log("ik stuur een bericht");
+    let vanId = sessionStorage.getItem('gebruiker');
+    let naarId = sessionStorage.getItem('berichtenAndereGebruiker');
+    let bericht = document.getElementById('teSturenTekst').value;
+    document.getElementById('teSturenTekst').value = "";
+    let url = rooturl + '/bericht/post.php';
+    //LET OP : rooturl = https://scrumserver.tenobe.org/scrum/api
+    let data = {
+        vanId: vanId,
+        naarId: naarId,
+        bericht: bericht,
+        status: "verzonden"
+    }
 
-var request = new Request(url, {
-    method: 'POST',
-    body: JSON.stringify(data),
-    headers: new Headers({
-        'Content-Type': 'application/json'
-    })
-});
+    var request = new Request(url, {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: new Headers({
+            'Content-Type': 'application/json'
+        })
+    });
 
-fetch(request)
-    .then(function (resp) { return resp.json(); })
-    .then(function (data) {
-        console.log(data);
-        // de volledige pagina refreshen. dit is niet nodig 
-        //    window.location.replace("chatbox.html") 
-        deleteChatbubbles();
-        haalNieuweBerichtenOp();
-    })
-    .catch(function (error) { console.log(error); });
+    fetch(request)
+        .then(function (resp) { return resp.json(); })
+        .then(function (data) {
+            console.log(data);
+            // de volledige pagina refreshen. dit is niet nodig 
+            //    window.location.replace("chatbox.html") 
+            deleteChatbubbles();
+            haalNieuweBerichtenOp();
+        })
+        .catch(function (error) { console.log(error); });
 }
 
 //delete een bericht
