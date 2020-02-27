@@ -19,8 +19,8 @@ else {
     var berichtenAndereGebruiker=localStorage.getItem("berichtenAndereGebruiker");
     if (berichtenAndereGebruiker!==null&&berichtenAndereGebruiker!=='undefined'){
                deleteChatbubbles(); 
-               haalGezochteGebruikerFoto();
-               //justFetchData();
+               //haalGezochteGebruikerFoto();
+               justFetchData();
 
     }
     haalNieuweBerichtenOp();
@@ -34,7 +34,7 @@ function justFetchData(){
      fetch(url)
          .then(function (resp) { return resp.json(); })
          .then(function (data) { //console.log(data);
-            haalGezochteGebruikerFoto(berichtenAndereGebruiker,data);
+            haalGezochteGebruikerFoto(berichtenAndereGebruiker);
          })
          .catch(function (error) { console.log(error); });
  }
@@ -49,14 +49,15 @@ function berichtenInladen() {
     fetch(url)
         .then(function (resp) { return resp.json(); })
         .then(function (data) { console.log(data);
-            gebruikersDieAlGestuurdHebbenZoeken(profielId, data);
-            controleerDeStatusOpOntvangen(data);
+            gebruikersDieAlGestuurdHebbenZoeken(profielId,data);
+            controleerDeStatusOpOntvangen(data)
+            console.log(profielId);
         })
         .catch(function (error) { console.log(error); });
 }
 
 //andere gebruikers zoeken die al gestuurd hebben
-function gebruikersDieAlGestuurdHebbenZoeken(profielId, data) {
+function gebruikersDieAlGestuurdHebbenZoeken(profielId,data) {
     console.log("gebruikers die al gestuurd hebben zoeken");
     data.forEach(verschillendePersoon => {
         //console.log(verschillendePersoon);
@@ -70,7 +71,8 @@ function gebruikersDieAlGestuurdHebbenZoeken(profielId, data) {
             gezochtePersoonId = vanPersoonId;
         }
         if (berichtenAndereGebruiker !== gezochtePersoonId){
-        haalGezochteGebruikerFoto(gezochtePersoonId,data);
+        haalGezochteGebruikerFoto(gezochtePersoonId);
+        console.log(gezochtePersoonId);
         }
 
     });
@@ -131,7 +133,7 @@ function deleteChatbubbles(){
 function haalNieuweBerichtenOp() {
     console.log("haal het laatste bericht op en schrijf");
 
-    //console.log("berichten inladen")
+    console.log("berichten inladen")
     let profielId = localStorage.getItem('gebruiker');
     let url = rooturl + '/bericht/read.php?profielId=' + profielId;
     //LET OP : rooturl = https://scrumserver.tenobe.org/scrum/api
