@@ -1,7 +1,7 @@
 "use strict";
 
 //Is the user authenticated?
-if (localStorage.getItem('gebruiker') === null || localStorage.getItem('gebruiker') === "undefined") {
+if (sessionStorage.getItem('gebruiker') === null || sessionStorage.getItem('gebruiker') === "undefined") {
     window.open("AccessDenied.html","_self");
 }
 else {
@@ -89,7 +89,7 @@ function lijstGebruikers(gebruikers)
         {
             window.location.replace("gezochtProfiel.html");
             const gebruikerId = this.dataset.id;
-            localStorage.setItem("gezochteGebruiker", gebruikerId);
+            sessionStorage.setItem("gezochteGebruiker", gebruikerId);
         }
        
         const li = document.createElement("li");
@@ -123,7 +123,7 @@ document.getElementById("lucky").onclick = function() {
             {
                 window.location.replace("gezochtProfiel.html");
                 const gebruikerId = this.dataset.id;
-                localStorage.setItem("gezochteGebruiker", gebruikerId);
+                sessionStorage.setItem("gezochteGebruiker", gebruikerId);
             }
            
             const li = document.createElement("li");

@@ -1,7 +1,7 @@
 "use strict";
 
 //Is the user NOT authenticated?
-if (localStorage.getItem('gebruiker') !== null && localStorage.getItem('gebruiker') !== "undefined") {
+if (sessionStorage.getItem('gebruiker') !== null && sessionStorage.getItem('gebruiker') !== "undefined") {
     window.open("gebruikers.html","_self");
 }
 else {

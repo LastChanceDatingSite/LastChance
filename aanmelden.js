@@ -1,7 +1,7 @@
 "use strict";
 
 //Is the user NOT authenticated?
-if (localStorage.getItem('gebruiker') !== null && localStorage.getItem('gebruiker') !== "undefined") {
+if (sessionStorage.getItem('gebruiker') !== null && sessionStorage.getItem('gebruiker') !== "undefined") {
     window.open("gebruikers.html","_self");
 }/*
 else {
@@ -32,7 +32,32 @@ else {
             .then( function (resp)  { return resp.json(); })
             .then( function (data)  { console.log(data.id); 
                 window.location.replace("gebruikers.html");
-                localStorage.setItem('gebruiker', data.id); })
+                sessionStorage.setItem('gebruiker', data.id); })
+               // gebruikersInArrayEersteBezoek(data.id); })
+               // sessionStorage.setItem("gebruikersArray", data.id) })
             .catch(function (error) { console.log(error); });
     });
 
+
+var gebruikersArray = [];
+console.log(gebruikersArray);
+function gebruikersInArrayEersteBezoek(id) {
+
+    console.log("wordt gebruikt");
+    console.log(gebruikersArray);
+    gebruikersArray = JSON.parse(sessionStorage.getItem("gebruikersArray"));
+    console.log(id);
+    gebruikersArray.push(id);
+    sessionStorage.setItem("gebruikersArray", JSON.stringify(gebruikersArray));
+}
+
+
+/*
+ var names = [];
+names[0] = prompt("New member name?");
+sessionStorage.setItem("names", JSON.stringify(names));
+
+//...
+var storedNames = JSON.parse(sessionStorage.getItem("names"));
+
+*/

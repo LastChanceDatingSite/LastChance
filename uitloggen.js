@@ -1,7 +1,7 @@
 "use strict"
 
 //Is the user authenticated?
-if (localStorage.getItem('gebruiker') === null || localStorage.getItem('gebruiker') === "undefined") {
+if (sessionStorage.getItem('gebruiker') === null || sessionStorage.getItem('gebruiker') === "undefined") {
     window.open("AccessDenied.html","_self");
 }
 else {
@@ -11,5 +11,5 @@ else {
 
 
 document.getElementById("uitloggen").onclick = function() {
-    localStorage.clear();
+    sessionStorage.clear();
 }
