@@ -49,10 +49,10 @@ function berichtenInladen() {
     fetch(url)
         .then(function (resp) { return resp.json(); })
         .then(function (data) {
-            console.log(data);
+            //console.log(data);
             gebruikersDieAlGestuurdHebbenZoeken(profielId, data);
             controleerDeStatusOpOntvangen(data)
-            console.log(profielId);
+            //console.log(profielId);
         })
         .catch(function (error) { console.log(error); });
 }
@@ -197,6 +197,9 @@ function toonChatgesprekMetDezeGebruiker(dataChatgesprekDezeGebruiker) {
         //console.log(element["benIkZender"]);
         toonAlGeschrevenChatbericht(element);
     });
+    // when a new message comes in...
+    var chatEl = document.getElementById("chatGesprek").lastChild;
+    chatEl.scrollIntoView();
 }
 
 

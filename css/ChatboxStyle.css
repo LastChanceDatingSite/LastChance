@@ -29,6 +29,9 @@ html, body, div, section, article, aside, nav {
     padding: 0;
     background-color: lightgoldenrodyellow;
  }
+ body{
+   height: 100%;
+ }
  img {
     border: none;
     width: 5em;
@@ -158,8 +161,11 @@ label{
  #berichtenLijst {
     padding: 0;
     list-style-type: none;
-    width: 100%;
     display: inline-block;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  margin:0;
 }
  #berichtenLijst li{
     background-color: rgb(158, 75, 147);
@@ -179,67 +185,7 @@ label{
     text-decoration: none;
     letter-spacing: 0.1em; 
 }
-/***RECLAME***/
-.reclame {
-    width: 100%;
-    max-width: 60em;
-    text-align: center;
-    display: inline-block;
-}
 
-.reclame h1{
-    max-width: 51em;
-    margin: 1em;
-}
-
-.reclame img {
-    width: 15em;
-    height: 15em;
-    margin: 1em;
-}
-
-/***Profielweergave***/
-.profiel {
-    width:80%;
-    max-width: 60em;
-    padding:0;
-    margin:0;
-}
-
-#gebruikerWeergave{
-    width:  100%;
-    display:inline-block;
-    padding:0;
-    margin:0;
-}
-
-#gebruikerWeergave dt{
-    text-align: right;
-    border-radius: 4px;
-    width:7em;
-    background-color: rosybrown;
-    display:inline-block;
-    padding:0.125em;
-    margin:0.125em;
-}
-
-#gebruikerWeergave dd{
-    text-align: left;
-    border-radius: 4px;
-    width:50%;
-    max-width: 30em;
-    background-color: silver;
-    display:inline-block;
-    padding:0.125em;
-    margin:0.125em;
-}
-
-#gebruikerWeergave img{
-    margin: 0;
-    padding: 1em;
-    width: 15em;
-    height: 15em;
-}
 
 /***Foutmelding***/
 .feedback, .Fout {
@@ -264,7 +210,6 @@ label{
 
 /***berichtenMenu***/
 .chatPersoon {
-  background-color: lime;
   width: 15em;
   height: 100%;
   text-align: center;
@@ -272,25 +217,15 @@ label{
   margin:0 0 0 0 ;
   padding: 0;
 }
-.chatPersoon div{
-  margin: 2.5%;
-}
 
-#berichtenLijst {
-  background-color:blue;
-  height: 100%;
-  width: 100%;
-  overflow: auto;
-  margin:0;
-}
 .mediumIcons {
     background-color: peachpuff;
-    height:7.25em;
+    height:92.5%;
     width: 95%;
     min-width: 8em;
     align-items: center;
     border-radius: 4px;
-    margin: 0;
+    margin: 2.5%;
     padding: 0;
     overflow: hidden;
 }
@@ -305,23 +240,18 @@ label{
 /* berichten */
 .wrapper {
   width: 100%;
-  height: 80em;
+  height: 100%;
   background-color: orange;
   display: flex;
   flex-direction: column;
 }
 .niks{
-  background-color: red;
-  height: 5em;
+  height: 3em;
 }
 .chatberichten{
   margin: 0;
-  /*height:50em;
-
-  height: 100%;*/
-  flex: 1;
+  height:50em;
   width: 100%;
-  background-color: yellow ;
 }
 .groteContainer{
   height: 95%;
@@ -329,17 +259,17 @@ label{
   min-width: 27em;
   display: inline-block;
   margin:0 0 0 2em  ;
-  padding: 0;
-  border: peru solid 4px;
+  padding: 0;/*
+  border: peru solid 4px;*/
   border-radius: 14px;
-  background-color: peachpuff;
+  background-color: lightgrey;
 }
 .container{
   height: 80%;
   width: 100%;
   border: none;
   background-color: inherit;
-  overflow: auto;
+  overflow-y: auto;
   margin: 0;
 }
 .verticalCentraal{
@@ -400,7 +330,6 @@ label{
   border-radius: 16px 16px 16px 0;
   border: 1px solid #54788e;
   text-align: left;
-  
 }
 .own {
   align-self: flex-end;
@@ -446,9 +375,14 @@ span a, span a:hover, span a:active{
   display: inline-block;
   background-color: #dddddd;
   border-radius: 0 0 0 10px;
-
   resize: none;
-}
+  outline: none;
+}/*
+.textbox textarea :focus {
+  border: none;
+  outline: none;
+  box-shadow: none;
+}*/
 .textbox button{
   width: 20%;
   height: 100%;
