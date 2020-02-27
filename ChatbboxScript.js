@@ -260,8 +260,8 @@ function toonAlGeschrevenChatbericht(chatbubble) {
 function LoveCoinsAanwezig() {
     console.log(sessionStorage.getItem("lovecoins"));
     currentLovecoins = sessionStorage.getItem("lovecoins");
-    if (sessionStorage.getItem("lovecoins") === "0") {
-        document.getElementById("stuurTekstFout").style.display = "inline";
+    if(sessionStorage.getItem("lovecoins") === "0"){
+        document.getElementById("stuurTekstFout").innerText = "Niet genoeg lovecoins aanwezig";
     }
     else {
         LoveCoinsVerminderenMet1();
