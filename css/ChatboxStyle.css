@@ -151,7 +151,7 @@ input, select{
 }
 
 /***Formulieren***/
-.formulier, .favorieten, .chatPersoon {
+.formulier, .favorieten {
     width: 90%;
     max-width: 50em;
     text-align: center;
@@ -160,24 +160,22 @@ input, select{
 .marge {
     margin-left: 15%;
 }
-.formulier div, .favorieten div, .chatPersoon div{
+.formulier div, .favorieten div{
     margin: 0.5em;
 }
 
 /***Zoeken lijst weergeven***/
-#gebruikersLijst, #favorietenlijst, #berichtenLijst {
+ #berichtenLijst {
     padding: 0;
     list-style-type: none;
     width: 100%;
-    max-width: 54em;
     display: inline-block;
 }
-
-#gebruikersLijst li, #favorietenlijst li, #berichtenLijst li{
+ #berichtenLijst li{
     background-color: rgb(158, 75, 147);
     display: inline-block;
-    width: 16em;
-    height: 9em;
+    width: 90%;
+    height: 8em;
     margin: 0.5em ;
     color: #000000;
     text-decoration: none;
@@ -186,26 +184,10 @@ input, select{
     overflow:hidden;
     border-radius: 4px;
 }
-
-#gebruikersLijst li a, #favorietenlijst li a, #berichtenLijst li a {
+ #berichtenLijst li a {
     color: #000000;
     text-decoration: none;
     letter-spacing: 0.1em; 
-}
-.mediumIcons {
-    background-color: peachpuff;
-    height:8em;
-    width: 15em;
-    align-items: center;
-    border-radius: 4px;
-}
-
-.mediumIcons:hover{
-    background: darksalmon;
-    color: white;
-}
-.mediumIcons:active{
-    background-color: slateblue;
 }
 /***RECLAME***/
 .reclame {
@@ -293,137 +275,170 @@ input, select{
 /***berichtenMenu***/
 .chatPersoon {
   background-color: lime;
-  width: 90%;
-  max-width: 50em;
+  width: 15em;
+  height: 60em;
   text-align: center;
-  display: inline;
+  float: left;
+  margin:0 0 0 0 ;
+  padding: 0;
 }
-/*
-.chatPersoon div{;
-  margin: 0.5em;
-}*/
+.chatPersoon div{
+  margin: 2.5%;
+}
 
 #berichtenLijst {
   background-color:blue;
-  height: 9em;
+  height: 100%;
+  width: 100%;
   overflow: auto;
+}
+.mediumIcons {
+    background-color: peachpuff;
+    height:7.25em;
+    width: 95%;
+    min-width: 8em;
+    align-items: center;
+    border-radius: 4px;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.mediumIcons:hover{
+    background: darksalmon;
+    color: white;
+}
+.mediumIcons:active{
+    background-color: slateblue;
 }
 /* berichten */
 .chatberichten{
-  margin: 5em 0em 0em 0em;
+  margin: 2em 0em 0em 0em;
+  height: 20em;
 }
-  .groteContainer{
-    height: 60em;
-    width:80%;
-    min-width: 27em;
-    max-width: 60em;
-    display: inline-block;
-    margin:2px;
-    padding: 0;
-  }
-  .container{
-    height: 90%;
-    width: 100%;
-    border: 1px solid;
-    overflow: auto;
-    margin: 0;
-  }
-  #naarWieStuurIk{
-    background-color: purple;
-    color:white;
-    padding: 1em;
-    margin:0;
-  }
-  .bubbleWrapper {
-    padding: 10px 10px;
-    display: flex;
-    justify-content: flex-end;
-    flex-direction: column;
-    align-self: flex-end;
-    color: #fff;
-  }
-  .inlineContainer {
-    display: inline-flex;
-  }
-  .inlineContainer.own {
-    flex-direction: row-reverse;
-  }
-  .inlineIcon {
-    width:20px;
-    height: 20px;
-    object-fit: contain;
-    margin-top: auto;
-    border-radius: 10px;
-  }
-  .ownBubble {
-    min-width: 60px;
-    max-width: 700px;
-    padding: 14px 18px;
-    margin: 6px 8px;
-    background-color: #5b5377;
-    border-radius: 16px 16px 0 16px;
-    border: 1px solid #443f56;
-    text-align: right;
-  }
-  .otherBubble {
-    min-width: 60px;
-    max-width: 700px;
-    padding: 14px 18px;
-    margin: 6px 8px;
-    background-color: #6C8EA4;
-    border-radius: 16px 16px 16px 0;
-    border: 1px solid #54788e;
-    text-align: left;
-    
-  }
-  .own {
-    align-self: flex-end;
-  }
-  .other {
-    align-self: flex-start;
-  }
-  .other button {
-    background-color: none;
-    padding:0;
-    margin: 0;
-  }
-  span.own,
-  span.other{
-    font-size: 14px;
-    color: grey;
-  }
-  span a, span a:hover, span a:active{
-      text-decoration: none;
-      background-color: none;
-      margin: 0 5px 0;
-  }
-  /*span img{
-    width: 25px;
-    height: 25px;
-    vertical-align: middle;
-  }*/
+.groteContainer{
+  height: 60em;
+  width:60%;
+  min-width: 27em;
+  max-width: 60em;
+  display: inline-block;
+  margin:0 0 0 2em  ;
+  padding: 0;
+  border: peru solid 4px;
+  border-radius: 10px;
+}
+.container{
+  height: 80%;
+  width: 100%;
+  border: none;
+  background-color: peachpuff;
+  overflow: auto;
+  margin: 0;
+}
 
-  .textbox{
-    width:100%;
-    height:10%;
-    margin: 0;
-    padding: 0;
-  }
-  .textbox textarea{
-    width: 70%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    display: inline-block;
-  }
-  .textbox button{
-    width: 20%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    display: inline-block;
-  }
-  /***Publiek en verborgen***/
+#naarWieStuurIk{
+  background-color: purple;
+  color:white;
+  height: 10%;
+  min-height: 2em;
+  margin:0;
+  text-align: center;
+  vertical-align: middle;
+}
+.bubbleWrapper {
+  padding: 10px 10px;
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+  align-self: flex-end;
+  color: #fff;
+  background-color: inherit;
+}
+.inlineContainer {
+  display: inline-flex;
+  background-color: inherit;
+}
+.inlineContainer.own {
+  flex-direction: row-reverse;
+}
+.inlineIcon {
+  width:20px;
+  height: 20px;
+  object-fit: contain;
+  margin-top: auto;
+  border-radius: 10px;
+}
+.ownBubble {
+  min-width: 60px;
+  max-width: 700px;
+  padding: 14px 18px;
+  margin: 6px 8px;
+  background-color: #5b5377;
+  border-radius: 16px 16px 0 16px;
+  border: 1px solid #443f56;
+  text-align: right;
+}
+.otherBubble {
+  min-width: 60px;
+  max-width: 700px;
+  padding: 14px 18px;
+  margin: 6px 8px;
+  background-color: #6C8EA4;
+  border-radius: 16px 16px 16px 0;
+  border: 1px solid #54788e;
+  text-align: left;
+  
+}
+.own {
+  align-self: flex-end;
+}
+.other {
+  align-self: flex-start;
+}
+.other button {
+  background-color: none;
+  padding:0;
+  margin: 0;
+}
+span.own,
+span.other{
+  font-size: 14px;
+  color: grey;
+}
+span a, span a:hover, span a:active{
+    text-decoration: none;
+    background-color: none;
+    margin: 0 5px 0;
+}
+/*span img{
+  width: 25px;
+  height: 25px;
+  vertical-align: middle;
+}*/
+
+.textbox{
+  width:100%;
+  height:10%;
+  margin: 0;
+  padding: 0;
+  display: inline-flex;
+}
+.textbox textarea{
+  width: 80%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+}
+.textbox button{
+  width: 20%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+  vertical-align: middle;
+}
+/***Publiek en verborgen***/
 
 .verborgen {
   display: none;
