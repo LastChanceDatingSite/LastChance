@@ -8,51 +8,6 @@ else {
 //The user is NOT authenticated.
 }
 */
-    
-    
-
- /*   profielenAfhalen();
-    async function profielenAfhalen() 
-    {
-        const response = await fetch("https://scrumserver.tenobe.org/scrum/api/profiel/read.php");
-        if (response.ok) 
-        {
-            const profielen = await response.json();
-            console.log(profielen);
-    
-            document.getElementById("aanmelden").onclick = async function()
-            {
-                const gebruikerWachtwoord = document.getElementById("wachtwoord").value;
-                const gebruikerNickname = document.getElementById("user").value;
-                console.log(gebruikerNickname);
-               
-            
-
-                for (const profiel of profielen)
-                {
-                    console.log(profiel.nickname);
-                    if (gebruikerNickname === profiel.nickname && gebruikerWachtwoord === profiel.wachtwoord)
-                    {
-                        const gebruikerId = profiel.id;
-                        console.log(gebruikerId);
-                        window.location.replace("gebruikers.html");
-                        localStorage.setItem('gebruiker', gebruikerId);
-                    }
-                    else
-                    {
-                        console.log("mis");
-                    }
-                }
-            }
-
-        } 
-        else 
-        {
-            document.getElementById("aanmeldingFout").style.display = "block";
-        };
-    };
-
-    */
 
     document.getElementById("aanmelden").addEventListener('click', function (e) {  
         let nickname =  document.getElementById("user").value; 
