@@ -127,6 +127,7 @@ label{
     color: #000000;
     text-decoration: none;
     letter-spacing: 0.1em; 
+    border-radius: 5px;
 }
 .topmenu ol li a:hover{
     text-decoration: none;
@@ -377,6 +378,7 @@ span a, span a:hover, span a:active{
   border-radius: 0 0 0 10px;
   resize: none;
   outline: none;
+  font-size: inherit;
 }/*
 .textbox textarea :focus {
   border: none;
@@ -391,6 +393,7 @@ span a, span a:hover, span a:active{
   display: inline-block;
   vertical-align: middle;
   border-radius: 0 0 10px 0;
+  font-size: inherit;
 }
 /***Publiek en verborgen***/
 
