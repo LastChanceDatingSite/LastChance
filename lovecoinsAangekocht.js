@@ -18,6 +18,7 @@ async function eenProfielAfhalen() {
         const eenProfiel = await response.json();
         console.log(eenProfiel);
         document.getElementById("aantalLoveCoins").innerText = eenProfiel.lovecoins;
+        sessionStorage.setItem("lovecoins", eenProfiel.lovecoins);
         return eenProfiel;
     }
     else {

@@ -12,4 +12,5 @@ else {
 
 document.getElementById("uitloggen").onclick = function() {
     sessionStorage.clear();
+    localStorage.clear();
 }
