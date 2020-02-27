@@ -293,7 +293,7 @@ document.getElementById("favorieten").addEventListener('click', function (e) {
                         sessionStorage.setItem("gezochteGebruiker", eenProfiel.id);
                         window.location.replace("favorietProfiel.html");
                     }
-                    hyperlink.innerHTML = "<div class='mediumIcons'>" + img + " <br> " + eenProfiel.nickname + " <br> " + statusNaControle + "</div>";
+                    hyperlink.innerHTML = "<div class='mediumIcons'>" + img + " <br> " + eenProfiel.nickname + " <br> <div id='statusControle'> " + statusNaControle + "</div></div>";
                     li.appendChild(hyperlink);
                     favorietenLijst.appendChild(li);
                 }
@@ -306,7 +306,7 @@ function statusControle(status) {
     if (status === "ik heb de ander niet als favoriet")
     {
         console.log(status);
-        return status = "Mogelijke match";
+        return status = "mogelijke match";
     }
     else
     {
